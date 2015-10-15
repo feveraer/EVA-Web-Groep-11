@@ -1,8 +1,9 @@
 .demo-card-wide.mdl-card {
     width: 512px;
     background: url('../img/gelijnd_papier.jpg') center / cover;
-
+    margin: 5em auto;
 }
+
 .demo-card-wide > .mdl-card__title {
     color: #fff;
     height: 100px;
@@ -14,4 +15,18 @@
 
 .demo-card-wide > .mdl-card__menu {
     color: #689F38;
+}
+
+#banner{
+    width: 100%;
+    height: 7.5%;
+    background: url('../img/blackboard.jpg') center / cover;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    padding-top:1em;
+}
+
+body{
+    background-color: #ABDF1E;;
 }
