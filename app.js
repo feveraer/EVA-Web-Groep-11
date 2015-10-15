@@ -3,14 +3,17 @@ var app = angular.module('EvaWeb',['ui.router']);
 app.controller('MainCtrl',[
     '$scope',
     function($scope){
-        $scope.test = "yolo";
-        $scope.challenge = {
-            title: "Maak iets vegetarisch!",
-            description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-            difficulty: 1
+        $scope.challenge = getChallenge()
         }
-    }
 ]);
+
+getChallenge = function(){
+    return {
+        title: "Maak iets vegetarisch!",
+        description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
+        difficulty: 1
+    };
+};
 
 app.config([
     '$stateProvider',
