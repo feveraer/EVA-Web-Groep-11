@@ -1,11 +1,13 @@
-<h1>
-    {{challenge.title}}
-</h1>
-<div>
-    <h2>Omschrijving</h2>
-    <p>
-    {{challenge.description}}
-    </p>
-    <h2>Niveau</h2>
-    <p>{{challenge.difficulty}}</p>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{challenge.title}}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        {{challenge.description}}
+    </div>
+    <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">done</i>
+        </button>
+    </div>
 </div>

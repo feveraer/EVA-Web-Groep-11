@@ -1,0 +1,17 @@
+.demo-card-wide.mdl-card {
+    width: 512px;
+    background: url('../img/gelijnd_papier.jpg') center / cover;
+
+}
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 100px;
+    background: url('../img/blackboard.jpg') center / cover;
+}
+
+.demo-card-wide > .mdl-card__supporting-text{
+}
+
+.demo-card-wide > .mdl-card__menu {
+    color: #689F38;
+}
