@@ -7,8 +7,9 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', f
 
 
     $scope.firstTask = task[0];
+    //$scope.firstTask = tasks[0];
 
-    console.log(challenges);
+    console.log(task);
 
     $scope.daysLeft = function (date) {
 
