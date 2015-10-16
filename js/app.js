@@ -1,5 +1,5 @@
 
-var app = angular.module('EvaWebApp',['ui.router', 'ngRoute', 'challengeControllers', 'challengeServices']);
+var app = angular.module('EvaWeb',['ui.router', 'ngRoute', 'challengeControllers', 'challengeServices']);
 
 app.config([
     '$stateProvider',
