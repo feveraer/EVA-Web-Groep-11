@@ -1,7 +1,6 @@
-
 var challengeControllers = angular.module('challengeControllers', []);
 
-challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', function($scope, Challenge) {
+challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', function ($scope, Challenge) {
     var tasks = Challenge.query();
     $scope.task = tasks;
 
