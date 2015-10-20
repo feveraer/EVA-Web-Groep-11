@@ -1,4 +1,3 @@
-
 .leaf {
     background-image: url("../img/leaf.svg");
     opacity: 0.5;
@@ -8,9 +7,8 @@
     display: inline-block;
 }
 
-.filled{
-opacity: 1;
-
+.filled {
+    opacity: 1;
 }
 
 .leafContainer {
@@ -21,7 +19,6 @@ opacity: 1;
 
 .iconDiv {
     display: block;
-
     float: left;
 }
 
@@ -46,7 +43,6 @@ opacity: 1;
     height: 48px;
 }
 
-
 /*dialogbox*/
 .dialogdemoBasicUsage #popupContainer {
     position: relative;
@@ -69,18 +65,28 @@ opacity: 1;
     font-size: 0.8em;
     margin-top: 50px;
 }
+
 /*dialogbox*/
 
-
-body{
+body {
     background-color: #EDEDED;
 }
 
-.card{
-    height: 500px;
-    width: 350px;
+.cardDiv {
+    text-align: center;
 }
+
+.card {
+    min-width: 300px;
+    width: 50%;
+    height: auto;
+    margin: 0px auto;
+    display: block;
+}
+
 .md-card-image {
     height: 200px;
-    width: 350px;
+    width: 100%;
+    margin: 0px auto;
 }
+
