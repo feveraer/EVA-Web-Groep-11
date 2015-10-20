@@ -66,7 +66,7 @@
     margin-top: 50px;
 }
 
-/*dialogbox*/
+/*Card*/
 
 body {
     background-color: #EDEDED;
@@ -90,3 +90,8 @@ body {
     margin: 0px auto;
 }
 
+/*Dialog*/
+#inDialogImage{
+    margin: 0px auto;
+    width: 100%;
+}

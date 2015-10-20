@@ -26,13 +26,15 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', '
     });
 
     $scope.showAdvanced = function(ev) {
-        console.log('clicked on details button');
         $mdDialog.show({
             controller: DialogController,
             templateUrl: './views/challengeDialog.html',
             parent: angular.element(document.body),
             targetEvent: ev,
-            clickOutsideToClose:true
+            clickOutsideToClose:true,
+            locals:{
+                data: $scope.challenge
+            }
         });
 
     };
@@ -51,11 +53,9 @@ function dDiff(dueDate) {
     }
 }
 
-function DialogController($scope, $mdDialog) {
-    $scope.items = [
-            {
-                "title": "Title"
-            }];
+function DialogController($scope, $mdDialog, data) {
+    $scope.mdDialogData = data;
+
     $scope.hide = function() {
         $mdDialog.hide();
     };
