@@ -1,5 +1,6 @@
 
-var app = angular.module('EvaWeb',['ui.router', 'ngRoute', 'challengeControllers', 'challengeServices']);
+var app = angular.module('EvaWeb',['ui.router', 'ngRoute', 'challengeControllers', 'challengeServices', 'ngMaterial']);
+
 
 app.config([
     '$stateProvider',
@@ -16,18 +17,29 @@ app.config([
     }
 ]);
 
-//app.filter('dateDiff', function () {
-//    var magicNumber = (1000 * 60 * 60 * 24);
-//
-//    return function (toDate, fromDate) {
-//        if(toDate && fromDate){
-//            var dayDiff = Math.floor((toDate - fromDate) / magicNumber);
-//            if (angular.isNumber(dayDiff)){
-//                return dayDiff + 1;
-//            }
-//        }
-//    };
-//});
+
+
+app.directive('leafRating', function () {
+    return {
+        restrict: 'A',
+        template:
+        '<div class="leaf" ng-repeat="leaf in leafs" ng-class="leaf"></div>' ,
+        scope: {
+            ratingValue: '=',
+            max: '='
+        },
+        link: function (scope, elem, attrs) {
+            scope.leafs = [];
+            for (var i = 0; i < scope.max; i++) {
+                scope.leafs.push({
+                    filled: i < scope.ratingValue
+                });
+            }
+        }
+    }
+});
+
+
 
 
 
