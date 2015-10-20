@@ -9,7 +9,7 @@
                 <div>
                     <span ng-repeat="rating in ratings">
                         <div leaf-rating rating-value="rating.current" max="rating.max"
-                         on-rating-selected="getSelectedRating(rating)"></div>
+                             on-rating-selected="getSelectedRating(rating)"></div>
                     </span>
                 </div>
 
@@ -21,6 +21,7 @@
 
         </md-card-content>
         <div class="md-actions" layout="row" layout-align="end center">
+            <md-button ng-click="showAdvanced($event)">Details</md-button>
             <md-button>Voltooi</md-button>
         </div>
     </md-card>

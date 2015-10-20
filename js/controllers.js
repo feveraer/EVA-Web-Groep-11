@@ -1,6 +1,6 @@
 var challengeControllers = angular.module('challengeControllers', []);
 
-challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', function ($scope, Challenge) {
+challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', '$mdDialog', function ($scope, Challenge, $mdDialog) {
 
 
     Challenge.query().$promise.then(function(data){
@@ -25,6 +25,18 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', f
         //$scope.ratings[0].max = challenge.difficulty;
     });
 
+    $scope.showAdvanced = function(ev) {
+        console.log('clicked on details button');
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: './views/challengeDialog.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true
+        });
+
+    };
+
     //$scope.daysLeft = dDiff($scope.dueDate);
     //
     $scope.daysLeft = dDiff(Date.now());
@@ -37,4 +49,22 @@ function dDiff(dueDate) {
     if (angular.isNumber(dayDiff)) {
         return dayDiff + 1;
     }
+}
+
+function DialogController($scope, $mdDialog) {
+    $scope.items = [
+            {
+                "title": "Title"
+            }];
+    $scope.hide = function() {
+        $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+        $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+        $mdDialog.hide(answer);
+    };
 }
