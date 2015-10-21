@@ -7,14 +7,13 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', '
 
         var tasks = data;
         $scope.ratings = [{
-            current: 2,
+            current: tasks[1].challenge.difficulty,
             max: 3
         }];
 
         $scope.dueDate = tasks[1].dueDate;
         $scope.completed = tasks[1].completed;
         $scope.challenge = tasks[1].challenge;
-        $scope.ratings[0].current = challenge.difficulty;
     });
 
     $scope.showAdvanced = function(ev) {
