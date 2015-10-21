@@ -8,21 +8,13 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', '
         var tasks = data;
         $scope.ratings = [{
             current: 2,
-            max:3
+            max: 3
         }];
 
-        $scope.tasks = tasks;
         $scope.dueDate = tasks[1].dueDate;
         $scope.completed = tasks[1].completed;
         $scope.challenge = tasks[1].challenge;
-
-        //init challange variables
-        var challenge = tasks[1].challenge;
-        $scope.title = challenge.title;
-        $scope.description = challenge.description;
-        $scope.difficulty = challenge.difficulty;
-
-        //$scope.ratings[0].max = challenge.difficulty;
+        $scope.ratings[0].current = challenge.difficulty;
     });
 
     $scope.showAdvanced = function(ev) {
