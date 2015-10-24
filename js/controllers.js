@@ -6,10 +6,11 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', '
     Challenge.query().$promise.then(function (data) {
 
         var tasks = data;
+        var currentTask = tasks[3];
         var completedTasks = [];
 
         $scope.ratings = [{
-            current: tasks[1].challenge.difficulty,
+            current: currentTask.challenge.difficulty,
             max: 3
         }];
 
@@ -20,14 +21,13 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', '
             }
         });
 
-        completedTasks.sort(function(object1, object2){
-            return new Date(object2.dueDate)-new Date(object1.dueDate);
-        });
+        completedTasks.sort(sortTasksByDateDesc);
 
         $scope.tasks = completedTasks;
-        $scope.dueDate = tasks[1].dueDate;
-        $scope.completed = tasks[1].completed;
-        $scope.challenge = tasks[1].challenge;
+
+        $scope.dueDate = currentTask.dueDate;
+        $scope.completed = currentTask.completed;
+        $scope.challenge = currentTask.challenge;
     });
 
 
@@ -74,7 +74,9 @@ function DialogController($scope, $mdDialog, data) {
     };
 }
 
-
+var sortTasksByDateDesc = function(object1, object2){
+    return new Date(object2.dueDate)-new Date(object1.dueDate);
+};
 
 // Test data remove after testing
 
