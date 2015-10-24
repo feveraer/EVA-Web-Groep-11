@@ -1,0 +1,28 @@
+<div class="cardDiv">
+    <h1>Dag {{daysLeft}}</h1>
+
+    <md-card class="md-whiteframe-13dp card">
+
+        <md-card-content>
+            <div class="cardHeader" layout="row" layout-align="space-around center">
+                <div><h2> {{challenge.title}}</h2></div>
+                <div>
+                    <span ng-repeat="rating in ratings">
+                        <div leaf-rating rating-value="rating.current" max="rating.max"
+                             on-rating-selected="getSelectedRating(rating)"></div>
+                    </span>
+                </div>
+
+            </div>
+        </md-card-content>
+        <img src="img/vegiPic.jpg" class="md-card-image" alt="image caption">
+        <md-card-content>
+            <h3>{{challenge.description}}</h3>
+
+        </md-card-content>
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button ng-click="showAdvanced($event)">Details</md-button>
+            <md-button>Voltooi</md-button>
+        </div>
+    </md-card>
+</div>
