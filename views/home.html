@@ -26,3 +26,19 @@
         </div>
     </md-card>
 </div>
+
+<!--===TimeLine===-->
+<timeline>
+    <timeline-event ng-repeat="task in tasks">
+        <timeline-badge class="{{event.badgeClass}}">
+            <i class="glyphicon {{event.badgeIconClass}}"></i>
+        </timeline-badge>
+        <timeline-panel class="{{event.badgeClass}}">
+            <timeline-heading>
+                <h4>{{task.challenge.title}}</h4>
+            </timeline-heading>
+            <p>{{task.challenge.description}}</p>
+        </timeline-panel>
+    </timeline-event>
+</timeline>
+<!--===TimeLine===-->

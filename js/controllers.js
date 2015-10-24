@@ -11,10 +11,14 @@ challengeControllers.controller('challengeDetailCtrl', ['$scope', 'Challenge', '
             max: 3
         }];
 
+        $scope.tasks = tasks;
         $scope.dueDate = tasks[1].dueDate;
         $scope.completed = tasks[1].completed;
         $scope.challenge = tasks[1].challenge;
+        console.log(tasks);
     });
+
+
 
     $scope.showAdvanced = function(ev) {
         $mdDialog.show({
