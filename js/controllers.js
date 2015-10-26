@@ -74,8 +74,8 @@ function DialogController($scope, $mdDialog, data) {
     };
 }
 
-var sortTasksByDateDesc = function(object1, object2){
-    return new Date(object2.dueDate)-new Date(object1.dueDate);
+var sortTasksByDateDesc = function(task1, task2){
+    return new Date(task2.dueDate)-new Date(task1.dueDate);
 };
 
 // Test data remove after testing
