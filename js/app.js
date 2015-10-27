@@ -3,7 +3,6 @@ angular
         'ui.router',
         'ngRoute',
         'app.challenge',
-        'challengeServices',
         'ngMaterial',
         'angular-timeline'
     ])
