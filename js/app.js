@@ -1,4 +1,4 @@
-var app = angular.module('EvaWeb', ['ui.router', 'ngRoute', 'app.challenge', 'challengeServices', 'ngMaterial', 'angular-timeline']);
+var app = angular.module('EvaWeb', ['ui.router', 'ngRoute', 'app.challenge', 'ngMaterial', 'angular-timeline']);
 
 
 app.config([

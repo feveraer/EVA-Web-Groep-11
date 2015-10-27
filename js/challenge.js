@@ -1,12 +1,16 @@
 angular
-    .module('app.challenge', ['ui.router', 'ngRoute', 'ngMaterial', 'angular-timeline'])
+    .module('app.challenge', ['ui.router', 'ngRoute', 'ngMaterial', 'angular-timeline','ngResource'])
     .service('DialogService', DialogService)
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
+    .factory('Challenge', ChallengeFactory)
     .directive('leafRating', leafRating);
 
 ChallengeController.$inject = ['$mdDialog', 'Challenge', "DialogService"]
 DialogController.$inject = ['$mdDialog', "DialogService"]
+ChallengeFactory.$inject = ['$resource']
+
+var apiUrl = "http://95.85.59.29:1337/api/"
 
 function ChallengeController($mdDialog, Challenge, DialogService) {
     var vmChallenge = this;
@@ -85,6 +89,13 @@ function DialogController($mdDialog, DialogService) {
 var sortTasksByDateDesc = function (task1, task2) {
     return new Date(task2.dueDate) - new Date(task1.dueDate);
 };
+
+//Factory
+function ChallengeFactory($resource){
+    return $resource(apiUrl + "users/562f3f87b0b8dc041bcc6ba7/tasks", {}, {
+        query: {method: 'GET', isArray: true}
+    });
+}
 
 //Service
 function DialogService () {
