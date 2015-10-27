@@ -1,22 +1,22 @@
-var app = angular.module('EvaWeb', ['ui.router', 'ngRoute', 'app.challenge', 'challengeServices', 'ngMaterial', 'angular-timeline']);
+angular
+    .module('EvaWeb', [
+        'ui.router',
+        'ngRoute',
+        'app.challenge',
+        'challengeServices',
+        'ngMaterial',
+        'angular-timeline'
+    ])
+    .config(config);
 
-
-app.config([
-    '$stateProvider',
-    '$urlRouterProvider',
-    function ($stateProvider, $urlRouterProvider) {
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: './views/home.html',
-                controller: 'ChallengeController',
-                controllerAs: 'vmChallenge'
-            });
-
-        $urlRouterProvider.otherwise('/home');
-    }
-]);
-
-
-
+function config($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: './views/home.html',
+            controller: 'ChallengeController',
+            controllerAs: 'vmChallenge'
+        });
+    $urlRouterProvider.otherwise('/home');
+}
 
