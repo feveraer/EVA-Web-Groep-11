@@ -1,13 +1,14 @@
 angular
     .module('app.challenge', ['ui.router', 'ngRoute', 'ngMaterial', 'angular-timeline'])
+    .service('DialogService', DialogService)
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
     .directive('leafRating', leafRating);
 
-ChallengeController.$inject = ['$mdDialog', 'Challenge']
-DialogController.$inject = ['$mdDialog', 'vmChallenge']
+ChallengeController.$inject = ['$mdDialog', 'Challenge', "DialogService"]
+DialogController.$inject = ['$mdDialog', "DialogService"]
 
-function ChallengeController($mdDialog, Challenge) {
+function ChallengeController($mdDialog, Challenge, DialogService) {
     var vmChallenge = this;
 
     Challenge.query().$promise.then(function (data) {
@@ -21,7 +22,6 @@ function ChallengeController($mdDialog, Challenge) {
             max: 3
         }];
 
-        //If testing use dummyTasks instead of tasks
         tasks.forEach(function (task) {
             if (task.completed) {
                 completedTasks.push(task)
@@ -35,20 +35,18 @@ function ChallengeController($mdDialog, Challenge) {
         vmChallenge.dueDate = currentTask.dueDate;
         vmChallenge.completed = currentTask.completed;
         vmChallenge.challenge = currentTask.challenge;
+        DialogService.setChallenge(currentTask.challenge)
     });
 
 
     vmChallenge.showAdvanced = function (ev) {
-        console.log("show");
         $mdDialog.show({
             controller: DialogController,
             templateUrl: './views/challengeDialog.html',
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true,
-            locals: {
-                data: vmChallenge.challenge
-            }
+            controllerAs: 'vmDialog'
         });
     };
 
@@ -64,19 +62,22 @@ function dDiff(dueDate) {
     }
 }
 
-function DialogController(vmChallenge, $mdDialog, data) {
-    console.log("dia")
-    vmChallenge.mdDialogData = data;
+function DialogController($mdDialog, DialogService) {
+    var vmDialog = this;
 
-    vmChallenge.hide = function () {
+    vmDialog.mdDialogData = DialogService.getChallenge();
+
+    console.log(vmDialog.mdDialogData);
+
+    vmDialog.hide = function () {
         $mdDialog.hide();
     };
 
-    vmChallenge.cancel = function () {
+    vmDialog.cancel = function () {
         $mdDialog.cancel();
     };
 
-    vmChallenge.answer = function (answer) {
+    vmDialog.answer = function (answer) {
         $mdDialog.hide(answer);
     };
 }
@@ -84,6 +85,20 @@ function DialogController(vmChallenge, $mdDialog, data) {
 var sortTasksByDateDesc = function (task1, task2) {
     return new Date(task2.dueDate) - new Date(task1.dueDate);
 };
+
+//Service
+function DialogService () {
+    var challenge;
+
+    return {
+        getChallenge: function () {
+            return challenge;
+        },
+        setChallenge: function(value) {
+            challenge = value;
+        }
+    };
+}
 
 //Directive
 function leafRating() {

@@ -2,20 +2,20 @@
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>{{vmChallenge.mdDialogData.title}}</h2>
+                <h2>{{vmDialog.mdDialogData.title}}</h2>
                 <span flex></span>
-                <md-button class="md-icon-button" ng-click="cancel()">
+                <md-button class="md-icon-button" ng-click="vmDialog.cancel()">
                     <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
         <md-dialog-content style="max-width:800px;max-height:810px; ">
             <div class="md-dialog-content">
-                <p>Niveau: {{vmChallenge.mdDialogData.difficulty}}</p>
+                <p>Niveau: {{vmDialog.mdDialogData.difficulty}}</p>
                 <img id="inDialogImage" alt="Lush mango tree" src="img/vegiPic.jpg">
 
                 <p>
-                    {{vmChallenge.mdDialogData.description}}
+                    {{vmDialog.mdDialogData.description}}
                 </p>
             </div>
         </md-dialog-content>
