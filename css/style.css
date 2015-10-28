@@ -95,3 +95,12 @@ body {
     margin: 0px auto;
     width: 100%;
 }
+
+
+/*Timeline*/
+.hidden {
+    visibility: hidden;
+}
+.hidden2 {
+    visibility: hidden;
+}

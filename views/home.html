@@ -29,16 +29,26 @@
 
 <!--===TimeLine===-->
 <timeline>
-    <timeline-event ng-repeat="task in vmChallenge.tasks">
-        <timeline-badge class="{{event.badgeClass}}">
-            <i class="glyphicon {{event.badgeIconClass}}"></i>
+    <timeline-event ng-repeat="task in vmChallenge.tasks track by $index">
+        <timeline-badge class="info hidden" when-visible="vmChallenge.animateIconIn" when-not-visible="vmChallenge.animateIconOut">
+            <i class="glyphicon glyphicon-check"></i>
         </timeline-badge>
-        <timeline-panel class="{{event.badgeClass}}">
+
+<!--//ng-if="$index % 2 === 0"-->
+        <timeline-panel ng-if="$index % 2 === 0" class="warning hidden2" when-visible="vmChallenge.animatePanelsTimeLineLeftIn" when-not-visible="vmChallenge.animatePanelsTimeLineLeftOut" >
             <timeline-heading>
                 <h4>{{task.challenge.title}}</h4>
             </timeline-heading>
             <p>{{task.challenge.description}}</p>
         </timeline-panel>
+
+        <timeline-panel ng-if="$index % 2 != 0" class="warning hidden2" when-visible="vmChallenge.animatePanelsTimeLineRightIn" when-not-visible="vmChallenge.animatePanelsTimeLineRightOut" >
+            <timeline-heading>
+                <h4>{{task.challenge.title}}</h4>
+            </timeline-heading>
+            <p>{{task.challenge.description}}</p>
+        </timeline-panel>
+
     </timeline-event>
 </timeline>
 <!--===TimeLine===-->

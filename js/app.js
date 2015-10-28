@@ -4,7 +4,9 @@ angular
         'ngRoute',
         'app.challenge',
         'ngMaterial',
-        'angular-timeline'
+        'angular-timeline',
+        'ngSanitize',
+        'angular-scroll-animate'
     ])
     .config(config);
 
