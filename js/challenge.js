@@ -122,8 +122,7 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
         console.log("Button voltooi Clicked");
     }
 
-
-    function loadGlyphicon(name){
+    function loadGlyphicon(name) {
         switch (name) {
             case 'Dinner':
                 return 'glyphicon-glass';

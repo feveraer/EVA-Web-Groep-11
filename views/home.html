@@ -14,7 +14,7 @@
 
         </div>
     </md-card-content>
-    <img src="img/vegi.jpg" class="md-card-image" alt="image caption">
+    <img src="img/veggiDinner.jpg" class="md-card-image" alt="image caption">
     <md-card-content>
         <h3>{{vmChallenge.challenge.description}}</h3>
 
@@ -38,7 +38,7 @@
         <timeline-panel ng-if="$index % 2 === 0" class="warning hidden2"
                         when-visible="vmChallenge.animatePanelsTimeLineLeftIn">
             <timeline-heading>
-                <img src="img/vegi.jpg" class="timeLineImage">
+                <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
                 <h4>{{task.challenge.title}}</h4>
             </timeline-heading>
             <p>{{task.challenge.description}}</p>
@@ -49,7 +49,7 @@
         <timeline-panel ng-if="$index % 2 != 0" class="warning hidden2"
                         when-visible="vmChallenge.animatePanelsTimeLineRightIn">
             <timeline-heading>
-                <img src="img/vegi.jpg" class="timeLineImage">
+                <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
                 <h4>{{task.challenge.title}}</h4>
             </timeline-heading>
             <p>{{task.challenge.description}}</p>
