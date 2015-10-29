@@ -30,6 +30,7 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
     vmChallenge.daysLeft = dDiff;
     vmChallenge.clickButton = clickButton;
     vmChallenge.onClickVoltooi = onClickVoltooi;
+    vmChallenge.loadGlyphicon = loadGlyphicon;
 
     Challenge.query().$promise.then(function (data) {
 
@@ -50,7 +51,7 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
 
         completedTasks.sort(sortTasksByDateDesc);
 
-        vmChallenge.tasks = completedTasks;
+        vmChallenge.tasks = tasks;
         vmChallenge.dueDate = currentTask.dueDate;
         vmChallenge.completed = currentTask.completed;
         vmChallenge.challenge = currentTask.challenge;
@@ -132,6 +133,25 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
 
     function onClickVoltooi() {
         console.log("Button Clicked");
+    }
+
+    function loadGlyphicon(name){
+
+        switch (name) {
+            case 'Dinner':
+                return 'glyphicon-glass';
+
+            case 'Breakfast':
+                return 'glyphicon-grain';
+
+            case 'Lunch':
+                return 'glyphicon-leaf';
+            case 'Social':
+                return 'glyphicon-heart';
+
+            default:
+                return 'glyphicon-heart';
+        }
     }
 
     //function setGlyphonsPerCatergory(t) {
