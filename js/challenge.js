@@ -30,7 +30,7 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
     vmChallenge.daysLeft = dDiff;
     vmChallenge.clickButton = clickButton;
     vmChallenge.onClickVoltooi = onClickVoltooi;
-    vmChallenge.setGlyphonsPerCatergory = setGlyphonsPerCatergory;
+    vmChallenge.loadGlyphicon = loadGlyphicon;
 
     Challenge.query().$promise.then(function (data) {
 
@@ -123,13 +123,14 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
         console.log("Button Clicked");
     }
 
-    function setGlyphonsPerCatergory(categoryId) {
-        switch (categoryId) {
-            case 'Dinner':
-                return 'glyphicon-heart';
 
-            case 'Breakfast':
+    function loadGlyphicon(name){
+
+        switch (name) {
+            case 'Dinner':
                 return 'glyphicon-glass';
+            case 'Breakfast':
+                return 'glyphicon-grain';
 
             case 'Lunch':
                 return 'glyphicon-leaf';
