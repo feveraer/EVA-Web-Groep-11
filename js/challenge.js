@@ -123,8 +123,7 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
         console.log("Button Clicked");
     }
 
-
-    function loadGlyphicon(name){
+    function loadGlyphicon(name) {
 
         switch (name) {
             case 'Dinner':
