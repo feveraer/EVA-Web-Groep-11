@@ -30,6 +30,7 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
     vmChallenge.daysLeft = dDiff;
     vmChallenge.clickButton = clickButton;
     vmChallenge.onClickVoltooi = onClickVoltooi;
+    vmChallenge.setGlyphonsPerCatergory = setGlyphonsPerCatergory;
 
     Challenge.query().$promise.then(function (data) {
 
@@ -50,7 +51,7 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
 
         completedTasks.sort(sortTasksByDateDesc);
 
-        vmChallenge.tasks = completedTasks;
+        vmChallenge.tasks = tasks;
         vmChallenge.dueDate = currentTask.dueDate;
         vmChallenge.completed = currentTask.completed;
         vmChallenge.challenge = currentTask.challenge;
@@ -68,18 +69,6 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
             controllerAs: 'vmDialog'
         });
     };
-
-    vmChallenge.events = [{
-        badgeClass: 'info',
-        badgeIconClass: 'glyphicon-check',
-        title: 'First heading',
-        content: 'Some awesome content.'
-    }, {
-        badgeClass: 'warning',
-        badgeIconClass: 'glyphicon-credit-card',
-        title: 'Second heading',
-        content: 'More awesome content.'
-    }];
 
     /*===========Animation==========*/
     function animateIconIn($el) {
@@ -134,23 +123,23 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
         console.log("Button Clicked");
     }
 
-    //function setGlyphonsPerCatergory(t) {
-    //    switch (t) {
-    //        case dinner:
-    //            return 'glyphicon-heart';
-    //
-    //        case Breakfast:
-    //            return 'glyphicon-glass';
-    //
-    //        case Lunch:
-    //            return 'glyphicon-leaf';
-    //        case Social:
-    //            return 'glyphicon-heart';
-    //
-    //        default:
-    //            return 'glyphicon-heart';
-    //    }
-    //}
+    function setGlyphonsPerCatergory(categoryId) {
+        switch (categoryId) {
+            case 'Dinner':
+                return 'glyphicon-heart';
+
+            case 'Breakfast':
+                return 'glyphicon-glass';
+
+            case 'Lunch':
+                return 'glyphicon-leaf';
+            case 'Social':
+                return 'glyphicon-heart';
+
+            default:
+                return 'glyphicon-heart';
+        }
+    }
 }
 
 function DialogController($mdDialog, DialogService) {

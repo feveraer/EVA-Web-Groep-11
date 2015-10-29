@@ -10,7 +10,7 @@
     margin-left: 20%;
     /*margin-top: 20px;*/
     /*margin-left: 20px ;*/
-    width: 10%;
+    width: auto;
     height: 60%;
 }
 
@@ -154,5 +154,19 @@
     background-color: #F15C23
 }
 
+/*Timeline badge color per Category*/
+.timeline li timeline-badge.Breakfast{
+    background-color: #016990;
+}
 
+.timeline li timeline-badge.Dinner{
+    background-color: #B3A49E;
+}
 
+.timeline li timeline-badge.Lunch{
+    background-color: #F3DE00;
+}
+
+.timeline li timeline-badge.Social{
+    background-color: #006C68;
+}
