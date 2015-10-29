@@ -27,13 +27,11 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
     vmChallenge.animatePanelsTimeLineLeftOut = animatePanelsTimeLineLeftOut;
     vmChallenge.animatePanelsTimeLineRightIn = animatePanelsTimeLineRightIn;
     vmChallenge.animatePanelsTimeLineRightOut = animatePanelsTimeLineRightOut;
-    vmChallenge.daysLeft = dDiff;
     vmChallenge.clickButton = clickButton;
     vmChallenge.onClickVoltooi = onClickVoltooi;
     vmChallenge.loadGlyphicon = loadGlyphicon;
 
     Challenge.query().$promise.then(function (data) {
-
         var tasks = data;
         var currentTask = tasks[3];
         var completedTasks = [];
@@ -49,8 +47,10 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
             }
         });
 
+        //TODO check if obsolete
         completedTasks.sort(sortTasksByDateDesc);
 
+        vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
         vmChallenge.tasks = tasks;
         vmChallenge.dueDate = currentTask.dueDate;
         vmChallenge.completed = currentTask.completed;
@@ -104,28 +104,26 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
     };
 
     /*Calculate date*/
-    function dDiff() {
-        var magicNumber = (1000 * 60 * 60 * 24);
-        var dayDiff = Math.floor((vmChallenge.dueDate - Date.now()) / magicNumber);
+    function calculateDaysBusy(date) {
+        var milisecondsInADay = (1000 * 60 * 60 * 24);
+        var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
         if (angular.isNumber(dayDiff)) {
-            return dayDiff + 1;
+            return dayDiff;
         }
     }
 
     function clickButton() {
         console.log("Button Clicked");
-        //angular.element(".cardDiv").addClass();
         angular.element(this).addClass('animated hinge');
 
     }
 
     function onClickVoltooi() {
-        console.log("Button Clicked");
+        console.log("Button voltooi Clicked");
     }
 
 
     function loadGlyphicon(name){
-
         switch (name) {
             case 'Dinner':
                 return 'glyphicon-glass';
@@ -148,7 +146,6 @@ function DialogController($mdDialog, DialogService) {
 
     vmDialog.mdDialogData = DialogService.getChallenge();
 
-    console.log(vmDialog.mdDialogData);
 
     vmDialog.hide = function () {
         $mdDialog.hide();
