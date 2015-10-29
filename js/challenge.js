@@ -5,7 +5,8 @@ angular
         'ngMaterial',
         'angular-timeline',
         'ngResource',
-        'angular-scroll-animate'])
+        'angular-scroll-animate',
+        'ngAnimate'])
     .service('DialogService', DialogService)
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
@@ -20,6 +21,16 @@ ChallengeFactory.$inject = ['$resource']
 /*Controllers*/
 function ChallengeController($mdDialog, Challenge, DialogService) {
     var vmChallenge = this;
+    vmChallenge.animateIconIn = animateIconIn;
+    vmChallenge.animateIconOut = animateIconOut;
+    vmChallenge.animatePanelsTimeLineLeftIn = animatePanelsTimeLineLeftIn;
+    vmChallenge.animatePanelsTimeLineLeftOut = animatePanelsTimeLineLeftOut;
+    vmChallenge.animatePanelsTimeLineRightIn = animatePanelsTimeLineRightIn;
+    vmChallenge.animatePanelsTimeLineRightOut = animatePanelsTimeLineRightOut;
+    vmChallenge.daysLeft = dDiff;
+    vmChallenge.clickButton = clickButton;
+    vmChallenge.onClickVoltooi = onClickVoltooi;
+
     Challenge.query().$promise.then(function (data) {
 
         var tasks = data;
@@ -31,15 +42,15 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
             max: 3
         }];
 
-        //tasks.forEach(function (task) {
-        //    if (task.completed) {
-        //        completedTasks.push(task)
-        //    }
-        //});
-        //
-        //completedTasks.sort(sortTasksByDateDesc);
+        tasks.forEach(function (task) {
+            if (task.completed) {
+                completedTasks.push(task)
+            }
+        });
 
-        vmChallenge.tasks = tasks;
+        completedTasks.sort(sortTasksByDateDesc);
+
+        vmChallenge.tasks = completedTasks;
         vmChallenge.dueDate = currentTask.dueDate;
         vmChallenge.completed = currentTask.completed;
         vmChallenge.challenge = currentTask.challenge;
@@ -71,42 +82,75 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
     }];
 
     /*===========Animation==========*/
-    vmChallenge.animateIconIn = function($el) {
+    function animateIconIn($el) {
         $el.removeClass('hidden');
-        $el.addClass('animated fadeInUp'); // this example leverages animate.css classes
+        $el.addClass('animated bounceIn');
     };
 
-    vmChallenge.animateIconOut = function($el) {
+    function animateIconOut($el) {
         $el.addClass('hidden');
-        $el.removeClass('animated fadeInUp'); // this example leverages animate.css classes
+        $el.removeClass('animated bounceInRight');
     };
 
     //animation Left
-    vmChallenge.animatePanelsTimeLineLeftIn = function($el) {
+    function animatePanelsTimeLineLeftIn($el) {
         $el.removeClass('hidden2');
-        $el.addClass('animated bounceInLeft'); // this example leverages animate.css classes
+        $el.addClass('animated bounceInLeft');
     };
 
-    vmChallenge.animatePanelsTimeLineLeftOut = function($el) {
+    function animatePanelsTimeLineLeftOut($el) {
         $el.addClass('hidden2');
-        $el.removeClass('animated bounceInLeft'); // this example leverages animate.css classes
+        $el.removeClass('animated bounceInLeft');
     };
 
     //animations right
-    vmChallenge.animatePanelsTimeLineRightIn = function($el) {
+    function animatePanelsTimeLineRightIn($el) {
         $el.removeClass('hidden2');
-        $el.addClass('animated bounceInRight'); // this example leverages animate.css classes
+        $el.addClass('animated bounceInRight');
     };
 
-    vmChallenge.animatePanelsTimeLineRightOut = function($el) {
+    function animatePanelsTimeLineRightOut($el) {
         $el.addClass('hidden2');
-        $el.removeClass('animated bounceInRight'); // this example leverages animate.css classes
+        $el.removeClass('animated bounceInRight');
     };
-    
 
-    vmChallenge.daysLeft = dDiff(Date.now());
+    /*Calculate date*/
+    function dDiff() {
+        var magicNumber = (1000 * 60 * 60 * 24);
+        var dayDiff = Math.floor((vmChallenge.dueDate - Date.now()) / magicNumber);
+        if (angular.isNumber(dayDiff)) {
+            return dayDiff + 1;
+        }
+    }
 
+    function clickButton() {
+        console.log("Button Clicked");
+        //angular.element(".cardDiv").addClass();
+        angular.element(this).addClass('animated hinge');
 
+    }
+
+    function onClickVoltooi() {
+        console.log("Button Clicked");
+    }
+
+    //function setGlyphonsPerCatergory(t) {
+    //    switch (t) {
+    //        case dinner:
+    //            return 'glyphicon-heart';
+    //
+    //        case Breakfast:
+    //            return 'glyphicon-glass';
+    //
+    //        case Lunch:
+    //            return 'glyphicon-leaf';
+    //        case Social:
+    //            return 'glyphicon-heart';
+    //
+    //        default:
+    //            return 'glyphicon-heart';
+    //    }
+    //}
 }
 
 function DialogController($mdDialog, DialogService) {
@@ -168,21 +212,10 @@ function leafRatingDirective() {
                 });
             }
         }
-
     }
 }
-
 
 /*Functions*/
-
-function dDiff(dueDate) {
-    var magicNumber = (1000 * 60 * 60 * 24);
-    var dayDiff = Math.floor((dueDate - Date.now()) / magicNumber);
-    if (angular.isNumber(dayDiff)) {
-        return dayDiff + 1;
-    }
-}
-
 var sortTasksByDateDesc = function (task1, task2) {
     return new Date(task2.dueDate) - new Date(task1.dueDate);
 };
