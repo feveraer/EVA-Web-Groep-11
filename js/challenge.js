@@ -69,7 +69,6 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
         vmChallenge.completed = currentTask.completed;
         vmChallenge.challenge = currentTask.challenge;
         DialogService.setChallenge(currentTask.challenge);
-
     });
 
     vmChallenge.showAdvanced = function (ev) {
@@ -257,16 +256,16 @@ function DialogService() {
  * @@memberOf eva_web.js
  */
 function leafDifficulty() {
+    var maxLeafs = 3;
     return {
         restrict: 'A',
         template: '<div class="leaf" ng-repeat="leaf in leafs" ng-class="leaf"></div>',
         scope: {
             difficultyValue: '=',
-            max: '='
         },
         link: function (scope, elem, attrs) {
             scope.leafs = [];
-            for (var i = 0; i < scope.max; i++) {
+            for (var i = 0; i < maxLeafs; i++) {
                 scope.leafs.push({
                     filled: i < scope.difficultyValue
                 });

@@ -5,10 +5,6 @@
     height: 20%;
 }
 
-body {
-    background-color: red;
-}
-
 .logoEva {
     margin: 20px;
     margin-left: 20%;
@@ -154,9 +150,6 @@ body {
 
 /*Body*/
 .container {
-    /*background-color: #AFBC1F;*/
-    /*background-color: #BCBE00;*/
-    /*background-color: #F15C23*/
     background-color: #BCBE00;
 }
 
@@ -182,5 +175,5 @@ body {
     }
 
 .containerBody {
-    background-color: red;
+    background-color: #BCBE00;
 }
