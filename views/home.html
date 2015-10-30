@@ -27,7 +27,7 @@
 <!--===TimeLine===-->
 <timeline>
     <timeline-event ng-repeat="task in vmChallenge.tasks track by $index">
-        <timeline-badge class="hidden {{task.challenge.category.name}}" when-visible="vmChallenge.animateIcon">
+        <timeline-badge class="hidden {{task.challenge.category.name}} afterDialog" when-visible="vmChallenge.animateIcon">
             <i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}"></i>
         </timeline-badge>
 

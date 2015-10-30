@@ -173,3 +173,7 @@
 .timeline li timeline-badge.Social{
     background-color: #006C68;
 }
+
+.timeline li timeline-badge.afterDialog{
+        z-index:80;
+    }
