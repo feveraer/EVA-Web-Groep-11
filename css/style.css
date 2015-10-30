@@ -59,8 +59,11 @@
 }
 
 .leafContainer {
-    width: 50px;
-    height: 50px;
+    float: right;
+}
+
+.leafDiv{
+    float: right;
 }
 
 .iconDiv {
@@ -151,7 +154,8 @@
 .container {
     /*background-color: #AFBC1F;*/
     /*background-color: #BCBE00;*/
-    background-color: #F15C23
+    /*background-color: #F15C23*/
+    background-color: #BCBE00;
 }
 
 /*Timeline badge color per Category*/

@@ -1,3 +1,7 @@
+/**
+ * Eva Web App
+ * @namespace EvaWebApp
+ */
 angular
     .module('EvaWeb', [
         'ui.router',
@@ -10,6 +14,15 @@ angular
     ])
     .config(config);
 
+/**
+ * @name config
+ * @desc Organizes the routing.
+ * ChallengeController has been attached on vmChallenge via 'controller as'.
+ * @example <div>{{vmChallenge.dueDate}}</div>
+ * @param $stateProvider
+ * @param $urlRouterProvider
+ * @memberOf EvaWebApp
+ */
 function config($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
