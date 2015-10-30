@@ -263,7 +263,7 @@ function leafDifficulty() {
         scope: {
             difficultyValue: '=',
         },
-        link: function (scope, elem, attrs) {
+        link: function (scope) {
             scope.leafs = [];
             for (var i = 0; i < maxLeafs; i++) {
                 scope.leafs.push({
