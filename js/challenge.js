@@ -81,108 +81,108 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
             controllerAs: 'vmDialog'
         });
     };
+}
 
-    /**
-     * @name animateIconIn
-     * @desc Animates the icon on the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
-     * @param $el Element in the DOM.
-     * @example <timeline-badge class="hidden {{task.challenge.category.name}}" when-visible="vmChallenge.animateIcon">
-     <i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}"></i>
-     </timeline-badge>
-     * @memberOf eva_web.js
-     */
-    function animateIcon($el) {
-        $el.removeClass('hidden');
-        $el.addClass('animated bounceIn');
-    };
+/**
+ * @name animateIconIn
+ * @desc Animates the icon on the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
+ * @param $el Element in the DOM.
+ * @example <timeline-badge class="hidden {{task.challenge.category.name}}" when-visible="vmChallenge.animateIcon">
+ <i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}"></i>
+ </timeline-badge>
+ * @memberOf eva_web.js
+ */
+function animateIcon($el) {
+    $el.removeClass('hidden');
+    $el.addClass('animated bounceIn');
+};
 
-    /**
-     *@name nimatePanelLeft
-     * @desc Animates the panel on the left side of the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
-     * @param $el Element in the DOM.
-     * @example<timeline-panel ng-if="$index % 2 === 0" class="warning hidden2" when-visible="vmChallenge.animatePanelLeft">
-     <timeline-heading style="width: 100%">
-     <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
-     <h4>{{task.challenge.title}}</h4>
-     </timeline-heading>
-     <p>{{task.challenge.description}}</p>
-     <md-button ng-click="vmChallenge.clickButton()">meer</md-button>
-     </timeline-panel>
-     * @memberOf eva_web.js
-     */
-    function animatePanelLeft($el) {
-        $el.removeClass('hidden2');
-        $el.addClass('animated bounceInLeft');
-    };
+/**
+ *@name nimatePanelLeft
+ * @desc Animates the panel on the left side of the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
+ * @param $el Element in the DOM.
+ * @example<timeline-panel ng-if="$index % 2 === 0" class="warning hidden2" when-visible="vmChallenge.animatePanelLeft">
+ <timeline-heading style="width: 100%">
+ <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+ <h4>{{task.challenge.title}}</h4>
+ </timeline-heading>
+ <p>{{task.challenge.description}}</p>
+ <md-button ng-click="vmChallenge.clickButton()">meer</md-button>
+ </timeline-panel>
+ * @memberOf eva_web.js
+ */
+function animatePanelLeft($el) {
+    $el.removeClass('hidden2');
+    $el.addClass('animated bounceInLeft');
+};
 
-    /**
-     *@name animatePanelRight
-     * @desc Animates the panel on the right side of the timeline. When visible, the icon bounces in animated. The animation binds on 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
-     * @param $el Element in the DOM.
-     * @example <timeline-panel ng-if="$index % 2 != 0" class="warning hidden2" when-visible="vmChallenge.animatePanelRight">
-     <timeline-heading>
-     <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
-     <h4>{{task.challenge.title}}</h4>
-     </timeline-heading>
-     <p>{{task.challenge.description}}</p>
-     <md-button class="knopke">meer</md-button>
-     </timeline-panel>
-     * @memberOf eva_web.js
-     */
-    function animatePanelRight($el) {
-        $el.removeClass('hidden2');
-        $el.addClass('animated bounceInRight');
-    };
+/**
+ *@name animatePanelRight
+ * @desc Animates the panel on the right side of the timeline. When visible, the icon bounces in animated. The animation binds on 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
+ * @param $el Element in the DOM.
+ * @example <timeline-panel ng-if="$index % 2 != 0" class="warning hidden2" when-visible="vmChallenge.animatePanelRight">
+ <timeline-heading>
+ <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+ <h4>{{task.challenge.title}}</h4>
+ </timeline-heading>
+ <p>{{task.challenge.description}}</p>
+ <md-button class="knopke">meer</md-button>
+ </timeline-panel>
+ * @memberOf eva_web.js
+ */
+function animatePanelRight($el) {
+    $el.removeClass('hidden2');
+    $el.addClass('animated bounceInRight');
+};
 
-    /**
-     * @name calculateDaysBusy
-     * @desc Calculate the days between the actual date and the date of the challenge
-     * @param date The date of the current challenge
-     * @returns {number} Number of days
-     * @memberOf eva_web.js
-     */
-    function calculateDaysBusy(date) {
-        var milisecondsInADay = (1000 * 60 * 60 * 24);
-        var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
-        if (angular.isNumber(dayDiff)) {
-            return dayDiff;
-        }
+/**
+ * @name calculateDaysBusy
+ * @desc Calculate the days between the actual date and the date of the challenge
+ * @param date The date of the current challenge
+ * @returns {number} Number of days
+ * @memberOf eva_web.js
+ */
+function calculateDaysBusy(date) {
+    var milisecondsInADay = (1000 * 60 * 60 * 24);
+    var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
+    if (angular.isNumber(dayDiff)) {
+        return dayDiff;
     }
+}
 
-    function clickButton() {
-        console.log("Button Clicked");
-        angular.element(this).addClass('animated hinge');
+function clickButton() {
+    console.log("Button Clicked");
+    angular.element(this).addClass('animated hinge');
 
-    }
+}
 
-    function onClickVoltooi() {
-        console.log("Button voltooi Clicked");
-    }
+function onClickVoltooi() {
+    console.log("Button voltooi Clicked");
+}
 
 
-    /**
-     * @name loadGlyphicon
-     * @desc Sets The glyphicon per category
-     * @param name The name of category
-     * @example <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
-     * @returns {String}
-     * @memberOf eva_web.js
-     */
-    function loadGlyphicon(name) {
-        switch (name) {
-            case 'Dinner':
-                return 'glyphicon-glass';
-            case 'Breakfast':
-                return 'glyphicon-grain';
+/**
+ * @name loadGlyphicon
+ * @desc Sets The glyphicon per category
+ * @param name The name of category
+ * @example <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+ * @returns {String}
+ * @memberOf eva_web.js
+ */
+function loadGlyphicon(name) {
+    switch (name) {
+        case 'Dinner':
+            return 'glyphicon-glass';
+        case 'Breakfast':
+            return 'glyphicon-grain';
 
-            case 'Lunch':
-                return 'glyphicon-leaf';
-            case 'Social':
-                return 'glyphicon-heart';
+        case 'Lunch':
+            return 'glyphicon-leaf';
+        case 'Social':
+            return 'glyphicon-heart';
 
-            default:
-                return 'glyphicon-heart';
-        }
+        default:
+            return 'glyphicon-heart';
     }
 }
 
