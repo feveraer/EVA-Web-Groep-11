@@ -3,13 +3,12 @@
 
     <md-card class="md-whiteframe-10dp card">
 
-        <md-card-content>
-            <div class="cardHeader" layout="row" layout-align="space-around center">
-                <div><h2> {{vmChallenge.challenge.title}}</h2></div>
-                <div>
-                    <span ng-repeat="rating in vmChallenge.ratings">
-                        <div leaf-rating rating-value="rating.current" max="rating.max"
-                             on-rating-selected="getSelectedRating(rating)"></div>
+    <md-card-content>
+        <div class="cardHeader" layout="row" layout-align="space-around center">
+            <div><h2> {{vmChallenge.challenge.title}}</h2></div>
+            <div>
+                    <span ng-repeat="diff in vmChallenge.difficulties">
+                        <div leaf-difficulty  difficulty-value="diff.current" max="diff.max"></div>
                     </span>
                 </div>
 

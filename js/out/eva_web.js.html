@@ -121,7 +121,7 @@
 
 
 <div class="description">
-    Animates the icon on the timeline. When visible the icon bounces in animated. Use the animate.css and angular-scroll-animate framework.
+    Animates the icon on the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
 </div>
 
 
@@ -159,7 +159,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line87">line 87</a>
+        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -172,6 +172,13 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>&lt;timeline-badge class="hidden {{task.challenge.category.name}}" when-visible="vmChallenge.animateIcon">
+     &lt;i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}">&lt;/i>
+     &lt;/timeline-badge></code></pre>
 
 
 
@@ -183,7 +190,7 @@
 
 
 <div class="description">
-    Animates the panel on the right side of the timeline. When visible the panel bounces in animated. Use the animate.css and angular-scroll-animate framework.
+    Animates the panel on the right side of the timeline. When visible, the icon bounces in animated. The animation binds on 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
 </div>
 
 
@@ -221,7 +228,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line109">line 109</a>
+        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line119">line 119</a>
     </li></ul></dd>
     
 
@@ -234,6 +241,18 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>&lt;timeline-panel ng-if="$index % 2 != 0" class="warning hidden2" when-visible="vmChallenge.animatePanelRight">
+     &lt;timeline-heading>
+     &lt;img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+     &lt;h4>{{task.challenge.title}}&lt;/h4>
+     &lt;/timeline-heading>
+     &lt;p>{{task.challenge.description}}&lt;/p>
+     &lt;md-button class="knopke">meer&lt;/md-button>
+     &lt;/timeline-panel></code></pre>
 
 
 
@@ -283,7 +302,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line120">line 120</a>
+        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -345,7 +364,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line260">line 260</a>
+        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line278">line 278</a>
     </li></ul></dd>
     
 
@@ -407,7 +426,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line146">line 146</a>
+        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line164">line 164</a>
     </li></ul></dd>
     
 
@@ -436,7 +455,7 @@
 
 
 <div class="description">
-    Animates the panel on the left side of the timeline. When visible the panel bounces in animated. Use the animate.css and angular-scroll-animate framework.
+    Animates the panel on the left side of the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
 </div>
 
 
@@ -474,7 +493,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line98">line 98</a>
+        <a href="challenge.js.html">challenge.js</a>, <a href="challenge.js.html#line100">line 100</a>
     </li></ul></dd>
     
 
@@ -508,13 +527,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controller_%2520DialogController.html">Controller: DialogController</a></li><li><a href="eva_web.js.Controller_%2520ChallengeController.html">Controller: ChallengeController</a></li><li><a href="eva_web.js.Service_%2520DialogService.html">Service: DialogService</a></li><li><a href="Factory_%2520ChallengeFactory.html">Factory: ChallengeFactory</a></li></ul><h3>Namespaces</h3><ul><li><a href="eva_web.js.html">js</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Directive:leafRating">Directive: leafRating</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controller_%2520DialogController.html">Controller: DialogController</a></li><li><a href="eva_web.js.Controller_%2520ChallengeController.html">Controller: ChallengeController</a></li><li><a href="eva_web.js.Service_%2520DialogService.html">Service: DialogService</a></li><li><a href="Factory_%2520ChallengeFactory.html">Factory: ChallengeFactory</a></li></ul><h3>Namespaces</h3><ul><li><a href="eva_web.js.html">js</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Directive:leafDifficulty">Directive: leafDifficulty</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Fri Oct 30 2015 02:23:58 GMT+0100 (Romance (standaardtijd))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Fri Oct 30 2015 09:09:50 GMT+0100 (Romance (standaardtijd))
 </footer>
 
 <script> prettyPrint(); </script>
