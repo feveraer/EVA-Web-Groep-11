@@ -1,61 +1,68 @@
-<h1 class="headerChallenge">Dag {{vmChallenge.daysBusy}}</h1>
+<div class="container">
+    <h1 class="headerChallenge">Dag {{vmChallenge.daysBusy}}</h1>
 
-<md-card class="md-whiteframe-10dp card">
+    <md-card class="md-whiteframe-10dp card">
 
-    <md-card-content>
-        <div class="cardHeader" layout="row" layout-align="space-around center">
-            <div><h2> {{vmChallenge.challenge.title}}</h2></div>
-            <div>
+        <md-card-content>
+            <div class="cardHeader" layout="row" layout-align="space-around center">
+                <div><h2> {{vmChallenge.challenge.title}}</h2></div>
+                <div>
                     <span ng-repeat="rating in vmChallenge.ratings">
                         <div leaf-rating rating-value="rating.current" max="rating.max"
                              on-rating-selected="getSelectedRating(rating)"></div>
                     </span>
+                </div>
+
             </div>
+        </md-card-content>
+        <img src="img/veggiDinner.jpg" class="md-card-image" alt="image caption">
+        <md-card-content>
+            <h3>{{vmChallenge.challenge.description}}</h3>
 
+        </md-card-content>
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button ng-click="vmChallenge.showAdvanced($event)">Details</md-button>
+            <md-button ng-click="vmChallenge.onClickVoltooi()">Voltooi</md-button>
         </div>
-    </md-card-content>
-    <img src="img/veggiDinner.jpg" class="md-card-image" alt="image caption">
-    <md-card-content>
-        <h3>{{vmChallenge.challenge.description}}</h3>
-
-    </md-card-content>
-    <div class="md-actions" layout="row" layout-align="end center">
-        <md-button ng-click="vmChallenge.showAdvanced($event)">Details</md-button>
-        <md-button ng-click="vmChallenge.onClickVoltooi()">Voltooi</md-button>
-    </div>
-</md-card>
+    </md-card>
 </div>
 
+
 <!--===TimeLine===-->
-<timeline>
-    <timeline-event ng-repeat="task in vmChallenge.tasks track by $index">
-        <timeline-badge class="hidden {{task.challenge.category.name}} afterDialog" when-visible="vmChallenge.animateIcon">
-            <i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}"></i>
-        </timeline-badge>
+<div class="container">
+    <timeline>
+        <timeline-event ng-repeat="task in vmChallenge.tasks track by $index">
+            <timeline-badge class="hidden {{task.challenge.category.name}} afterDialog"
+                            when-visible="vmChallenge.animateIcon">
+                <i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}"></i>
+            </timeline-badge>
 
-        <!--even panel-->
-        <timeline-panel ng-if="$index % 2 === 0" class="warning hidden2" when-visible="vmChallenge.animatePanelLeft">
-            <timeline-heading style="width: 100%">
-                <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
-                <h4>{{task.challenge.title}}</h4>
-            </timeline-heading>
-            <p>{{task.challenge.description}}</p>
-            <md-button ng-click="vmChallenge.clickButton()">meer</md-button>
-        </timeline-panel>
-        <!--even panel-->
+            <!--even panel-->
+            <timeline-panel ng-if="$index % 2 === 0" class="warning hidden2"
+                            when-visible="vmChallenge.animatePanelLeft">
+                <timeline-heading style="width: 100%">
+                    <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+                    <h4>{{task.challenge.title}}</h4>
+                </timeline-heading>
+                <p>{{task.challenge.description}}</p>
+                <md-button ng-click="vmChallenge.clickButton()">meer</md-button>
+            </timeline-panel>
+            <!--even panel-->
 
-        <!--odd panel-->
-        <timeline-panel ng-if="$index % 2 != 0" class="warning hidden2" when-visible="vmChallenge.animatePanelRight">
-            <timeline-heading>
-                <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
-                <h4>{{task.challenge.title}}</h4>
-            </timeline-heading>
-            <p>{{task.challenge.description}}</p>
-            <md-button class="knopke">meer</md-button>
-        </timeline-panel>
-        <!--odd panel-->
+            <!--odd panel-->
+            <timeline-panel ng-if="$index % 2 != 0" class="warning hidden2"
+                            when-visible="vmChallenge.animatePanelRight">
+                <timeline-heading>
+                    <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+                    <h4>{{task.challenge.title}}</h4>
+                </timeline-heading>
+                <p>{{task.challenge.description}}</p>
+                <md-button class="knopke">meer</md-button>
+            </timeline-panel>
+            <!--odd panel-->
 
-    </timeline-event>
-</timeline>
+        </timeline-event>
+    </timeline>
+</div>
 <!--===TimeLine===-->
 
