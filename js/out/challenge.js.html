@@ -43,7 +43,7 @@ angular
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
     .factory('Challenge', ChallengeFactory)
-    .directive('leafRating', leafRating);
+    .directive('leafDifficulty', leafDifficulty);
 
 ChallengeController.$inject = ['$mdDialog', 'Challenge', "DialogService"]
 DialogController.$inject = ['$mdDialog', "DialogService"]
@@ -69,15 +69,15 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
 
     /**@name Challenge.query();
      * @desc Challenge.query retrieves a collection of tasks from the server.
-     * The then() method returns a promise.     *
-     * @memberOf eva_web.js     *
+     * The then() method returns a promise.
+     * @memberOf eva_web.js
      */
     Challenge.query().$promise.then(function (data) {
         var tasks = data;
         var currentTask = tasks[2];
         var completedTasks = [];
 
-        vmChallenge.ratings = [{
+        vmChallenge.difficulties = [{
             current: currentTask.challenge.difficulty,
             max: 3
         }];
@@ -111,11 +111,13 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
         });
     };
 
-
     /**
      * @name animateIconIn
-     * @desc Animates the icon on the timeline. When visible the icon bounces in animated. Use the animate.css and angular-scroll-animate framework.
+     * @desc Animates the icon on the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
      * @param $el Element in the DOM.
+     * @example &lt;timeline-badge class="hidden {{task.challenge.category.name}}" when-visible="vmChallenge.animateIcon">
+     &lt;i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}">&lt;/i>
+     &lt;/timeline-badge>
      * @memberOf eva_web.js
      */
     function animateIcon($el) {
@@ -125,8 +127,16 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
 
     /**
      *@name nimatePanelLeft
-     * @desc Animates the panel on the left side of the timeline. When visible the panel bounces in animated. Use the animate.css and angular-scroll-animate framework.
+     * @desc Animates the panel on the left side of the timeline. When visible, the icon bounces in animated. The animation binds on the 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
      * @param $el Element in the DOM.
+     * @example&lt;timeline-panel ng-if="$index % 2 === 0" class="warning hidden2" when-visible="vmChallenge.animatePanelLeft">
+     &lt;timeline-heading style="width: 100%">
+     &lt;img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+     &lt;h4>{{task.challenge.title}}&lt;/h4>
+     &lt;/timeline-heading>
+     &lt;p>{{task.challenge.description}}&lt;/p>
+     &lt;md-button ng-click="vmChallenge.clickButton()">meer&lt;/md-button>
+     &lt;/timeline-panel>
      * @memberOf eva_web.js
      */
     function animatePanelLeft($el) {
@@ -136,8 +146,16 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
 
     /**
      *@name animatePanelRight
-     * @desc Animates the panel on the right side of the timeline. When visible the panel bounces in animated. Use the animate.css and angular-scroll-animate framework.
+     * @desc Animates the panel on the right side of the timeline. When visible, the icon bounces in animated. The animation binds on 'when-visible' attribute. Use the animate.css and angular-scroll-animate framework.
      * @param $el Element in the DOM.
+     * @example &lt;timeline-panel ng-if="$index % 2 != 0" class="warning hidden2" when-visible="vmChallenge.animatePanelRight">
+     &lt;timeline-heading>
+     &lt;img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+     &lt;h4>{{task.challenge.title}}&lt;/h4>
+     &lt;/timeline-heading>
+     &lt;p>{{task.challenge.description}}&lt;/p>
+     &lt;md-button class="knopke">meer&lt;/md-button>
+     &lt;/timeline-panel>
      * @memberOf eva_web.js
      */
     function animatePanelRight($el) {
@@ -256,29 +274,29 @@ function DialogService() {
 }
 
 /**
- * @name Directive: leafRating
- * @desc This directive displays a quantity of leafs based on the difficulty of the challenge. The maximum is 3.
+ * @name Directive: leafDifficulty
+ * @desc This directive displays a quantity of leafs based on the difficulty of the challenge. The maximum amount of leafs is set on 3.
  * The directive binds a template '&lt;div class="leaf" ng-repeat="leaf in leafs" ng-class="leaf">&lt;/div>' on the div which contains 'leaf-rating'.
  * Based on http://stackoverflow.com/questions/23646395/rendering-a-star-rating-system-using-angularjs
  * @returns {{restrict: string, template: string, scope: {ratingValue: string, max: string}, link: Function}}
  * @example &lt;span ng-repeat="rating in vmChallenge.ratings">
- *     &lt;div leaf-rating rating-value="rating.current" max="rating.max">&lt;/div>
+ *     &lt;div leaf-rating difficulty-value="diff.current" max="diff.max">&lt;/div>
  &lt;/span>
  * @@memberOf eva_web.js
  */
-function leafRating() {
+function leafDifficulty() {
     return {
         restrict: 'A',
         template: '&lt;div class="leaf" ng-repeat="leaf in leafs" ng-class="leaf">&lt;/div>',
         scope: {
-            ratingValue: '=',
+            difficultyValue: '=',
             max: '='
         },
         link: function (scope, elem, attrs) {
             scope.leafs = [];
             for (var i = 0; i &lt; scope.max; i++) {
                 scope.leafs.push({
-                    filled: i &lt; scope.ratingValue
+                    filled: i &lt; scope.difficultyValue
                 });
             }
         }
@@ -305,13 +323,13 @@ var sortTasksByDateDesc = function (task1, task2) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controller_%2520DialogController.html">Controller: DialogController</a></li><li><a href="eva_web.js.Controller_%2520ChallengeController.html">Controller: ChallengeController</a></li><li><a href="eva_web.js.Service_%2520DialogService.html">Service: DialogService</a></li><li><a href="Factory_%2520ChallengeFactory.html">Factory: ChallengeFactory</a></li></ul><h3>Namespaces</h3><ul><li><a href="eva_web.js.html">js</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Directive:leafRating">Directive: leafRating</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Controller_%2520DialogController.html">Controller: DialogController</a></li><li><a href="eva_web.js.Controller_%2520ChallengeController.html">Controller: ChallengeController</a></li><li><a href="eva_web.js.Service_%2520DialogService.html">Service: DialogService</a></li><li><a href="Factory_%2520ChallengeFactory.html">Factory: ChallengeFactory</a></li></ul><h3>Namespaces</h3><ul><li><a href="eva_web.js.html">js</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Directive:leafDifficulty">Directive: leafDifficulty</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Fri Oct 30 2015 02:23:58 GMT+0100 (Romance (standaardtijd))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Fri Oct 30 2015 09:09:50 GMT+0100 (Romance (standaardtijd))
 </footer>
 
 <script> prettyPrint(); </script>
