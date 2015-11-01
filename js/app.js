@@ -25,11 +25,22 @@ angular
  */
 function config($stateProvider, $urlRouterProvider) {
     $stateProvider
-        .state('home', {
+        .state('/home', {
             url: '/home',
-            templateUrl: './views/home.html',
-            controller: 'ChallengeController',
-            controllerAs: 'vmChallenge'
+            views: {
+                'currentChallenge': {
+                    //url: '/home',
+                    templateUrl: './views/home.html',
+                    controller: 'ChallengeController',
+                    controllerAs: 'vmChallenge'
+                },
+                'timeline': {
+                    //url: '/home',
+                    templateUrl: './views/timeline.html',
+                    controller: 'ChallengeController',
+                    controllerAs: 'vmChallenge'
+                }
+            }
         });
     $urlRouterProvider.otherwise('/home');
 }
