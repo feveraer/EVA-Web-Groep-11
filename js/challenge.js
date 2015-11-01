@@ -12,49 +12,76 @@ angular
         'angular-scroll-animate',
         'ngAnimate'])
     .service('DialogService', DialogService)
+    .service('ApiCallService', ApiCallerService)
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
-    .factory('Challenge', ChallengeFactory)
+//    .factory('Challenge', ChallengeFactory)
     .directive('leafDifficulty', leafDifficulty);
 
-ChallengeController.$inject = ['$mdDialog', 'Challenge', "DialogService"]
-DialogController.$inject = ['$mdDialog', "DialogService"]
-ChallengeFactory.$inject = ['$resource']
+ChallengeController.$inject = ['$mdDialog', /*'Challenge',*/ "DialogService", "ApiCallService"];
+DialogController.$inject = ['$mdDialog', "DialogService"];
+//ChallengeFactory.$inject = ['$resource'];
 
 /**
  *@name Controller: ChallengeController
  * @param $mdDialog Service opens a dialog over the app to inform users about critical information or require them to make decisions. Part of Angular Material.
  * @param Challenge Factory gets the data from the api
  * @param DialogService Service used to trigger the dialogbox. Part of Angular Material.
+ * @param ApiCallService gets the data from the api
  * @constructor
  * @memberOf eva_web.js
  */
-function ChallengeController($mdDialog, Challenge, DialogService) {
+function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallService) {
     var vmChallenge = this;
     vmChallenge.clickButton = clickButton;
     vmChallenge.onClickVoltooi = onClickVoltooi;
 
+    activate();
 
-    /**@name Challenge.query();
-     * @desc Challenge.query retrieves a collection of tasks from the server.
-     * The then() method returns a promise.
+    /**
+     * @name challenge.ChallengeController.activate
+     * @desc Resolve start-up logic for controller
      * @memberOf eva_web.js
      */
-    Challenge.query().$promise.then(function (data) {
-        var tasks = data;
-        var currentTask = tasks[2];
+    function activate() {
+        ApiCallService.getTasksUser().then(function (response) {
+            var tasks = response.data;
+            var currentTask = tasks[2];
 
-        vmChallenge.difficulties = [{
-            current: currentTask.challenge.difficulty,
-            max: 3
-        }];
+            vmChallenge.difficulties = [{
+                current: currentTask.challenge.difficulty,
+                max: 3
+            }];
 
-        vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
-        vmChallenge.dueDate = currentTask.dueDate;
-        vmChallenge.completed = currentTask.completed;
-        vmChallenge.challenge = currentTask.challenge;
-        DialogService.setChallenge(currentTask.challenge);
-    });
+            vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
+            vmChallenge.dueDate = currentTask.dueDate;
+            vmChallenge.completed = currentTask.completed;
+            vmChallenge.challenge = currentTask.challenge;
+            DialogService.setChallenge(currentTask.challenge);
+        });
+    }
+
+
+    ///**@name Challenge.query();
+    // * @desc Challenge.query retrieves a collection of tasks from the server.
+    // * The then() method returns a promise.
+    // * @memberOf eva_web.js
+    // */
+    //Challenge.query().$promise.then(function (data) {
+    //    var tasks = data;
+    //    var currentTask = tasks[2];
+    //
+    //    vmChallenge.difficulties = [{
+    //        current: currentTask.challenge.difficulty,
+    //        max: 3
+    //    }];
+    //
+    //    vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
+    //    vmChallenge.dueDate = currentTask.dueDate;
+    //    vmChallenge.completed = currentTask.completed;
+    //    vmChallenge.challenge = currentTask.challenge;
+    //    DialogService.setChallenge(currentTask.challenge);
+    //});
 
     vmChallenge.showAdvanced = function (ev) {
         $mdDialog.show({
@@ -119,18 +146,19 @@ function DialogController($mdDialog, DialogService) {
     };
 }
 
-/**
- * @name Factory: ChallengeFactory
- * @desc Factory which creates a resource object that lets you interact with RESTful server-side data sources.
- * @param $resource Injection of the resource service. Requires the ngResource dependency.
- * @constructor
- */
-function ChallengeFactory($resource) {
-    var apiUrl = "http://95.85.59.29:1337/api/";
-    return $resource(apiUrl + "users/562f3f87b0b8dc041bcc6ba7/tasks", {}, {
-        query: {method: 'GET', isArray: true}
-    });
-}
+///**
+// * @name Factory: ChallengeFactory
+// * @desc Factory which creates a resource object that lets you interact with RESTful server-side data sources.
+// * @param $resource Injection of the resource service. Requires the ngResource dependency.
+// * @constructor
+// */
+//function ChallengeFactory($resource) {
+//    var apiUrl = "http://95.85.59.29:1337/api/";
+//    return $resource(apiUrl + "users/562f3f87b0b8dc041bcc6ba7/tasks", {}, {
+//        query: {method: 'GET', isArray: true}
+//    });
+//}
+
 /**
  * @name Service: DialogService
  * @desc Service used to trigger the dialogbox. Part of Angular Material.
