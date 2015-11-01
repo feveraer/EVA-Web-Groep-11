@@ -7,6 +7,7 @@ angular
         'ui.router',
         'ngRoute',
         'app.challenge',
+        'app.timeline',
         'ngMaterial',
         'angular-timeline',
         'ngSanitize',
@@ -37,7 +38,7 @@ function config($stateProvider, $urlRouterProvider) {
                 'timeline': {
                     //url: '/home',
                     templateUrl: './views/timeline.html',
-                    controller: 'ChallengeController',
+                    controller: 'TimelineController',
                     controllerAs: 'vmChallenge'
                 }
             }

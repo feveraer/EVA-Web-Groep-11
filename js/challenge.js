@@ -31,12 +31,8 @@ ChallengeFactory.$inject = ['$resource']
  */
 function ChallengeController($mdDialog, Challenge, DialogService) {
     var vmChallenge = this;
-    vmChallenge.animateIcon = animateIcon;
-    vmChallenge.animatePanelLeft = animatePanelLeft;
-    vmChallenge.animatePanelRight = animatePanelRight;
     vmChallenge.clickButton = clickButton;
     vmChallenge.onClickVoltooi = onClickVoltooi;
-    vmChallenge.loadGlyphicon = loadGlyphicon;
 
 
     /**@name Challenge.query();
@@ -47,24 +43,13 @@ function ChallengeController($mdDialog, Challenge, DialogService) {
     Challenge.query().$promise.then(function (data) {
         var tasks = data;
         var currentTask = tasks[2];
-        var completedTasks = [];
 
         vmChallenge.difficulties = [{
             current: currentTask.challenge.difficulty,
             max: 3
         }];
 
-        tasks.forEach(function (task) {
-            if (task.completed) {
-                completedTasks.push(task)
-            }
-        });
-
-        //TODO check if obsolete
-        completedTasks.sort(sortTasksByDateDesc);
-
         vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
-        vmChallenge.tasks = tasks;
         vmChallenge.dueDate = currentTask.dueDate;
         vmChallenge.completed = currentTask.completed;
         vmChallenge.challenge = currentTask.challenge;
@@ -106,32 +91,6 @@ function clickButton() {
 
 function onClickVoltooi() {
     console.log("Button voltooi Clicked");
-}
-
-
-/**
- * @name loadGlyphicon
- * @desc Sets The glyphicon per category
- * @param name The name of category
- * @example <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
- * @returns {String}
- * @memberOf eva_web.js
- */
-function loadGlyphicon(name) {
-    switch (name) {
-        case 'Dinner':
-            return 'glyphicon-glass';
-        case 'Breakfast':
-            return 'glyphicon-grain';
-
-        case 'Lunch':
-            return 'glyphicon-leaf';
-        case 'Social':
-            return 'glyphicon-heart';
-
-        default:
-            return 'glyphicon-heart';
-    }
 }
 
 /**
@@ -221,15 +180,3 @@ function leafDifficulty() {
         }
     }
 }
-
-/**
- * @name Function sortTasksByDateDesc
- * @desc Sorts the challenges by date in descending order.
- * @param task1
- * @param task2
- * @returns {number}
- * @memberOf eva_web.js
- */
-var sortTasksByDateDesc = function (task1, task2) {
-    return new Date(task2.dueDate) - new Date(task1.dueDate);
-};
