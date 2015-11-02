@@ -1,0 +1,35 @@
+<div class="container">
+    <timeline>
+        <timeline-event ng-repeat="task in vmChallenge.tasks track by $index">
+            <timeline-badge class="hidden {{task.challenge.category.name}} afterDialog"
+                            when-visible="vmChallenge.animateIcon">
+                <i class="glyphicon {{vmChallenge.loadGlyphicon(task.challenge.category.name)}}"></i>
+            </timeline-badge>
+
+            <!--even panel-->
+            <timeline-panel ng-if="$index % 2 === 0" class="warning hidden2"
+                            when-visible="vmChallenge.animatePanelLeft">
+                <timeline-heading style="width: 100%">
+                    <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+                    <h4>{{task.challenge.title}}</h4>
+                </timeline-heading>
+                <p>{{task.challenge.description}}</p>
+                <md-button ng-click="vmChallenge.clickButton()">meer</md-button>
+            </timeline-panel>
+            <!--even panel-->
+
+            <!--odd panel-->
+            <timeline-panel ng-if="$index % 2 != 0" class="warning hidden2"
+                            when-visible="vmChallenge.animatePanelRight">
+                <timeline-heading>
+                    <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+                    <h4>{{task.challenge.title}}</h4>
+                </timeline-heading>
+                <p>{{task.challenge.description}}</p>
+                <md-button class="knopke">meer</md-button>
+            </timeline-panel>
+            <!--odd panel-->
+
+        </timeline-event>
+    </timeline>
+</div>

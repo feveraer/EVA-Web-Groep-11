@@ -1,0 +1,23 @@
+{
+  "name": "evaweb",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "groep11"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-timeline": "~1.5.2",
+    "angular-scroll-animate": "~0.9.4",
+    "bootstrap": "~3.3.5"
+  }
+}

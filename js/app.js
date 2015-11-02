@@ -1,45 +1,81 @@
+/**
+ * Eva Web App
+ * @namespace EvaWebApp
+ */
+angular
+    .module('EvaWeb', [
+        'ui.router',
+        'ngRoute',
+        'app.challenge',
+        'app.timeline',
+        'ngMaterial',
+        'angular-timeline',
+        'ngSanitize',
+        'angular-scroll-animate'
+    ])
+    .config(config);
 
-var app = angular.module('EvaWeb',['ui.router', 'ngRoute', 'challengeControllers', 'challengeServices', 'ngMaterial']);
-
-
-app.config([
-    '$stateProvider',
-    '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: './views/home.html',
-                controller: 'challengeDetailCtrl'
-            });
-
-        $urlRouterProvider.otherwise('/home');
-    }
-]);
-
-
-
-app.directive('leafRating', function () {
-    return {
-        restrict: 'A',
-        template:
-        '<div class="leaf" ng-repeat="leaf in leafs" ng-class="leaf"></div>' ,
-        scope: {
-            ratingValue: '=',
-            max: '='
-        },
-        link: function (scope, elem, attrs) {
-            scope.leafs = [];
-            for (var i = 0; i < scope.max; i++) {
-                scope.leafs.push({
-                    filled: i < scope.ratingValue
-                });
+/**
+ * @name config
+ * @desc Organizes the routing.
+ * ChallengeController has been attached on vmChallenge via 'controller as'.
+ * @example <div>{{vmChallenge.dueDate}}</div>
+ * @param $stateProvider
+ * @param $urlRouterProvider
+ * @memberOf EvaWebApp
+ */
+function config($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('/home', {
+            url: '/home',
+            views: {
+                'currentChallenge': {
+                    //url: '/home',
+                    templateUrl: './views/home.html',
+                    controller: 'ChallengeController',
+                    controllerAs: 'vmChallenge'//,
+                    //resolve: {
+                    //    tasksForUser: tasksForUser
+                    //}
+                },
+                'timeline': {
+                    //url: '/home',
+                    templateUrl: './views/timeline.html',
+                    controller: 'TimelineController',
+                    controllerAs: 'vmChallenge'
+                }
             }
-        }
-    }
-});
+        });
+    $urlRouterProvider.otherwise('/home');
+}
 
+//function tasksForUser(ApiCallerService){
+//    var item = ApiCallerService.getChallengesUser()
+//    console.log('tasksForUser')
+//    console.log(item)
+//    return ApiCallerService.getChallengesUser();
+//}
 
+//function ApiCallerService($http) {
+//    var apiUrl = "http://95.85.59.29:1337/api/";
+//    var user = "562f3f87b0b8dc041bcc6ba7";
+//
+//    //TODO user meegeven met deze functie
+//    this.getChallengesUser = function () {
+//        return $http.get(apiUrl + "users/" + user + "/tasks").then(function (response) {
+//            console.log('service')
+//            console.log(response.data)
+//            return response.data;
+//        });
+//    };
+//}
 
+function ApiCallerService($http) {
+    var apiUrl = "http://95.85.59.29:1337/api/";
+    var user = "562f3f87b0b8dc041bcc6ba7";
 
-
+    //TODO user meegeven met deze functie
+    this.getTasksUser = function () {
+        return $http.get(apiUrl + "users/" + user + "/tasks");
+    };
+}

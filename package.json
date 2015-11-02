@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bokodori@bitbucket.org/project_iii/web.git"
+    "url": "git+https://bokodori@bitbucket.org/project_iii/eva-web-groep-11.git"
   },
   "author": "groep11",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/project_iii/web#readme",
+  "homepage": "https://bitbucket.org/project_iii/eva-web-groep-11#readme",
   "dependencies": {
     "angular": "^1.4.7",
     "angular-animate": "^1.4.7",
@@ -20,6 +20,7 @@
     "angular-material": "^0.11.4",
     "angular-route": "^1.4.7",
     "angular-ui-router": "^0.2.15",
+    "jsdoc": "^3.3.3",
     "ng-resource": "^1.3.2"
   }
 }

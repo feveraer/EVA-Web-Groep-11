@@ -1,3 +1,48 @@
+/*banner*/
+.banner {
+    background-image: url("../img/blackboard.jpg");
+    width: 100%;
+    height: 20%;
+}
+
+.logoEva {
+    margin: 20px;
+    margin-left: 20%;
+    /*margin-top: 20px;*/
+    /*margin-left: 20px ;*/
+    width: auto;
+    height: 60%;
+}
+
+/*header Challenge*/
+.headerChallenge {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 6em;
+    font-weight: bold;
+}
+
+/*images*/
+.timeLineImage {
+    height: 100%;
+    width: 100%;
+}
+
+.footerImg {
+    height: 300px;
+    width: 2700px;
+}
+
+.circular {
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    background: url(../img/veggiDinner.jpg) no-repeat;
+}
+
 .leaf {
     background-image: url("../img/leaf.svg");
     opacity: 0.5;
@@ -12,9 +57,11 @@
 }
 
 .leafContainer {
-    width: 100%;
-    height: 100%;
+    float: right;
+}
 
+.leafDiv{
+    float: right;
 }
 
 .iconDiv {
@@ -68,10 +115,6 @@
 
 /*Card*/
 
-body {
-    background-color: #EDEDED;
-}
-
 .cardDiv {
     text-align: center;
 }
@@ -91,7 +134,46 @@ body {
 }
 
 /*Dialog*/
-#inDialogImage{
+#inDialogImage {
     margin: 0px auto;
     width: 100%;
+}
+
+/*Timeline*/
+.hidden {
+    visibility: hidden;
+}
+
+.hidden2 {
+    visibility: hidden;
+}
+
+/*Body*/
+.container {
+    background-color: #BCBE00;
+}
+
+/*Timeline badge color per Category*/
+.timeline li timeline-badge.Breakfast{
+    background-color: #016990;
+}
+
+.timeline li timeline-badge.Dinner{
+    background-color: #B3A49E;
+}
+
+.timeline li timeline-badge.Lunch{
+    background-color: #F3DE00;
+}
+
+.timeline li timeline-badge.Social{
+    background-color: #006C68;
+}
+
+.timeline li timeline-badge.afterDialog{
+        z-index:80;
+    }
+
+.containerBody {
+    background-color: #BCBE00;
 }

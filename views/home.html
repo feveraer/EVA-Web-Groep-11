@@ -1,28 +1,27 @@
-<div class="cardDiv">
-    <h1>Dag {{daysLeft}}</h1>
+<div class="container">
+    <h1 class="headerChallenge">Dag {{vmChallenge.daysBusy}}</h1>
 
-    <md-card class="md-whiteframe-13dp card">
+    <md-card class="md-whiteframe-10dp card">
 
-        <md-card-content>
-            <div class="cardHeader" layout="row" layout-align="space-around center">
-                <div><h2> {{challenge.title}}</h2></div>
-                <div>
-                    <span ng-repeat="rating in ratings">
-                        <div leaf-rating rating-value="rating.current" max="rating.max"
-                             on-rating-selected="getSelectedRating(rating)"></div>
+    <md-card-content>
+        <div class="cardHeader" layout="row" layout-align="space-around center">
+            <div><h2> {{vmChallenge.challenge.title}}</h2></div>
+            <div>
+                    <span ng-repeat="diff in vmChallenge.difficulties">
+                        <div leaf-difficulty  difficulty-value="diff.current"></div>
                     </span>
                 </div>
 
             </div>
         </md-card-content>
-        <img src="img/vegiPic.jpg" class="md-card-image" alt="image caption">
+        <img src="img/veggiDinner.jpg" class="md-card-image" alt="image caption">
         <md-card-content>
-            <h3>{{challenge.description}}</h3>
+            <h3>{{vmChallenge.challenge.description}}</h3>
 
         </md-card-content>
         <div class="md-actions" layout="row" layout-align="end center">
-            <md-button ng-click="showAdvanced($event)">Details</md-button>
-            <md-button>Voltooi</md-button>
+            <md-button ng-click="vmChallenge.showAdvanced($event)">Details</md-button>
+            <md-button ng-click="vmChallenge.onClickVoltooi()">Voltooi</md-button>
         </div>
     </md-card>
 </div>
