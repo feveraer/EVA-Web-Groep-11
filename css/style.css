@@ -1,5 +1,4 @@
-
-@font-face{
+@font-face {
     font-family: 'ArtistampMedium';
     src: url('../fonts/ArtistampMedium.ttf')
 }
@@ -12,7 +11,7 @@
 }
 
 /*upperborder*/
-.upperBorder{
+.upperBorder {
     height: 10%;
     width: 100%;
     background-color: #AFBC1F;
@@ -75,7 +74,7 @@
     float: right;
 }
 
-.leafDiv{
+.leafDiv {
     float: right;
 }
 
@@ -169,26 +168,44 @@
 }
 
 /*Timeline badge color per Category*/
-.timeline li timeline-badge.Breakfast{
+.timeline li timeline-badge.Breakfast {
     background-color: #016990;
 }
 
-.timeline li timeline-badge.Dinner{
+.timeline li timeline-badge.Dinner {
     background-color: #B3A49E;
 }
 
-.timeline li timeline-badge.Lunch{
+.timeline li timeline-badge.Lunch {
     background-color: #F3DE00;
 }
 
-.timeline li timeline-badge.Social{
+.timeline li timeline-badge.Social {
     background-color: #006C68;
 }
 
-.timeline li timeline-badge.afterDialog{
-        z-index:80;
-    }
+.timeline li timeline-badge.afterDialog {
+    z-index: 80;
+}
 
 .containerBody {
     background-color: #BCBE00;
+}
+
+#bgvid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: contain;
+    object-fit: cover;
+    z-index: 3
+}
+
+.layer {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    left: 0;
+    top: 0;
 }

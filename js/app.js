@@ -24,6 +24,7 @@ angular
  * @param $urlRouterProvider
  * @memberOf EvaWebApp
  */
+
 function config($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('/home', {
