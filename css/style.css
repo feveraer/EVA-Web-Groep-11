@@ -1,8 +1,21 @@
+
+@font-face{
+    font-family: 'ArtistampMedium';
+    src: url('../fonts/ArtistampMedium.ttf')
+}
+
 /*banner*/
 .banner {
     background-image: url("../img/blackboard.jpg");
     width: 100%;
     height: 20%;
+}
+
+/*upperborder*/
+.upperBorder{
+    height: 10%;
+    width: 100%;
+    background-color: #AFBC1F;
 }
 
 .logoEva {
@@ -17,10 +30,12 @@
 /*header Challenge*/
 .headerChallenge {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 130px;
     margin-bottom: 50px;
-    font-size: 6em;
-    font-weight: bold;
+    font-size: 8em;
+    /*font-weight: bold;*/
+    font-family: 'ArtistampMedium';
+    color: white;
 }
 
 /*images*/
@@ -120,9 +135,9 @@
 }
 
 .card {
-    min-width: 300px;
-    width: 50%;
-    height: auto;
+    /*min-width: 200px;*/
+    width: 400px;
+    height: 550px;
     margin: 0px auto;
     display: block;
 }
@@ -150,7 +165,7 @@
 
 /*Body*/
 .container {
-    background-color: #BCBE00;
+    /*background-color: #BCBE00;*/
 }
 
 /*Timeline badge color per Category*/
