@@ -135,9 +135,9 @@
 }
 
 .card {
-    /*min-width: 200px;*/
-    width: 400px;
-    height: 550px;
+    min-width: 400px;
+    width: 60%;
+    height: auto;
     margin: 0px auto;
     display: block;
 }
