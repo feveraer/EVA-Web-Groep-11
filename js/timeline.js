@@ -97,14 +97,14 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
  */
 function loadGlyphicon(name) {
     switch (name) {
-        case 'Dinner':
+        case 'dinner':
             return 'glyphicon-glass';
-        case 'Breakfast':
+        case 'breakfast':
             return 'glyphicon-grain';
 
-        case 'Lunch':
+        case 'lunch':
             return 'glyphicon-leaf';
-        case 'Social':
+        case 'social':
             return 'glyphicon-heart';
 
         default:

@@ -53,6 +53,7 @@ function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallSer
                 max: 3
             }];
 
+            vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
             vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
             vmChallenge.dueDate = currentTask.dueDate;
             vmChallenge.completed = currentTask.completed;
