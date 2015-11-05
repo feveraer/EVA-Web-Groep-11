@@ -101,12 +101,14 @@ function loadGlyphicon(name) {
             return 'glyphicon-glass';
         case 'breakfast':
             return 'glyphicon-grain';
-
         case 'lunch':
             return 'glyphicon-leaf';
         case 'social':
             return 'glyphicon-heart';
-
+        case 'restaurant':
+            return 'glyphicon-cutlery';
+        case 'snack':
+            return 'glyphicon-apple';
         default:
             return 'glyphicon-heart';
     }
