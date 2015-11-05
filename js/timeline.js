@@ -48,6 +48,7 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
 
             tasks.forEach(function (task) {
                 if (task.completed) {
+                    task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description);
                     completedTasks.push(task)
                 }
             });
@@ -56,7 +57,10 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
             completedTasks.sort(sortTasksByDateDesc);
 
             vmChallenge.tasks = completedTasks;
-        });
+    }
+
+)
+    ;
     }
 
     ///**@name Challenge.query();

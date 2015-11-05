@@ -184,6 +184,14 @@
     background-color: #006C68;
 }
 
+.timeline li timeline-badge.restaurant {
+    background-color: #F15C23;
+}
+
+.timeline li timeline-badge.snack {
+    background-color: #AFBC1F;
+}
+
 .timeline li timeline-badge.afterDialog {
     z-index: 80;
 }
