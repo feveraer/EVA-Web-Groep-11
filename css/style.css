@@ -168,19 +168,19 @@
 }
 
 /*Timeline badge color per Category*/
-.timeline li timeline-badge.Breakfast {
+.timeline li timeline-badge.breakfast {
     background-color: #016990;
 }
 
-.timeline li timeline-badge.Dinner {
+.timeline li timeline-badge.dinner {
     background-color: #B3A49E;
 }
 
-.timeline li timeline-badge.Lunch {
+.timeline li timeline-badge.lunch {
     background-color: #F3DE00;
 }
 
-.timeline li timeline-badge.Social {
+.timeline li timeline-badge.social {
     background-color: #006C68;
 }
 
