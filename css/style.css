@@ -147,6 +147,10 @@
     margin: 0px auto;
 }
 
+h3.cardHeader {
+    padding-left: 10px;
+}
+
 /*Dialog*/
 #inDialogImage {
     margin: 0px auto;
