@@ -1,8 +1,20 @@
+@font-face {
+    font-family: 'ArtistampMedium';
+    src: url('../fonts/ArtistampMedium.ttf')
+}
+
 /*banner*/
 .banner {
     background-image: url("../img/blackboard.jpg");
     width: 100%;
     height: 20%;
+}
+
+/*upperborder*/
+.upperBorder {
+    height: 10%;
+    width: 100%;
+    background-color: #AFBC1F;
 }
 
 .logoEva {
@@ -17,10 +29,12 @@
 /*header Challenge*/
 .headerChallenge {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 130px;
     margin-bottom: 50px;
-    font-size: 6em;
-    font-weight: bold;
+    font-size: 8em;
+    /*font-weight: bold;*/
+    font-family: 'ArtistampMedium';
+    color: white;
 }
 
 /*images*/
@@ -60,7 +74,7 @@
     float: right;
 }
 
-.leafDiv{
+.leafDiv {
     float: right;
 }
 
@@ -120,8 +134,8 @@
 }
 
 .card {
-    min-width: 300px;
-    width: 50%;
+    min-width: 400px;
+    width: 100%;
     height: auto;
     margin: 0px auto;
     display: block;
@@ -131,6 +145,10 @@
     height: 200px;
     width: 100%;
     margin: 0px auto;
+}
+
+h3.cardHeader {
+    padding-left: 10px;
 }
 
 /*Dialog*/
@@ -150,30 +168,56 @@
 
 /*Body*/
 .container {
-    background-color: #BCBE00;
+    /*background-color: #BCBE00;*/
 }
 
 /*Timeline badge color per Category*/
-.timeline li timeline-badge.Breakfast{
+.timeline li timeline-badge.breakfast {
     background-color: #016990;
 }
 
-.timeline li timeline-badge.Dinner{
+.timeline li timeline-badge.dinner {
     background-color: #B3A49E;
 }
 
-.timeline li timeline-badge.Lunch{
+.timeline li timeline-badge.lunch {
     background-color: #F3DE00;
 }
 
-.timeline li timeline-badge.Social{
+.timeline li timeline-badge.social {
     background-color: #006C68;
 }
 
-.timeline li timeline-badge.afterDialog{
-        z-index:80;
-    }
+.timeline li timeline-badge.restaurant {
+    background-color: #F15C23;
+}
+
+.timeline li timeline-badge.snack {
+    background-color: #AFBC1F;
+}
+
+.timeline li timeline-badge.afterDialog {
+    z-index: 80;
+}
 
 .containerBody {
     background-color: #BCBE00;
+}
+
+#bgvid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: contain;
+    object-fit: cover;
+    z-index: 3
+}
+
+.layer {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    left: 0;
+    top: 10%;
 }

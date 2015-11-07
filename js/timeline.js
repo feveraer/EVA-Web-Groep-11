@@ -48,6 +48,7 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
 
             tasks.forEach(function (task) {
                 if (task.completed) {
+                    task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description);
                     completedTasks.push(task)
                 }
             });
@@ -56,7 +57,10 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
             completedTasks.sort(sortTasksByDateDesc);
 
             vmChallenge.tasks = completedTasks;
-        });
+    }
+
+)
+    ;
     }
 
     ///**@name Challenge.query();
@@ -97,16 +101,18 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
  */
 function loadGlyphicon(name) {
     switch (name) {
-        case 'Dinner':
+        case 'dinner':
             return 'glyphicon-glass';
-        case 'Breakfast':
+        case 'breakfast':
             return 'glyphicon-grain';
-
-        case 'Lunch':
+        case 'lunch':
             return 'glyphicon-leaf';
-        case 'Social':
+        case 'social':
             return 'glyphicon-heart';
-
+        case 'restaurant':
+            return 'glyphicon-cutlery';
+        case 'snack':
+            return 'glyphicon-apple';
         default:
             return 'glyphicon-heart';
     }

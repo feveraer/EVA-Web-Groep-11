@@ -6,24 +6,82 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/textCss.css"/>
     <!--=======TimeLine=======-->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="bower_components/angular-timeline/dist/angular-timeline.css"/>
-    <link rel="stylesheet" href="bower_components/angular-timeline/dist/angular-timeline-bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/angular-timeline/dist/angular-timeline-animations.css" />
+    <link rel="stylesheet" href="bower_components/angular-timeline/dist/angular-timeline-bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/angular-timeline/dist/angular-timeline-animations.css"/>
+    <link rel="stylesheet" href="node_modules/fullpage.js/jquery.fullPage.css"/>
     <link rel="stylesheet" href="css/animate.css"/>
     <!--=======TimeLine=======-->
+    <!--=======Video=======-->
+    <link rel="stylesheet" href="css/styleVideo.css"/>
+    <!--=======Video=======-->
 </head>
 <body ng-app="EvaWeb">
-<div class="banner">
-    <img src="img/logoEva.PNG" class="logoEva" alt="logoEva">
-</div>
-<div class="containerBody">
+<!--<div class="banner">-->
+<!--<img src="img/logoEva.PNG" class="logoEva" alt="logoEva">-->
+<!--</div>-->
 
-    <div ui-view="currentChallenge"></div>
-    <div ui-view="timeline"></div>
+<div id="fullpage" class="fullpage-wrapper">
+    <div class="section fp-section fp-table active">
+        <!--<a href="#menu" id="toggle"><span></span></a>-->
+        <!--<div id="menu">-->
+        <!--<ul>-->
+        <!--<li><a href="#home">Home</a></li>-->
+        <!--<li><a href="#about">About</a></li>-->
+        <!--<li><a href="#contact">Contact</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
 
+
+        <video autoplay loop id="bgvid">
+            <source src="video/vegiMovieNoSound.mp4" type="video/mp4">
+            <source src="video/vegiMovieNoSound.webmhd.webm" type="video/webm">
+        </video>
+        <div class="layer">
+            <div class="divTextCenter">
+                <h1 class="fade-in one header-landing">Welkom bij Eva</h1>
+
+            </div>
+
+
+            <div class="divTextCenter">
+                <img src="img/buttonFacebook.png" class="buttonSocial fade-in one">
+                <img src="img/buttonInstagram.png" class="buttonSocial fade-in one">
+            </div>
+
+
+            <!--<div class="arrow bounce ">-->
+        </div>
+    </div>
+    <div class="section b fp-section">
+        <div ui-view="currentChallenge"></div>
+
+    </div>
+
+    <div class="section b elem1 fp-section">
+        <div ui-view="timeline"></div>
+    </div>
 </div>
+<!--<div class="section">-->
+
+<!--</div>-->
+
+
+<!--<div class="section b elem2">-->
+<!-- -->
+<!--</div>-->
+<!--/*fp-auto-height*/-->
+</div>
+
+<!--<div class="containerBody">-->
+
+<!--<div ui-view="currentChallenge"></div>-->
+<!--<div ui-view="timeline"></div>-->
+
+<!--</div>-->
 
 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
 <script src="node_modules/angular/angular.js"></script>
@@ -41,11 +99,17 @@
 <script src="bower_components/angular-scroll-animate/dist/angular-scroll-animate.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <!--=======TimeLine=======-->
+<!--=======FullPage=======-->
+<script src="node_modules/fullpage.js/jquery.fullPage.js"></script>
+<script src="js/jqueryScripts.js"></script>
+<!--=======FullPage=======-->
 
 
 <script src="js/app.js"></script>
 <script src="js/challenge.js"></script>
 <script src="js/timeline.js"></script>
 <script src="js/time-line-animations.js"></script>
+<script src="js/videoScript.js"></script>
+<script src="js/outils.js"></script>
 </body>
 </html>
