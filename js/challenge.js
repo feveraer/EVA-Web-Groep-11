@@ -46,7 +46,8 @@ function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallSer
     function activate() {
         ApiCallService.getTasksUser().then(function (response) {
             var tasks = response.data;
-            var currentTask = tasks[2];
+            var currentTask = getCurrentTask(tasks);
+            console.log(currentTask);
 
             vmChallenge.difficulties = [{
                 current: currentTask.challenge.difficulty,
@@ -107,8 +108,29 @@ function calculateDaysBusy(date) {
     var milisecondsInADay = (1000 * 60 * 60 * 24);
     var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
     if (angular.isNumber(dayDiff)) {
-        return dayDiff;
+        return dayDiff + 1;
     }
+}
+
+//Moet nog vanuit RESTAPI komen
+function getCurrentTask(data) {
+    var today = new Date();
+    var currentTask;
+    today.getDate()
+    today = new Date(today.toDateString());
+
+
+    data.forEach(function (task) {
+        var taskDate = new Date(task.dueDate);
+        taskDate = new Date(taskDate.toDateString());
+        if (taskDate.valueOf() === today.valueOf()) {
+            console.log(task);
+            currentTask = task;
+            return currentTask;
+        }
+    });
+
+    return currentTask;
 }
 
 function clickButton() {
@@ -148,6 +170,7 @@ function DialogController($mdDialog, DialogService) {
 }
 
 ///**
+
 // * @name Factory: ChallengeFactory
 // * @desc Factory which creates a resource object that lets you interact with RESTful server-side data sources.
 // * @param $resource Injection of the resource service. Requires the ngResource dependency.

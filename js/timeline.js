@@ -47,7 +47,7 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
             var completedTasks = [];
 
             tasks.forEach(function (task) {
-                if (task.completed) {
+                if (task.status === 2) {
                     task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description);
                     completedTasks.push(task)
                 }
