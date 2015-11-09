@@ -112,7 +112,7 @@ function calculateDaysBusy(date) {
     }
 }
 
-//Moet nog vanuit RESTAPI komen
+//TODO Moet nog vanuit RESTAPI komen
 function getCurrentTask(data) {
     var today = new Date();
     var currentTask;
@@ -133,12 +133,14 @@ function getCurrentTask(data) {
     return currentTask;
 }
 
+// TODO Wordt nog gebruikt?
 function clickButton() {
     console.log("Button Clicked");
     angular.element(this).addClass('animated hinge');
 
 }
 
+//TODO implement
 function onClickVoltooi() {
     console.log("Button voltooi Clicked");
 }
