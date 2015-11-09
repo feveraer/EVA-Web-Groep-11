@@ -44,9 +44,13 @@ function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallSer
      * @memberOf eva_web.js
      */
     function activate() {
-        ApiCallService.getTasksUser().then(function (response) {
-            var tasks = response.data;
-            var currentTask = getCurrentTask(tasks);
+        ApiCallService.getCurrentTaskUser().then(function (response) {
+        //ApiCallService.getTasksUser().then(function (response) {
+        //    var tasks = response.data;
+        //    var currentTask = getCurrentTask(tasks);
+            var currentTask = response.data;
+
+            //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
             console.log(currentTask);
 
             vmChallenge.difficulties = [{
@@ -55,11 +59,16 @@ function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallSer
             }];
 
             vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
-            vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
+            //vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
             vmChallenge.dueDate = currentTask.dueDate;
             vmChallenge.completed = currentTask.completed;
             vmChallenge.challenge = currentTask.challenge;
             DialogService.setChallenge(currentTask.challenge);
+        });
+
+        ApiCallService.getRegisterDateUser().then(function(response){
+            console.log(response.data);
+            vmChallenge.daysBusy = calculateDaysBusy(response.data);
         });
     }
 
@@ -108,7 +117,7 @@ function calculateDaysBusy(date) {
     var milisecondsInADay = (1000 * 60 * 60 * 24);
     var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
     if (angular.isNumber(dayDiff)) {
-        return dayDiff + 1;
+        return dayDiff + 2;
     }
 }
 

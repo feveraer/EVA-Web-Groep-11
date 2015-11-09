@@ -41,26 +41,25 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
      * @desc Resolve start-up logic for controller
      * @memberOf eva_web.js
      */
-    function activate(){
-        ApiCallService.getTasksUser().then(function (response) {
+    function activate() {
+        ApiCallService.getCompletedTasksForUser().then(function (response) {
+        //ApiCallService.getTasksUser().then(function (response) {
             var tasks = response.data;
-            var completedTasks = [];
-
-            tasks.forEach(function (task) {
-                if (task.status === 2) {
-                    task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description);
-                    completedTasks.push(task)
-                }
-            });
+            //var completedTasks = [];
+            //
+            //tasks.forEach(function (task) {
+            //    if (task.status === 2) {
+            //        task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description);
+            //        completedTasks.push(task)
+            //    }
+            //});
 
             //TODO check if obsolete
-            completedTasks.sort(sortTasksByDateDesc);
+            //completedTasks.sort(sortTasksByDateDesc);
 
-            vmChallenge.tasks = completedTasks;
-    }
-
-)
-    ;
+            //vmChallenge.tasks = completedTasks;
+            vmChallenge.tasks = tasks;
+        });
     }
 
     ///**@name Challenge.query();
