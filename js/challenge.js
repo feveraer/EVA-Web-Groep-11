@@ -44,15 +44,12 @@ function ChallengeController($mdDialog, DialogService, ApiCallService) {
             var currentTask = response.data;
 
             //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
-            console.log(currentTask);
-
             vmChallenge.difficulties = [{
                 current: currentTask.challenge.difficulty,
                 max: 3
             }];
 
             vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
-            //vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
             vmChallenge.dueDate = currentTask.dueDate;
             vmChallenge.completed = currentTask.completed;
             vmChallenge.challenge = currentTask.challenge;
@@ -60,7 +57,6 @@ function ChallengeController($mdDialog, DialogService, ApiCallService) {
         });
 
         ApiCallService.getRegisterDateUser().then(function(response){
-            console.log(response.data);
             vmChallenge.daysBusy = calculateDaysBusy(response.data);
         });
     }
@@ -117,20 +113,6 @@ function DialogController($mdDialog, DialogService) {
         $mdDialog.hide(answer);
     };
 }
-
-///**
-
-// * @name Factory: ChallengeFactory
-// * @desc Factory which creates a resource object that lets you interact with RESTful server-side data sources.
-// * @param $resource Injection of the resource service. Requires the ngResource dependency.
-// * @constructor
-// */
-//function ChallengeFactory($resource) {
-//    var apiUrl = "http://95.85.59.29:1337/api/";
-//    return $resource(apiUrl + "users/562f3f87b0b8dc041bcc6ba7/tasks", {}, {
-//        query: {method: 'GET', isArray: true}
-//    });
-//}
 
 /**
  * @name Service: DialogService
