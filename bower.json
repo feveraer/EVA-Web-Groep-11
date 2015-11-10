@@ -18,6 +18,7 @@
   "dependencies": {
     "angular-timeline": "~1.5.2",
     "angular-scroll-animate": "~0.9.4",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "angular-translate": "~2.8.1"
   }
 }

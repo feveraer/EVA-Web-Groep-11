@@ -11,9 +11,11 @@ angular
         'ngMaterial',
         'angular-timeline',
         'ngSanitize',
-        'angular-scroll-animate'
+        'angular-scroll-animate',
+        'pascalprecht.translate'
     ])
-    .config(config);
+    .config(config)
+    .config(translationConfig);
 
 /**
  * @name config
@@ -66,4 +68,19 @@ function ApiCallerService($http) {
     this.getRegisterDateUser = function () {
         return $http.get(apiUrl + "users/" + user + "/registeredOn");
     }
+}
+
+/**
+ * @name translationConfig
+ * @desc Translates (Binds translations.js to app.js)
+ * @param $translateProvider
+ * @memberOf evaweb.js.app
+ */
+function translationConfig($translateProvider) {
+    $translateProvider
+        .translations('nl', translationsNL)
+        .translations('en', translationsEN)
+        .translations('fr', translationsFr)
+        .preferredLanguage('nl')
+        .fallbackLanguage('nl');
 }
