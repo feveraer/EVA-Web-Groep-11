@@ -1,0 +1,37 @@
+/*Timeline*/
+.hidden {
+    visibility: hidden;
+}
+
+.hidden2 {
+    visibility: hidden;
+}
+
+/*Timeline badge color per Category*/
+.timeline li timeline-badge.breakfast {
+    background-color: #016990;
+}
+
+.timeline li timeline-badge.dinner {
+    background-color: #B3A49E;
+}
+
+.timeline li timeline-badge.lunch {
+    background-color: #F3DE00;
+}
+
+.timeline li timeline-badge.social {
+    background-color: #006C68;
+}
+
+.timeline li timeline-badge.restaurant {
+    background-color: #F15C23;
+}
+
+.timeline li timeline-badge.snack {
+    background-color: #AFBC1F;
+}
+
+.timeline li timeline-badge.afterDialog {
+    z-index: 80;
+}

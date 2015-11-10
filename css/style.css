@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'ArtistampMedium';
+    src: url('../fonts/ArtistampMedium.ttf')
+}
+
+
+/*header Challenge*/
+.headerChallenge {
+    text-align: center;
+    margin-top: 130px;
+    margin-bottom: 50px;
+    font-size: 8em;
+    /*font-weight: bold;*/
+    font-family: 'ArtistampMedium';
+    color: white;
+}
+
+/*images*/
+.timeLineImage {
+    height: 100%;
+    width: 100%;
+}
+
+/*leaf difficulty*/
+.leaf {
+    background-image: url("../img/leaf.svg");
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.filled {
+    opacity: 1;
+}
+
+/*dialogbox*/
+.dialogdemoBasicUsage #popupContainer {
+    position: relative;
+}
+
+.dialogdemoBasicUsage .debt-be-gone {
+    font-weight: bold;
+    color: blue;
+    text-decoration: underline;
+}
+
+.dialogdemoBasicUsage .footer {
+    width: 100%;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.dialogdemoBasicUsage .footer,
+.dialogdemoBasicUsage .footer > code {
+    font-size: 0.8em;
+    margin-top: 50px;
+}
+
+/*Card*/
+
+.card {
+    min-width: 400px;
+    width: 100%;
+    height: auto;
+    margin: 0px auto;
+    display: block;
+}
+
+.md-card-image {
+    height: 200px;
+    width: 100%;
+    margin: 0px auto;
+}
+
+h3.cardHeader {
+    padding-left: 10px;
+}
+
+/*Dialog*/
+#inDialogImage {
+    margin: 0px auto;
+    width: 100%;
+}
+
+/*Background video*/
+#bgvid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: contain;
+    object-fit: cover;
+    z-index: 3
+}
+
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%x;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    /*background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;*/
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+/*removes Play/Pause Bar*/
+.layer {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    left: 0;
+    top: 10%;
+}
