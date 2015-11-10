@@ -13,11 +13,8 @@ angular
         'ngAnimate'])
     .service('ApiCallService', ApiCallerService)
     .controller('TimelineController', TimelineController)
-//    .factory('Challenge', ChallengeFactory)
 
 TimelineController.$inject = ['ApiCallService']
-//TimelineController.$inject = ['Challenge']
-//ChallengeFactory.$inject = ['$resource']
 
 /**
  *@name Controller: ChallengeController
@@ -27,7 +24,7 @@ TimelineController.$inject = ['ApiCallService']
  * @constructor
  * @memberOf eva_web.js
  */
-function TimelineController(/*Challenge,*/ ApiCallService) {
+function TimelineController(ApiCallService) {
     var vmChallenge = this;
     vmChallenge.animateIcon = animateIcon;
     vmChallenge.animatePanelLeft = animatePanelLeft;
@@ -41,55 +38,12 @@ function TimelineController(/*Challenge,*/ ApiCallService) {
      * @desc Resolve start-up logic for controller
      * @memberOf eva_web.js
      */
-    function activate(){
-        ApiCallService.getTasksUser().then(function (response) {
-            var tasks = response.data;
-            var completedTasks = [];
-
-            tasks.forEach(function (task) {
-                if (task.status === 2) {
-                    task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description);
-                    completedTasks.push(task)
-                }
-            });
-
-            //TODO check if obsolete
-            completedTasks.sort(sortTasksByDateDesc);
-
-            vmChallenge.tasks = completedTasks;
+    function activate() {
+        ApiCallService.getCompletedTasksForUser().then(function (response) {
+            vmChallenge.tasks = response.data;
+        });
     }
-
-)
-    ;
-    }
-
-    ///**@name Challenge.query();
-    // * @desc Challenge.query retrieves a collection of tasks from the server.
-    // * The then() method returns a promise.
-    // * @memberOf eva_web.js
-    // */
-    //Challenge.query().$promise.then(function (data) {
-    //    var tasks = data;
-    //    var completedTasks = [];
-    //
-    //    vmChallenge.difficulties = [{
-    //        current: currentTask.challenge.difficulty,
-    //        max: 3
-    //    }];
-    //
-    //    tasks.forEach(function (task) {
-    //        if (task.completed) {
-    //            completedTasks.push(task)
-    //        }
-    //    });
-    //
-    //    //TODO check if obsolete
-    //    completedTasks.sort(sortTasksByDateDesc);
-    //
-    //    vmChallenge.tasks = tasks;
-    //});
 }
-
 
 /**
  * @name loadGlyphicon
@@ -116,39 +70,6 @@ function loadGlyphicon(name) {
         default:
             return 'glyphicon-heart';
     }
-}
-
-///**
-// * @name Factory: ChallengeFactory
-// * @desc Factory which creates a resource object that lets you interact with RESTful server-side data sources.
-// * @param $resource Injection of the resource service. Requires the ngResource dependency.
-// * @constructor
-// */
-//function ChallengeFactory($resource) {
-//    var apiUrl = "http://95.85.59.29:1337/api/";
-//    return $resource(apiUrl + "users/562f3f87b0b8dc041bcc6ba7/tasks", {}, {
-//        query: {method: 'GET', isArray: true}
-//    });
-//}
-///**
-// * @name Service: DialogService
-// * @desc Service used to trigger the dialogbox. Part of Angular Material.
-// * @returns {{getChallenge: Function, setChallenge: Function}}
-// * @constructor
-// * @memberOf eva_web.js
-// */
-
-function DialogService() {
-    var challenge;
-
-    return {
-        getChallenge: function () {
-            return challenge;
-        },
-        setChallenge: function (value) {
-            challenge = value;
-        }
-    };
 }
 
 /**

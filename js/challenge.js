@@ -1,6 +1,6 @@
 /**
  * eva_web.js
- * @namespace eva_web.js
+ * @namespace eva_web.js.challenge
  */
 angular
     .module('app.challenge', [
@@ -15,12 +15,10 @@ angular
     .service('ApiCallService', ApiCallerService)
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
-//    .factory('Challenge', ChallengeFactory)
     .directive('leafDifficulty', leafDifficulty);
 
-ChallengeController.$inject = ['$mdDialog', /*'Challenge',*/ "DialogService", "ApiCallService"];
+ChallengeController.$inject = ['$mdDialog', "DialogService", "ApiCallService"];
 DialogController.$inject = ['$mdDialog', "DialogService"];
-//ChallengeFactory.$inject = ['$resource'];
 
 /**
  *@name Controller: ChallengeController
@@ -31,10 +29,8 @@ DialogController.$inject = ['$mdDialog', "DialogService"];
  * @constructor
  * @memberOf eva_web.js
  */
-function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallService) {
+function ChallengeController($mdDialog, DialogService, ApiCallService) {
     var vmChallenge = this;
-    vmChallenge.clickButton = clickButton;
-    vmChallenge.onClickVoltooi = onClickVoltooi;
 
     activate();
 
@@ -44,47 +40,29 @@ function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallSer
      * @memberOf eva_web.js
      */
     function activate() {
-        ApiCallService.getTasksUser().then(function (response) {
-            var tasks = response.data;
-            var currentTask = getCurrentTask(tasks);
+        ApiCallService.getCurrentTaskUser().then(function (response) {
+            var currentTask = response.data;
             console.log(currentTask);
 
+            //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
             vmChallenge.difficulties = [{
                 current: currentTask.challenge.difficulty,
                 max: 3
             }];
 
             vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
-            vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
             vmChallenge.dueDate = currentTask.dueDate;
             vmChallenge.completed = currentTask.completed;
             vmChallenge.challenge = currentTask.challenge;
             DialogService.setChallenge(currentTask.challenge);
         });
+
+        ApiCallService.getRegisterDateUser().then(function(response){
+            vmChallenge.daysBusy = calculateDaysBusy(response.data);
+        });
     }
 
-
-    ///**@name Challenge.query();
-    // * @desc Challenge.query retrieves a collection of tasks from the server.
-    // * The then() method returns a promise.
-    // * @memberOf eva_web.js
-    // */
-    //Challenge.query().$promise.then(function (data) {
-    //    var tasks = data;
-    //    var currentTask = tasks[2];
-    //
-    //    vmChallenge.difficulties = [{
-    //        current: currentTask.challenge.difficulty,
-    //        max: 3
-    //    }];
-    //
-    //    vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
-    //    vmChallenge.dueDate = currentTask.dueDate;
-    //    vmChallenge.completed = currentTask.completed;
-    //    vmChallenge.challenge = currentTask.challenge;
-    //    DialogService.setChallenge(currentTask.challenge);
-    //});
-
+    // Shows Dialog
     vmChallenge.showAdvanced = function (ev) {
         $mdDialog.show({
             controller: DialogController,
@@ -108,39 +86,8 @@ function calculateDaysBusy(date) {
     var milisecondsInADay = (1000 * 60 * 60 * 24);
     var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
     if (angular.isNumber(dayDiff)) {
-        return dayDiff + 1;
+        return dayDiff + 2;
     }
-}
-
-//Moet nog vanuit RESTAPI komen
-function getCurrentTask(data) {
-    var today = new Date();
-    var currentTask;
-    today.getDate()
-    today = new Date(today.toDateString());
-
-
-    data.forEach(function (task) {
-        var taskDate = new Date(task.dueDate);
-        taskDate = new Date(taskDate.toDateString());
-        if (taskDate.valueOf() === today.valueOf()) {
-            console.log(task);
-            currentTask = task;
-            return currentTask;
-        }
-    });
-
-    return currentTask;
-}
-
-function clickButton() {
-    console.log("Button Clicked");
-    angular.element(this).addClass('animated hinge');
-
-}
-
-function onClickVoltooi() {
-    console.log("Button voltooi Clicked");
 }
 
 /**
@@ -168,20 +115,6 @@ function DialogController($mdDialog, DialogService) {
         $mdDialog.hide(answer);
     };
 }
-
-///**
-
-// * @name Factory: ChallengeFactory
-// * @desc Factory which creates a resource object that lets you interact with RESTful server-side data sources.
-// * @param $resource Injection of the resource service. Requires the ngResource dependency.
-// * @constructor
-// */
-//function ChallengeFactory($resource) {
-//    var apiUrl = "http://95.85.59.29:1337/api/";
-//    return $resource(apiUrl + "users/562f3f87b0b8dc041bcc6ba7/tasks", {}, {
-//        query: {method: 'GET', isArray: true}
-//    });
-//}
 
 /**
  * @name Service: DialogService

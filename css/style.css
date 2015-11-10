@@ -3,28 +3,6 @@
     src: url('../fonts/ArtistampMedium.ttf')
 }
 
-/*banner*/
-.banner {
-    background-image: url("../img/blackboard.jpg");
-    width: 100%;
-    height: 20%;
-}
-
-/*upperborder*/
-.upperBorder {
-    height: 10%;
-    width: 100%;
-    background-color: #AFBC1F;
-}
-
-.logoEva {
-    margin: 20px;
-    margin-left: 20%;
-    /*margin-top: 20px;*/
-    /*margin-left: 20px ;*/
-    width: auto;
-    height: 60%;
-}
 
 /*header Challenge*/
 .headerChallenge {
@@ -43,20 +21,7 @@
     width: 100%;
 }
 
-.footerImg {
-    height: 300px;
-    width: 2700px;
-}
-
-.circular {
-    width: 300px;
-    height: 300px;
-    border-radius: 150px;
-    -webkit-border-radius: 150px;
-    -moz-border-radius: 150px;
-    background: url(../img/veggiDinner.jpg) no-repeat;
-}
-
+/*leaf difficulty*/
 .leaf {
     background-image: url("../img/leaf.svg");
     opacity: 0.5;
@@ -68,40 +33,6 @@
 
 .filled {
     opacity: 1;
-}
-
-.leafContainer {
-    float: right;
-}
-
-.leafDiv {
-    float: right;
-}
-
-.iconDiv {
-    display: block;
-    float: left;
-}
-
-.fb {
-    background-image: url(../img/facebook.png);
-    background-repeat: no-repeat;
-    width: 48px;
-    height: 48px;
-}
-
-.instagram {
-    background-image: url(../img/instagram.png);
-    background-repeat: no-repeat;
-    width: 48px;
-    height: 48px;
-}
-
-.google {
-    background-image: url(../img/google.png);
-    background-repeat: no-repeat;
-    width: 48px;
-    height: 48px;
 }
 
 /*dialogbox*/
@@ -129,10 +60,6 @@
 
 /*Card*/
 
-.cardDiv {
-    text-align: center;
-}
-
 .card {
     min-width: 400px;
     width: 100%;
@@ -157,53 +84,7 @@ h3.cardHeader {
     width: 100%;
 }
 
-/*Timeline*/
-.hidden {
-    visibility: hidden;
-}
-
-.hidden2 {
-    visibility: hidden;
-}
-
-/*Body*/
-.container {
-    /*background-color: #BCBE00;*/
-}
-
-/*Timeline badge color per Category*/
-.timeline li timeline-badge.breakfast {
-    background-color: #016990;
-}
-
-.timeline li timeline-badge.dinner {
-    background-color: #B3A49E;
-}
-
-.timeline li timeline-badge.lunch {
-    background-color: #F3DE00;
-}
-
-.timeline li timeline-badge.social {
-    background-color: #006C68;
-}
-
-.timeline li timeline-badge.restaurant {
-    background-color: #F15C23;
-}
-
-.timeline li timeline-badge.snack {
-    background-color: #AFBC1F;
-}
-
-.timeline li timeline-badge.afterDialog {
-    z-index: 80;
-}
-
-.containerBody {
-    background-color: #BCBE00;
-}
-
+/*Background video*/
 #bgvid {
     position: absolute;
     width: 100%;
@@ -214,6 +95,22 @@ h3.cardHeader {
     z-index: 3
 }
 
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%x;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    /*background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;*/
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+/*removes Play/Pause Bar*/
 .layer {
     position: absolute;
     z-index: 4;
