@@ -1,5 +1,4 @@
 /*fonts*/
-
 @font-face {
     font-family: 'Mathlete-Skinny';
     src: url('../fonts/Mathlete-Skinny.otf')
@@ -10,7 +9,6 @@
     /*font-weight: bold;*/
     color: white;
     font-family: 'Mathlete-Skinny';
-
 }
 
 .buttonSocial {
@@ -18,18 +16,11 @@
     width: 200px;
 }
 
-.b {
+.backgroundTimeLine {
     background: url(../img/chalkboard.png);
-    /*background-size: 100%;*/
-    /*min-height: 100%;*/
-    /*min-height: 100%;*/
-    /*width: 100%;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*background-size: cover;*/
-
 }
 
+/*Text FadeIn Welkom Eva webkit*/
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0;
@@ -38,7 +29,7 @@
         opacity: 1;
     }
 }
-
+/*Text FadeIn Welkom Eva mozilla*/
 @-moz-keyframes fadeIn {
     from {
         opacity: 0;
@@ -48,6 +39,7 @@
     }
 }
 
+/*Text FadeIn Welkom Evas*/
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -80,18 +72,6 @@
     -webkit-animation-delay: 0.7s;
     -moz-animation-delay: 0.7s;
     animation-delay: 0.7s;
-}
-
-.fade-in.two {
-    -webkit-animation-delay: 1.2s;
-    -moz-animation-delay: 1.2s;
-    animation-delay: 1.2s;
-}
-
-.fade-in.three {
-    -webkit-animation-delay: 1.6s;
-    -moz-animation-delay: 1.6s;
-    animation-delay: 1.6s;
 }
 
 .divTextCenter {
@@ -207,8 +187,7 @@ li a:focus {
     color: #fff;
 }
 
-/*bounce arrow*/
-
+/*bounce arrow mozilla*/
 @-moz-keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         -moz-transform: translateY(0);
@@ -223,7 +202,7 @@ li a:focus {
         transform: translateY(-15px);
     }
 }
-
+/*bounce arrow webkit*/
 @-webkit-keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         -webkit-transform: translateY(0);
@@ -238,7 +217,7 @@ li a:focus {
         transform: translateY(-15px);
     }
 }
-
+/*bounce arrow*/
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         -moz-transform: translateY(0);
@@ -260,10 +239,6 @@ li a:focus {
     }
 }
 
-body {
-    background: black;
-}
-
 .arrow {
     margin-bottom: 40px;
     position: fixed;
@@ -282,33 +257,3 @@ body {
     animation: bounce 2s;
 }
 
-.box {
-    width: 70%;
-    height: 200px;
-    background: #FFF;
-    margin: 40px auto;
-}
-
-.effect2 {
-    position: relative;
-}
-
-.effect2:before, .effect2:after {
-    z-index: -1;
-    position: absolute;
-    content: "";
-    bottom: 15px;
-    left: 10px;
-    width: 50%;
-    top: 80%;
-    max-width: 300px;
-    background: #777;
-    box-shadow: 0 15px 10px #777;
-    transform: rotate(-3deg);
-}
-
-.effect2:after {
-    transform: rotate(3deg);
-    right: 10px;
-    left: auto;
-}

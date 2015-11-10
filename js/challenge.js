@@ -42,6 +42,7 @@ function ChallengeController($mdDialog, DialogService, ApiCallService) {
     function activate() {
         ApiCallService.getCurrentTaskUser().then(function (response) {
             var currentTask = response.data;
+            console.log(currentTask);
 
             //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
             vmChallenge.difficulties = [{
