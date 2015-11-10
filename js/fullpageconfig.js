@@ -1,3 +1,13 @@
+/**
+ * eva_web.js
+ * @namespace eva_web.js.fullpageconfig
+ */
+
+/**
+ * @name Config Fullpage
+ * @desc Configures fullpage
+ * @memberOf eva_web.js
+ */
 $(document).ready(function () {
     $('#fullpage').fullpage({
         autoScrolling: false,

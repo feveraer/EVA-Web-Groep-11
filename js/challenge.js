@@ -1,6 +1,6 @@
 /**
  * eva_web.js
- * @namespace eva_web.js
+ * @namespace eva_web.js.challenge
  */
 angular
     .module('app.challenge', [
@@ -61,6 +61,7 @@ function ChallengeController($mdDialog, DialogService, ApiCallService) {
         });
     }
 
+    // Shows Dialog
     vmChallenge.showAdvanced = function (ev) {
         $mdDialog.show({
             controller: DialogController,

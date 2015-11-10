@@ -1,6 +1,6 @@
 /**
- * Eva Web App
- * @namespace EvaWebApp
+ * evaweb
+ * @namespace evaweb.js.app
  */
 angular
     .module('EvaWeb', [
@@ -22,9 +22,8 @@ angular
  * @example <div>{{vmChallenge.dueDate}}</div>
  * @param $stateProvider
  * @param $urlRouterProvider
- * @memberOf EvaWebApp
+ * @memberOf evaweb.js.app
  */
-
 function config($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('/home', {
@@ -45,15 +44,16 @@ function config($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
 }
 
+/**
+ * @name ApiCallerService
+ * @desc Provides API calls.
+ * @param $http
+ * @memberOf evaweb.js.app
+ */
 function ApiCallerService($http) {
     //var apiUrl = "http://95.85.59.29:1337/api/";
     var apiUrl = "http://127.0.0.1:1337/api/";
     var user = "562f3f87b0b8dc041bcc6ba7";
-
-    //TODO user meegeven met deze functie
-    this.getTasksUser = function () {
-        return $http.get(apiUrl + "users/" + user + "/tasks");
-    };
 
     this.getCompletedTasksForUser = function () {
         return $http.get(apiUrl + "users/" + user + "/completedTasks");
