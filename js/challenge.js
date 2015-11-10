@@ -15,12 +15,10 @@ angular
     .service('ApiCallService', ApiCallerService)
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
-//    .factory('Challenge', ChallengeFactory)
     .directive('leafDifficulty', leafDifficulty);
 
-ChallengeController.$inject = ['$mdDialog', /*'Challenge',*/ "DialogService", "ApiCallService"];
+ChallengeController.$inject = ['$mdDialog', "DialogService", "ApiCallService"];
 DialogController.$inject = ['$mdDialog', "DialogService"];
-//ChallengeFactory.$inject = ['$resource'];
 
 /**
  *@name Controller: ChallengeController
@@ -31,10 +29,8 @@ DialogController.$inject = ['$mdDialog', "DialogService"];
  * @constructor
  * @memberOf eva_web.js
  */
-function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallService) {
+function ChallengeController($mdDialog, DialogService, ApiCallService) {
     var vmChallenge = this;
-    vmChallenge.clickButton = clickButton;
-    vmChallenge.onClickVoltooi = onClickVoltooi;
 
     activate();
 
@@ -45,9 +41,6 @@ function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallSer
      */
     function activate() {
         ApiCallService.getCurrentTaskUser().then(function (response) {
-        //ApiCallService.getTasksUser().then(function (response) {
-        //    var tasks = response.data;
-        //    var currentTask = getCurrentTask(tasks);
             var currentTask = response.data;
 
             //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
@@ -71,28 +64,6 @@ function ChallengeController($mdDialog, /*Challenge,*/ DialogService, ApiCallSer
             vmChallenge.daysBusy = calculateDaysBusy(response.data);
         });
     }
-
-
-    ///**@name Challenge.query();
-    // * @desc Challenge.query retrieves a collection of tasks from the server.
-    // * The then() method returns a promise.
-    // * @memberOf eva_web.js
-    // */
-    //Challenge.query().$promise.then(function (data) {
-    //    var tasks = data;
-    //    var currentTask = tasks[2];
-    //
-    //    vmChallenge.difficulties = [{
-    //        current: currentTask.challenge.difficulty,
-    //        max: 3
-    //    }];
-    //
-    //    vmChallenge.daysBusy = calculateDaysBusy(tasks[0].dueDate);
-    //    vmChallenge.dueDate = currentTask.dueDate;
-    //    vmChallenge.completed = currentTask.completed;
-    //    vmChallenge.challenge = currentTask.challenge;
-    //    DialogService.setChallenge(currentTask.challenge);
-    //});
 
     vmChallenge.showAdvanced = function (ev) {
         $mdDialog.show({
@@ -119,39 +90,6 @@ function calculateDaysBusy(date) {
     if (angular.isNumber(dayDiff)) {
         return dayDiff + 2;
     }
-}
-
-//TODO Moet nog vanuit RESTAPI komen
-function getCurrentTask(data) {
-    var today = new Date();
-    var currentTask;
-    today.getDate()
-    today = new Date(today.toDateString());
-
-
-    data.forEach(function (task) {
-        var taskDate = new Date(task.dueDate);
-        taskDate = new Date(taskDate.toDateString());
-        if (taskDate.valueOf() === today.valueOf()) {
-            console.log(task);
-            currentTask = task;
-            return currentTask;
-        }
-    });
-
-    return currentTask;
-}
-
-// TODO Wordt nog gebruikt?
-function clickButton() {
-    console.log("Button Clicked");
-    angular.element(this).addClass('animated hinge');
-
-}
-
-//TODO implement
-function onClickVoltooi() {
-    console.log("Button voltooi Clicked");
 }
 
 /**
