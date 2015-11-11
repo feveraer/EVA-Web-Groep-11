@@ -3,7 +3,7 @@
  * @namespace eva_web.js.challenge
  */
 angular
-    .module('app.challenge', [
+    .module('app.choosechallenge', [
         'ui.router',
         'ngRoute',
         'ngMaterial',
@@ -13,12 +13,11 @@ angular
         'ngAnimate'])
     .service('DialogService', DialogService)
     .service('ApiCallService', ApiCallerService)
-    .controller('ChallengeController', ChallengeController)
+    .controller('ChooseChallengeController', ChooseChallengeController)
     .controller('DialogController', DialogController)
-    .directive('leafDifficulty', leafDifficulty);
 
-ChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
-DialogController.$inject = ['$mdDialog', "DialogService"];
+ChooseChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
+
 
 /**
  *@name Controller: ChallengeController
@@ -29,7 +28,7 @@ DialogController.$inject = ['$mdDialog', "DialogService"];
  * @constructor
  * @memberOf eva_web.js
  */
-function ChallengeController($mdDialog, $location, DialogService, ApiCallService) {
+function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallService) {
     var vmChallenge = this;
 
     activate();
@@ -40,25 +39,13 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
      * @memberOf eva_web.js
      */
     function activate() {
-        ApiCallService.getCurrentTaskUser().then(function (response) {
-            if (response.data === "") {
-                console.log("current is null");
-                $location.url('/ChooseChallenge')
-            } else {
-
-                var currentTask = response.data;
-                //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
-                vmChallenge.difficulties = [{
-                    current: currentTask.challenge.difficulty,
-                    max: 3
-                }];
-
-                vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
-                vmChallenge.dueDate = currentTask.dueDate;
-                vmChallenge.completed = currentTask.completed;
-                vmChallenge.challenge = currentTask.challenge;
-                DialogService.setChallenge(currentTask.challenge);
-            }
+        ApiCallService.getTodaysTasks().then(function (response) {
+            var todaysTasks = response.data;
+            console.log(todaysTasks);
+            todaysTasks.forEach(function(task){
+                task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+            });
+            vmChallenge.todaysTasks = todaysTasks;
         });
 
         ApiCallService.getRegisterDateUser().then(function (response) {
@@ -77,6 +64,21 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
             controllerAs: 'vmDialog'
         });
     };
+}
+
+/**
+ * @name calculateDaysBusy
+ * @desc Calculate the days between the actual date and the date of the challenge
+ * @param date The date of the current challenge
+ * @returns {number} Number of days
+ * @memberOf eva_web.js
+ */
+function calculateDaysBusy(date) {
+    var milisecondsInADay = (1000 * 60 * 60 * 24);
+    var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
+    if (angular.isNumber(dayDiff)) {
+        return dayDiff + 2;
+    }
 }
 
 /**
@@ -125,32 +127,3 @@ function DialogService() {
     };
 }
 
-/**
- * @name Directive: leafDifficulty
- * @desc This directive displays a quantity of leafs based on the difficulty of the challenge. The maximum amount of leafs is set on 3.
- * The directive binds a template '<div class="leaf" ng-repeat="leaf in leafs" ng-class="leaf"></div>' on the div which contains 'leaf-rating'.
- * Based on http://stackoverflow.com/questions/23646395/rendering-a-star-rating-system-using-angularjs
- * @returns {{restrict: string, template: string, scope: {ratingValue: string, max: string}, link: Function}}
- * @example <span ng-repeat="rating in vmChallenge.ratings">
- *     <div leaf-rating difficulty-value="diff.current" max="diff.max"></div>
- </span>
- * @@memberOf eva_web.js
- */
-function leafDifficulty() {
-    var maxLeafs = 3;
-    return {
-        restrict: 'A',
-        template: '<div class="leaf" ng-repeat="leaf in leafs" ng-class="leaf"></div>',
-        scope: {
-            difficultyValue: '=',
-        },
-        link: function (scope) {
-            scope.leafs = [];
-            for (var i = 0; i < maxLeafs; i++) {
-                scope.leafs.push({
-                    filled: i < scope.difficultyValue
-                });
-            }
-        }
-    }
-}

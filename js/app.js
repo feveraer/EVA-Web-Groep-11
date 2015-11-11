@@ -8,6 +8,7 @@ angular
         'ngRoute',
         'app.challenge',
         'app.timeline',
+        'app.choosechallenge',
         'ngMaterial',
         'angular-timeline',
         'ngSanitize',
@@ -42,7 +43,23 @@ function config($stateProvider, $urlRouterProvider) {
                     controllerAs: 'vmChallenge'
                 }
             }
-        });
+        })
+        .state('/ChooseChallenge', {
+            url: '/ChooseChallenge',
+            views: {
+                'currentChallenge': {
+                    templateUrl: './views/chooseChallenge.html',
+                    controller: 'ChooseChallengeController',
+                    controllerAs: 'vmChallenge'
+                },
+                'timeline': {
+                    templateUrl: './views/timeline.html',
+                    controller: 'TimelineController',
+                    controllerAs: 'vmChallenge'
+                }
+            }
+        })
+    ;
     $urlRouterProvider.otherwise('/home');
 }
 
@@ -67,6 +84,10 @@ function ApiCallerService($http) {
 
     this.getRegisterDateUser = function () {
         return $http.get(apiUrl + "users/" + user + "/registeredOn");
+    }
+
+    this.getTodaysTasks = function () {
+        return $http.get(apiUrl + "users/" + user + "/todaysTasks");
     }
 }
 
