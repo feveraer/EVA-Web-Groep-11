@@ -23,6 +23,7 @@ DialogController.$inject = ['$mdDialog', "DialogService"];
 /**
  *@name Controller: ChallengeController
  * @param $mdDialog Service opens a dialog over the app to inform users about critical information or require them to make decisions. Part of Angular Material.
+ * @param $location Needed to load new pages
  * @param Challenge Factory gets the data from the api
  * @param DialogService Service used to trigger the dialogbox. Part of Angular Material.
  * @param ApiCallService gets the data from the api
@@ -79,6 +80,8 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
     };
 }
 
+
+// duplicaat met chooseChallenge
 /**
  *
  * @name Controller: DialogController

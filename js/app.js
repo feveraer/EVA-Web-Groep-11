@@ -72,7 +72,7 @@ function config($stateProvider, $urlRouterProvider) {
 function ApiCallerService($http) {
     //var apiUrl = "http://95.85.59.29:1337/api/";
     var apiUrl = "http://127.0.0.1:1337/api/";
-    var user = "562f3f87b0b8dc041bcc6ba7";
+    var user = "5643262312e2b6b0278ce4a9";
 
     this.getCompletedTasksForUser = function () {
         return $http.get(apiUrl + "users/" + user + "/completedTasks");
@@ -88,6 +88,13 @@ function ApiCallerService($http) {
 
     this.getTodaysTasks = function () {
         return $http.get(apiUrl + "users/" + user + "/todaysTasks");
+    }
+
+    this.updateChoosenChallenge = function(taskId, data){
+        var config = {headers: {
+            'Content-Type': 'application/json'
+        }};
+        return $http.put(apiUrl + "users/" + user + "/tasks/" + taskId, data, config);
     }
 }
 

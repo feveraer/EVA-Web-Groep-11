@@ -20,7 +20,7 @@ ChooseChallengeController.$inject = ['$mdDialog', '$location', "DialogService", 
 
 
 /**
- *@name Controller: ChallengeController
+ *@name Controller: ChooseChallengeController
  * @param $mdDialog Service opens a dialog over the app to inform users about critical information or require them to make decisions. Part of Angular Material.
  * @param Challenge Factory gets the data from the api
  * @param DialogService Service used to trigger the dialogbox. Part of Angular Material.
@@ -33,8 +33,15 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
 
     activate();
 
+    vmChallenge.chooseChallenge = function (ev, taskId){
+        console.log("clicked " + taskId);
+        ApiCallService.updateChoosenChallenge(taskId, data).then(function(){
+            $location.url('/home')
+        });
+    }
+
     /**
-     * @name challenge.ChallengeController.activate
+     * @name challenge.ChooseChallengeController.activate
      * @desc Resolve start-up logic for controller
      * @memberOf eva_web.js
      */
@@ -66,21 +73,7 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
     };
 }
 
-/**
- * @name calculateDaysBusy
- * @desc Calculate the days between the actual date and the date of the challenge
- * @param date The date of the current challenge
- * @returns {number} Number of days
- * @memberOf eva_web.js
- */
-function calculateDaysBusy(date) {
-    var milisecondsInADay = (1000 * 60 * 60 * 24);
-    var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
-    if (angular.isNumber(dayDiff)) {
-        return dayDiff + 2;
-    }
-}
-
+//duplicaat met challenge.js
 /**
  *
  * @name Controller: DialogController
