@@ -34,7 +34,7 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
     activate();
 
     vmChallenge.chooseChallenge = function (ev, taskId){
-        console.log("clicked " + taskId);
+        var data = {"status" : 1};
         ApiCallService.updateChoosenChallenge(taskId, data).then(function(){
             $location.url('/home')
         });
@@ -48,9 +48,11 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
     function activate() {
         ApiCallService.getTodaysTasks().then(function (response) {
             var todaysTasks = response.data;
-            console.log(todaysTasks);
             todaysTasks.forEach(function(task){
                 task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+                if(task.status===2){
+                    $location.url('/challengeCompleted')
+                }
             });
             vmChallenge.todaysTasks = todaysTasks;
         });

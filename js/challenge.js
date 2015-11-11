@@ -54,6 +54,7 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
                     max: 3
                 }];
 
+                vmChallenge.taskId = currentTask._id;
                 vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
                 vmChallenge.dueDate = currentTask.dueDate;
                 vmChallenge.completed = currentTask.completed;
@@ -76,6 +77,13 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
             targetEvent: ev,
             clickOutsideToClose: true,
             controllerAs: 'vmDialog'
+        });
+    };
+
+    vmChallenge.completeChallenge = function(ev, taskId){
+        var data = {"status" : 2};
+        ApiCallService.updateChoosenChallenge(taskId, data).then(function(){
+            $location.url('/challengeCompleted')
         });
     };
 }

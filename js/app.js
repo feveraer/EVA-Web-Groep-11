@@ -59,6 +59,19 @@ function config($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('/challengeCompleted', {
+            url: '/challengeCompleted',
+            views: {
+                'currentChallenge': {
+                    templateUrl: './views/challengeCompleted.html'
+                },
+                'timeline': {
+                    templateUrl: './views/timeline.html',
+                    controller: 'TimelineController',
+                    controllerAs: 'vmChallenge'
+                }
+            }
+        })
     ;
     $urlRouterProvider.otherwise('/home');
 }
@@ -90,11 +103,11 @@ function ApiCallerService($http) {
         return $http.get(apiUrl + "users/" + user + "/todaysTasks");
     }
 
-    this.updateChoosenChallenge = function(taskId, data){
+    this.updateChoosenChallenge = function(taskId, statusData){
         var config = {headers: {
             'Content-Type': 'application/json'
         }};
-        return $http.put(apiUrl + "users/" + user + "/tasks/" + taskId, data, config);
+        return $http.put(apiUrl + "users/" + user + "/tasks/" + taskId, statusData, config);
     }
 }
 
