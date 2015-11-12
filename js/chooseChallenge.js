@@ -15,6 +15,7 @@ angular
     .service('ApiCallService', ApiCallService)
     .controller('ChooseChallengeController', ChooseChallengeController)
     .controller('DialogController', DialogController)
+    .directive('chooseTask', increaseStatusTask);
 
 ChooseChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
 
@@ -33,13 +34,6 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
 
     activate();
 
-    vmChallenge.chooseChallenge = function (ev, taskId){
-        var data = {"status" : 1};
-        ApiCallService.updateChoosenChallenge(taskId, data).then(function(){
-            $location.url('/home')
-        });
-    }
-
     /**
      * @name challenge.ChooseChallengeController.activate
      * @desc Resolve start-up logic for controller
@@ -48,9 +42,9 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
     function activate() {
         ApiCallService.getTodaysTasks().then(function (response) {
             var todaysTasks = response.data;
-            todaysTasks.forEach(function(task){
+            todaysTasks.forEach(function (task) {
                 task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
-                if(task.status===2){
+                if (task.status === 2) {
                     $location.url('/challengeCompleted')
                 }
             });

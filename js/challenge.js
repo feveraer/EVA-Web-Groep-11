@@ -16,13 +16,11 @@ angular
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
     .directive('leafDifficulty', leafDifficulty)
-    .directive('increaseStatusTask', increaseStatusTask);
+    .directive('completeTask', increaseStatusTask);
 
 
 ChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
 DialogController.$inject = ['$mdDialog', "DialogService"];
-completeChallenge.$inject = ['ApiCallService', '$location'];
-
 
 /**
  *@name Controller: ChallengeController
@@ -160,27 +158,5 @@ function leafDifficulty() {
                 });
             }
         }
-    }
-}
-
-
-function increaseStatusTask(ApiCallService, $location) {
-    return {
-        restrict: 'A',
-        scope: {
-            taskId: '=',
-            taskStatus: '='
-        },
-        link: function (scope, elem, attr) {
-            elem.bind('click', function () {
-                var data = {"status": scope.taskStatus + 1};
-                ApiCallService.updateChoosenChallenge(scope.taskId, data).then(function () {
-                    $location.url('/challengeCompleted')
-                });
-            })
-
-        }
-
-
     }
 }
