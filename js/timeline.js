@@ -83,3 +83,4 @@ function loadGlyphicon(name) {
 var sortTasksByDateDesc = function (task1, task2) {
     return new Date(task2.dueDate) - new Date(task1.dueDate);
 };
+
