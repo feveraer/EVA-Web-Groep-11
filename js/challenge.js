@@ -15,10 +15,14 @@ angular
     .service('ApiCallService', ApiCallerService)
     .controller('ChallengeController', ChallengeController)
     .controller('DialogController', DialogController)
-    .directive('leafDifficulty', leafDifficulty);
+    .directive('leafDifficulty', leafDifficulty)
+    .directive('completeChallenge', completeChallenge);
+
 
 ChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
 DialogController.$inject = ['$mdDialog', "DialogService"];
+completeChallenge.$inject = ['ApiCallService', '$location'];
+
 
 /**
  *@name Controller: ChallengeController
@@ -80,9 +84,9 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
         });
     };
 
-    vmChallenge.completeChallenge = function(ev, taskId){
-        var data = {"status" : 2};
-        ApiCallService.updateChoosenChallenge(taskId, data).then(function(){
+    vmChallenge.completeChallenge = function (ev, taskId) {
+        var data = {"status": 2};
+        ApiCallService.updateChoosenChallenge(taskId, data).then(function () {
             $location.url('/challengeCompleted')
         });
     };
@@ -163,5 +167,26 @@ function leafDifficulty() {
                 });
             }
         }
+    }
+}
+
+
+function completeChallenge(ApiCallService, $location) {
+    return {
+        restrict: 'A',
+        scope: {
+            taskId: '='
+        },
+        link: function (scope, elem, attr) {
+            elem.bind('click', function () {
+                var data = {"status": 2};
+                ApiCallService.updateChoosenChallenge(scope.taskId, data).then(function () {
+                    $location.url('/challengeCompleted')
+                });
+            })
+
+        }
+
+
     }
 }
