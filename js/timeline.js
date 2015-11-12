@@ -11,7 +11,7 @@ angular
         'ngResource',
         'angular-scroll-animate',
         'ngAnimate'])
-    .service('ApiCallService', ApiCallerService)
+    .service('ApiCallService', ApiCallService)
     .controller('TimelineController', TimelineController)
 
 TimelineController.$inject = ['ApiCallService']

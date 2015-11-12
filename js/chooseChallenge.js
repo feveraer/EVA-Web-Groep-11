@@ -12,7 +12,7 @@ angular
         'angular-scroll-animate',
         'ngAnimate'])
     .service('DialogService', DialogService)
-    .service('ApiCallService', ApiCallerService)
+    .service('ApiCallService', ApiCallService)
     .controller('ChooseChallengeController', ChooseChallengeController)
     .controller('DialogController', DialogController)
 
