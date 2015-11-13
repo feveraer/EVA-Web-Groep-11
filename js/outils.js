@@ -28,3 +28,15 @@ function calculateDaysBusy(date) {
         return dayDiff + 2;
     }
 }
+
+/**
+ * @name Function sortTasksByDateDesc
+ * @desc Sorts the challenges by date in descending order.
+ * @param task1
+ * @param task2
+ * @returns {number}
+ * @memberOf eva_web.js
+ */
+var sortTasksByDateDesc = function (task1, task2) {
+    return new Date(task2.dueDate) - new Date(task1.dueDate);
+};

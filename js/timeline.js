@@ -4,13 +4,14 @@
  */
 angular
     .module('app.timeline', [
-        'ui.router',
-        'ngRoute',
-        'ngMaterial',
-        'angular-timeline',
-        'ngResource',
-        'angular-scroll-animate',
-        'ngAnimate'])
+        //'ui.router',
+        //'ngRoute',
+        //'ngMaterial',
+        //'angular-timeline',
+        //'ngResource',
+        //'angular-scroll-animate',
+        //'ngAnimate'
+    ])
     .service('ApiCallService', ApiCallService)
     .controller('TimelineController', TimelineController)
 
@@ -71,15 +72,3 @@ function loadGlyphicon(name) {
             return 'glyphicon-heart';
     }
 }
-
-/**
- * @name Function sortTasksByDateDesc
- * @desc Sorts the challenges by date in descending order.
- * @param task1
- * @param task2
- * @returns {number}
- * @memberOf eva_web.js
- */
-var sortTasksByDateDesc = function (task1, task2) {
-    return new Date(task2.dueDate) - new Date(task1.dueDate);
-};

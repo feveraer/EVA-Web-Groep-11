@@ -4,17 +4,18 @@
  */
 angular
     .module('app.challenge', [
-        'ui.router',
-        'ngRoute',
-        'ngMaterial',
-        'angular-timeline',
-        'ngResource',
-        'angular-scroll-animate',
-        'ngAnimate'])
+        //'ui.router',
+        //'ngRoute',
+        //'ngMaterial',
+        //'angular-timeline',
+        //'ngResource',
+        //'angular-scroll-animate',
+        //'ngAnimate'
+    ])
     .service('DialogService', DialogService)
     .service('ApiCallService', ApiCallService)
     .controller('ChallengeController', ChallengeController)
-    .controller('DialogController', DialogController)
+//    .controller('DialogController', DialogController)
     .directive('leafDifficulty', leafDifficulty)
     .directive('completeTask', increaseStatusTask);
 
@@ -70,6 +71,7 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
         });
     }
 
+    //TODO duplicate
     // Shows Dialog
     vmChallenge.showAdvanced = function (ev) {
         $mdDialog.show({

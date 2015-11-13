@@ -4,17 +4,18 @@
  */
 angular
     .module('app.choosechallenge', [
-        'ui.router',
-        'ngRoute',
-        'ngMaterial',
-        'angular-timeline',
-        'ngResource',
-        'angular-scroll-animate',
-        'ngAnimate'])
+        //'ui.router',
+        //'ngRoute',
+        //'ngMaterial',
+        //'angular-timeline',
+        //'ngResource',
+        //'angular-scroll-animate',
+        //'ngAnimate'
+    ])
     .service('DialogService', DialogService)
     .service('ApiCallService', ApiCallService)
     .controller('ChooseChallengeController', ChooseChallengeController)
-    .controller('DialogController', DialogController)
+//    .controller('DialogController', DialogController)
     .directive('chooseTask', increaseStatusTask);
 
 ChooseChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
@@ -47,6 +48,9 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
                 if (task.status === 2) {
                     $location.url('/challengeCompleted')
                 }
+                if (task.status === 1) {
+                    $location.url('/home')
+                }
             });
             vmChallenge.todaysTasks = todaysTasks;
         });
@@ -56,6 +60,7 @@ function ChooseChallengeController($mdDialog, $location, DialogService, ApiCallS
         });
     }
 
+    // TODO duplicate
     // Shows Dialog
     vmChallenge.showAdvanced = function (ev) {
         $mdDialog.show({
