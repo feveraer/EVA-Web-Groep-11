@@ -17,19 +17,20 @@ angular
     .controller('DialogController', DialogController)
     .directive('leafDifficulty', leafDifficulty);
 
-ChallengeController.$inject = ['$mdDialog', "DialogService", "ApiCallService"];
+ChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
 DialogController.$inject = ['$mdDialog', "DialogService"];
 
 /**
  *@name Controller: ChallengeController
  * @param $mdDialog Service opens a dialog over the app to inform users about critical information or require them to make decisions. Part of Angular Material.
+ * @param $location Needed to load new pages
  * @param Challenge Factory gets the data from the api
  * @param DialogService Service used to trigger the dialogbox. Part of Angular Material.
  * @param ApiCallService gets the data from the api
  * @constructor
  * @memberOf eva_web.js
  */
-function ChallengeController($mdDialog, DialogService, ApiCallService) {
+function ChallengeController($mdDialog, $location, DialogService, ApiCallService) {
     var vmChallenge = this;
 
     activate();
@@ -41,23 +42,27 @@ function ChallengeController($mdDialog, DialogService, ApiCallService) {
      */
     function activate() {
         ApiCallService.getCurrentTaskUser().then(function (response) {
-            var currentTask = response.data;
-            console.log(currentTask);
+            if (response.data === "") {
+                console.log("current is null");
+                $location.url('/ChooseChallenge')
+            } else {
 
-            //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
-            vmChallenge.difficulties = [{
-                current: currentTask.challenge.difficulty,
-                max: 3
-            }];
+                var currentTask = response.data;
+                //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
+                vmChallenge.difficulties = [{
+                    current: currentTask.challenge.difficulty,
+                    max: 3
+                }];
 
-            vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
-            vmChallenge.dueDate = currentTask.dueDate;
-            vmChallenge.completed = currentTask.completed;
-            vmChallenge.challenge = currentTask.challenge;
-            DialogService.setChallenge(currentTask.challenge);
+                vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
+                vmChallenge.dueDate = currentTask.dueDate;
+                vmChallenge.completed = currentTask.completed;
+                vmChallenge.challenge = currentTask.challenge;
+                DialogService.setChallenge(currentTask.challenge);
+            }
         });
 
-        ApiCallService.getRegisterDateUser().then(function(response){
+        ApiCallService.getRegisterDateUser().then(function (response) {
             vmChallenge.daysBusy = calculateDaysBusy(response.data);
         });
     }
@@ -75,21 +80,8 @@ function ChallengeController($mdDialog, DialogService, ApiCallService) {
     };
 }
 
-/**
- * @name calculateDaysBusy
- * @desc Calculate the days between the actual date and the date of the challenge
- * @param date The date of the current challenge
- * @returns {number} Number of days
- * @memberOf eva_web.js
- */
-function calculateDaysBusy(date) {
-    var milisecondsInADay = (1000 * 60 * 60 * 24);
-    var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
-    if (angular.isNumber(dayDiff)) {
-        return dayDiff + 2;
-    }
-}
 
+// duplicaat met chooseChallenge
 /**
  *
  * @name Controller: DialogController

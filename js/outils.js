@@ -13,3 +13,18 @@ function giveTextBeforeDoubleWhitespace(s) {
     var array = s.split("  ");
     return array[0];
 }
+
+/**
+ * @name calculateDaysBusy
+ * @desc Calculate the days between the actual date and the date of the challenge
+ * @param date The date of the current challenge
+ * @returns {number} Number of days
+ * @memberOf eva_web.js
+ */
+function calculateDaysBusy(date) {
+    var milisecondsInADay = (1000 * 60 * 60 * 24);
+    var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
+    if (angular.isNumber(dayDiff)) {
+        return dayDiff + 2;
+    }
+}
