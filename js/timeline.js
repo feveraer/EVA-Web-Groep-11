@@ -42,6 +42,9 @@ function TimelineController(ApiCallService) {
     function activate() {
         ApiCallService.getCompletedTasksForUser().then(function (response) {
             var tasks = response.data;
+            tasks.forEach(function(task){
+                task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+            });
             tasks.sort(sortTasksByDateDesc);
             vmChallenge.tasks = tasks;
         });
