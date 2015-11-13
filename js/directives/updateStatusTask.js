@@ -28,6 +28,7 @@ function increaseStatusTask(ApiCallService, $location) {
             });
             //click event
             elem.bind('click', function () {
+                // + before scope.taskStatus is to force this to integer
                 var data = {"status": +scope.taskStatus + 1};
                 if (scope.taskStatus === "0") {
                     ApiCallService.updateChoosenChallenge(scope.taskId, data).then(function () {
