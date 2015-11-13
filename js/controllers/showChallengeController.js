@@ -1,6 +1,8 @@
 angular
     .module('app.showchallenge')
-    .controller('ChallengeController', ChallengeController)
+    .controller('ChallengeController', challengeController)
+
+//challengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
 
 /**
  *@name Controller: ChallengeController
@@ -12,7 +14,7 @@ angular
  * @constructor
  * @memberOf eva_web.js
  */
-function ChallengeController($mdDialog, $location, DialogService, ApiCallService) {
+function challengeController($mdDialog, $location, DialogService, ApiCallService) {
     var vmChallenge = this;
 
     activate();

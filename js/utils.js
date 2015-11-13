@@ -40,3 +40,30 @@ function calculateDaysBusy(date) {
 var sortTasksByDateDesc = function (task1, task2) {
     return new Date(task2.dueDate) - new Date(task1.dueDate);
 };
+
+/**
+ * @name loadGlyphicon
+ * @desc Sets The glyphicon per category
+ * @param name The name of category
+ * @example <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+ * @returns {String}
+ * @memberOf eva_web.js
+ */
+function loadGlyphicon(name) {
+    switch (name) {
+        case 'dinner':
+            return 'glyphicon-glass';
+        case 'breakfast':
+            return 'glyphicon-grain';
+        case 'lunch':
+            return 'glyphicon-leaf';
+        case 'social':
+            return 'glyphicon-heart';
+        case 'restaurant':
+            return 'glyphicon-cutlery';
+        case 'snack':
+            return 'glyphicon-apple';
+        default:
+            return 'glyphicon-heart';
+    }
+}

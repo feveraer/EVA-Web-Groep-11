@@ -2,7 +2,7 @@ angular
     .module('app.choosechallenge')
     .controller('ChooseChallengeController', chooseChallengeController)
 
-chooseChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
+//chooseChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
 
 /**
  *@name Controller: ChooseChallengeController
