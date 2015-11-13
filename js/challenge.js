@@ -4,18 +4,21 @@
  */
 angular
     .module('app.challenge', [
-        'ui.router',
-        'ngRoute',
-        'ngMaterial',
-        'angular-timeline',
-        'ngResource',
-        'angular-scroll-animate',
-        'ngAnimate'])
+        //'ui.router',
+        //'ngRoute',
+        //'ngMaterial',
+        //'angular-timeline',
+        //'ngResource',
+        //'angular-scroll-animate',
+        //'ngAnimate'
+    ])
     .service('DialogService', DialogService)
-    .service('ApiCallService', ApiCallerService)
+    .service('ApiCallService', ApiCallService)
     .controller('ChallengeController', ChallengeController)
-    .controller('DialogController', DialogController)
-    .directive('leafDifficulty', leafDifficulty);
+//    .controller('DialogController', DialogController)
+    .directive('leafDifficulty', leafDifficulty)
+    .directive('completeTask', increaseStatusTask);
+
 
 ChallengeController.$inject = ['$mdDialog', '$location', "DialogService", "ApiCallService"];
 DialogController.$inject = ['$mdDialog', "DialogService"];
@@ -43,7 +46,6 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
     function activate() {
         ApiCallService.getCurrentTaskUser().then(function (response) {
             if (response.data === "") {
-                console.log("current is null");
                 $location.url('/ChooseChallenge')
             } else {
 
@@ -54,6 +56,8 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
                     max: 3
                 }];
 
+                vmChallenge.taskId = currentTask._id;
+                vmChallenge.status = currentTask.status;
                 vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
                 vmChallenge.dueDate = currentTask.dueDate;
                 vmChallenge.completed = currentTask.completed;
@@ -67,6 +71,7 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
         });
     }
 
+    //TODO duplicate
     // Shows Dialog
     vmChallenge.showAdvanced = function (ev) {
         $mdDialog.show({
@@ -81,7 +86,7 @@ function ChallengeController($mdDialog, $location, DialogService, ApiCallService
 }
 
 
-// duplicaat met chooseChallenge
+// TODO duplicaat met chooseChallenge
 /**
  *
  * @name Controller: DialogController

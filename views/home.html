@@ -2,26 +2,27 @@
     <h1 class="headerChallenge" translate="DAY" translate-values="{day: vmChallenge.daysBusy}"></h1>
 
     <md-card class="md-whiteframe-10dp card">
-    <md-card-content>
-        <div class="cardHeader" layout="row" layout-align="space-around center">
-            <div>
-                <h2> {{vmChallenge.challenge.title}}</h2>
-            </div>
-            <div>
+        <md-card-content>
+            <div class="cardHeader" layout="row" layout-align="space-around center">
+                <div>
+                    <h2> {{vmChallenge.challenge.title}}</h2>
+                </div>
+                <div>
                     <span ng-repeat="diff in vmChallenge.difficulties">
-                        <div leaf-difficulty  difficulty-value="diff.current"></div>
+                        <div leaf-difficulty difficulty-value="diff.current"></div>
                     </span>
+                </div>
             </div>
-        </div>
-    </md-card-content>
+        </md-card-content>
 
-    <img src="img/vegiLongDinner.jpg" class="md-card-image" alt="image caption">
-    <md-card-content>
-        <h3 class="cardHeader">{{vmChallenge.shortDescription}}</h3>
-    </md-card-content>
+        <img src="img/vegiLongDinner.jpg" class="md-card-image" alt="image caption">
+        <md-card-content>
+            <h3 class="cardHeader">{{vmChallenge.shortDescription}}</h3>
+        </md-card-content>
         <div class="md-actions" layout="row" layout-align="end center">
             <md-button ng-click="vmChallenge.showAdvanced($event)">Details</md-button>
-            <md-button>Voltooi</md-button>
+            <md-button complete-task task-Id={{vmChallenge.taskId}} task-Status={{vmChallenge.status}}>Voltooi
+            </md-button>
         </div>
     </md-card>
 </div>

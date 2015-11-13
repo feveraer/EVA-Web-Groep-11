@@ -4,14 +4,15 @@
  */
 angular
     .module('app.timeline', [
-        'ui.router',
-        'ngRoute',
-        'ngMaterial',
-        'angular-timeline',
-        'ngResource',
-        'angular-scroll-animate',
-        'ngAnimate'])
-    .service('ApiCallService', ApiCallerService)
+        //'ui.router',
+        //'ngRoute',
+        //'ngMaterial',
+        //'angular-timeline',
+        //'ngResource',
+        //'angular-scroll-animate',
+        //'ngAnimate'
+    ])
+    .service('ApiCallService', ApiCallService)
     .controller('TimelineController', TimelineController)
 
 TimelineController.$inject = ['ApiCallService']
@@ -40,7 +41,12 @@ function TimelineController(ApiCallService) {
      */
     function activate() {
         ApiCallService.getCompletedTasksForUser().then(function (response) {
-            vmChallenge.tasks = response.data;
+            var tasks = response.data;
+            tasks.forEach(function(task){
+                task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+            });
+            tasks.sort(sortTasksByDateDesc);
+            vmChallenge.tasks = tasks;
         });
     }
 }
@@ -71,15 +77,3 @@ function loadGlyphicon(name) {
             return 'glyphicon-heart';
     }
 }
-
-/**
- * @name Function sortTasksByDateDesc
- * @desc Sorts the challenges by date in descending order.
- * @param task1
- * @param task2
- * @returns {number}
- * @memberOf eva_web.js
- */
-var sortTasksByDateDesc = function (task1, task2) {
-    return new Date(task2.dueDate) - new Date(task1.dueDate);
-};

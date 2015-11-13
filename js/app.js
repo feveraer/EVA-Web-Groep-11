@@ -59,19 +59,33 @@ function config($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('/challengeCompleted', {
+            url: '/challengeCompleted',
+            views: {
+                'currentChallenge': {
+                    templateUrl: './views/challengeCompleted.html'
+                },
+                'timeline': {
+                    templateUrl: './views/timeline.html',
+                    controller: 'TimelineController',
+                    controllerAs: 'vmChallenge'
+                }
+            }
+        })
     ;
     $urlRouterProvider.otherwise('/home');
 }
 
 /**
- * @name ApiCallerService
+ * @name ApiCallService
  * @desc Provides API calls.
  * @param $http
  * @memberOf evaweb.js.app
  */
-function ApiCallerService($http) {
-    var apiUrl = "http://95.85.59.29:1337/api/";
-    //var apiUrl = "http://127.0.0.1:1337/api/";
+
+function ApiCallService($http) {
+    //var apiUrl = "http://95.85.59.29:1337/api/";
+    var apiUrl = "http://127.0.0.1:1337/api/";
     var user = "5643262312e2b6b0278ce4a9";
 
     this.getCompletedTasksForUser = function () {
@@ -90,11 +104,11 @@ function ApiCallerService($http) {
         return $http.get(apiUrl + "users/" + user + "/todaysTasks");
     }
 
-    this.updateChoosenChallenge = function(taskId, data){
+    this.updateChoosenChallenge = function(taskId, statusData){
         var config = {headers: {
             'Content-Type': 'application/json'
         }};
-        return $http.put(apiUrl + "users/" + user + "/tasks/" + taskId, data, config);
+        return $http.put(apiUrl + "users/" + user + "/tasks/" + taskId, statusData, config);
     }
 }
 
