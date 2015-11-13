@@ -1,18 +1,5 @@
-/**
- * eva_web.js
- * @namespace eva_web.js
- */
 angular
-    .module('app.timeline', [
-        //'ui.router',
-        //'ngRoute',
-        //'ngMaterial',
-        //'angular-timeline',
-        //'ngResource',
-        //'angular-scroll-animate',
-        //'ngAnimate'
-    ])
-    .service('ApiCallService', ApiCallService)
+    .module('app.timeline')
     .controller('TimelineController', TimelineController)
 
 TimelineController.$inject = ['ApiCallService']
@@ -48,32 +35,5 @@ function TimelineController(ApiCallService) {
             tasks.sort(sortTasksByDateDesc);
             vmChallenge.tasks = tasks;
         });
-    }
-}
-
-/**
- * @name loadGlyphicon
- * @desc Sets The glyphicon per category
- * @param name The name of category
- * @example <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
- * @returns {String}
- * @memberOf eva_web.js
- */
-function loadGlyphicon(name) {
-    switch (name) {
-        case 'dinner':
-            return 'glyphicon-glass';
-        case 'breakfast':
-            return 'glyphicon-grain';
-        case 'lunch':
-            return 'glyphicon-leaf';
-        case 'social':
-            return 'glyphicon-heart';
-        case 'restaurant':
-            return 'glyphicon-cutlery';
-        case 'snack':
-            return 'glyphicon-apple';
-        default:
-            return 'glyphicon-heart';
     }
 }
