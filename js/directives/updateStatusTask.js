@@ -28,7 +28,7 @@ function increaseStatusTask(ApiCallService, $location) {
             });
             //click event
             elem.bind('click', function () {
-                var data = {"status": scope.taskStatus + 1};
+                var data = {"status": +scope.taskStatus + 1};
                 if (scope.taskStatus === "0") {
                     ApiCallService.updateChoosenChallenge(scope.taskId, data).then(function () {
                         $location.url('/home')
