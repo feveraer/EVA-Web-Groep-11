@@ -1,9 +1,12 @@
-<div class="container">
+<div class="container quickfixColors">
     <h1 class="headerChallenge" translate="DAY" translate-values="{day: vmChallenge.daysBusy}"></h1>
+
     <h2>Kies Challenge</h2>
+
     <div ng-repeat="task in vmChallenge.todaysTasks track by $index">
         <h3>{{task.challenge.title}}</h3>
+
         <p>{{task.challenge.shortDescription}}</p>
-        <md-button ng-click="vmChallenge.chooseChallenge($event, task._id)">Kies deze</md-button>
+        <md-button choose-task task-Id="{{task._id}}" task-Status={{task.status}}>Kies deze</md-button>
     </div>
 </div>
