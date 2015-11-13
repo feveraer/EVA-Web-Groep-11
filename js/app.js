@@ -6,7 +6,7 @@ angular
     .module('EvaWeb', [
         'ui.router',
         'ngRoute',
-        'app.challenge',
+        'app.showchallenge',
         'app.timeline',
         'app.choosechallenge',
         'ngMaterial',
