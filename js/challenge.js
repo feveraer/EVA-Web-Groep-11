@@ -13,7 +13,7 @@ angular
         //'ngAnimate'
     ])
     .service('DialogService', DialogService)
-    .service('ApiCallService', ApiCallService)
+    .service('ApiCallService', apiCallService)
     .controller('ChallengeController', ChallengeController)
 //    .controller('DialogController', DialogController)
     .directive('leafDifficulty', leafDifficulty)

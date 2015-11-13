@@ -12,7 +12,7 @@ angular
         //'angular-scroll-animate',
         //'ngAnimate'
     ])
-    .service('ApiCallService', ApiCallService)
+    .service('ApiCallService', apiCallService)
     .controller('TimelineController', TimelineController)
 
 TimelineController.$inject = ['ApiCallService']
