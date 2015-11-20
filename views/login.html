@@ -6,15 +6,10 @@
             <span>{{ error.message }}</span>
         </div>
 
-        <h1><span class="fa fa-sign-in"></span> Register</h1>
+        <h1><span class="fa fa-sign-in"></span> Login</h1>
 
-        <!-- REGISTER FORM -->
-        <form ng-submit="register()">
-            <div class="form-group">
-                <label>Naam</label>
-                <input type="text" class="form-control" placeholder="Naam"
-                       ng-model="user.name" required/>
-            </div>
+        <!-- LOGIN FORM -->
+        <form ng-submit="login()">
             <div class="form-group">
                 <label>E-mail</label>
                 <input type="text" class="form-control" placeholder="E-mail"
@@ -26,7 +21,7 @@
                        ng-model="user.password" required/>
             </div>
 
-            <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+            <button type="submit" class="btn btn-warning btn-lg">Login</button>
         </form>
 
         <hr>
