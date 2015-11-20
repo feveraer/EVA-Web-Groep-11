@@ -16,6 +16,10 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('/home', {
             url: '/home',
             views: {
+                'landing':{
+                    templateUrl: './views/landingPage.html',
+                    controller: authController
+                },
                 'currentChallenge': {
                     templateUrl: './views/home.html',
                     controller: 'ChallengeController',
@@ -31,6 +35,9 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('/ChooseChallenge', {
             url: '/ChooseChallenge',
             views: {
+                'landing':{
+                    templateUrl: './views/landingPage.html',
+                },
                 'currentChallenge': {
                     templateUrl: './views/chooseChallenge.html',
                     controller: 'ChooseChallengeController',
@@ -46,6 +53,9 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('/challengeCompleted', {
             url: '/challengeCompleted',
             views: {
+                'landing':{
+                    templateUrl: './views/landingPage.html',
+                },
                 'currentChallenge': {
                     templateUrl: './views/challengeCompleted.html'
                 },
@@ -59,28 +69,16 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('/register', {
             url: '/register',
             views: {
-                'currentChallenge': {
+                'landing':{
                     templateUrl: './views/register.html',
-                    controller: 'authController',
                 },
-                'timeline': {
-                    templateUrl: './views/timeline.html',
-                    controller: 'TimelineController',
-                    controllerAs: 'vmChallenge'
-                }
             }
         })
         .state('/login', {
             url: '/login',
             views: {
-                'currentChallenge': {
+                'landing':{
                     templateUrl: './views/login.html',
-                    controller: 'authController',
-                },
-                'timeline': {
-                    templateUrl: './views/timeline.html',
-                    controller: 'TimelineController',
-                    controllerAs: 'vmChallenge'
                 }
             }
         })

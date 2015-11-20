@@ -1,0 +1,12 @@
+<div class="divTextCenter">
+    <h1 class="fade-in one header-landing" translate="WELCOME"></h1>
+</div>
+
+<div class="divTextCenter" ng-hide="isLoggedIn">
+    <img src="img/buttonFacebook.png" class="buttonSocial fade-in one">
+    <img src="img/buttonInstagram.png" class="buttonSocial fade-in one">
+</div>
+
+<div class="divTextCenter" ng-show="isLoggedIn" >
+    <button ng-click="logOut">SignOut</button>
+</div>

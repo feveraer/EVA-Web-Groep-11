@@ -25,34 +25,24 @@
     <link rel="stylesheet" href="css/styleVideo.css"/>
     <!--=======Video=======-->
 </head>
-<body ng-app="EvaWeb">
+<body ng-app="EvaWeb" ng-controller="authController">
 <div id="fullpage" class="fullpage-wrapper">
     <div class="section fp-section fp-table active">
-
         <video autoplay loop id="bgvid">
             <source src="video/vegiMovieNoSound.mp4" type="video/mp4">
             <source src="video/vegiMovieNoSound.webmhd.webm" type="video/webm">
         </video>
-        <div class="layer">
-            <div class="divTextCenter">
-                <h1 class="fade-in one header-landing" translate="WELCOME"></h1>
-            </div>
-
-            <div class="divTextCenter">
-                <img src="img/buttonFacebook.png" class="buttonSocial fade-in one">
-                <img src="img/buttonInstagram.png" class="buttonSocial fade-in one">
-            </div>
-        </div>
+        <div ui-view="landing" class="layer"></div>
     </div>
-
-    <div class="section backgroundTimeLine fp-section">
+    <div class="section backgroundTimeLine fp-section" ng-show="isLoggedIn">
         <div ui-view="currentChallenge"></div>
     </div>
 
-    <div class="section backgroundTimeLine elem1 fp-section">
+    <div class="section backgroundTimeLine fp-section" ng-show="isLoggedIn">
         <div ui-view="timeline"></div>
     </div>
-</div>
+
+
 </div>
 
 <!--=======Node Modules=======-->
