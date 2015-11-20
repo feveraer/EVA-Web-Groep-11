@@ -56,6 +56,20 @@ function routeConfig($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('/register', {
+            url: '/register',
+            views: {
+                'currentChallenge': {
+                    templateUrl: './views/register.html',
+                    controller: 'authController',
+                },
+                'timeline': {
+                    templateUrl: './views/timeline.html',
+                    controller: 'TimelineController',
+                    controllerAs: 'vmChallenge'
+                }
+            }
+        })
     ;
     $urlRouterProvider.otherwise('/home');
 }
