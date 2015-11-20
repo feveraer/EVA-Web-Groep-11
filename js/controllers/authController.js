@@ -6,7 +6,7 @@ angular
 function authController($scope, $location, auth) {
     $scope.user = {};
     $scope.isLoggedIn = auth.isLoggedIn;
-    $scope.isLoggedOut = auth.logOut;
+    $scope.loggedOut = auth.logOut;
 
     $scope.register = function () {
         auth.register($scope.user).error(function (error) {
