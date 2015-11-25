@@ -85,5 +85,5 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             }
         })
     ;
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/login');
 }
