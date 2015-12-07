@@ -18,7 +18,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/landingPage.html',
-                    controller: authController
+                    controller: 'authController'
                 },
                 'currentChallenge': {
                     templateUrl: './views/home.html',
@@ -37,6 +37,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/landingPage.html',
+                    controller: 'authController'
                 },
                 'currentChallenge': {
                     templateUrl: './views/chooseChallenge.html',
@@ -55,6 +56,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/landingPage.html',
+                    controller: 'authController'
                 },
                 'currentChallenge': {
                     templateUrl: './views/challengeCompleted.html'

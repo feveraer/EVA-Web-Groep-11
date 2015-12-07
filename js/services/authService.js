@@ -1,4 +1,4 @@
-// public/js/controllers/AuthController.js
+// public/js/services/authService.js
 angular
     .module('EvaWeb')
     .factory('auth', auth);
