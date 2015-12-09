@@ -14,7 +14,7 @@ angular
  * @constructor
  * @memberOf eva_web.js
  */
-function challengeController($mdDialog, $location, DialogService, ApiCallService) {
+function challengeController($mdDialog, $location, DialogService, ApiCallService, auth) {
     var vmChallenge = this;
     vmChallenge.isLoggedIn = auth.isLoggedIn;
 
