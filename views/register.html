@@ -1,36 +1,59 @@
+<!--<div class="container">-->
+<!--<div class="col-sm-6 col-sm-offset-3">-->
+
+<!--<div ng-show="vmAuth.error" class="alert alert-danger row">-->
+<!--<span>{{ vmAuth.error.message }}</span>-->
+<!--</div>-->
+
+<!--<h1><span class="fa fa-sign-in"></span> Register</h1>-->
+
+<!--&lt;!&ndash; REGISTER FORM &ndash;&gt;-->
+<!--<form ng-submit="vmAuth.register()">-->
+<!--<div class="form-group">-->
+<!--<label>Naam</label>-->
+<!--<input type="text" class="form-control" placeholder="Naam"-->
+<!--ng-model="vmAuth.user.name" required/>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>E-mail</label>-->
+<!--<input type="text" class="form-control" placeholder="E-mail"-->
+<!--ng-model="vmAuth.user.email" required/>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label>Password</label>-->
+<!--<input type="password" class="form-control" placeholder="Password"-->
+<!--ng-model="vmAuth.user.password" required/>-->
+<!--</div>-->
+
+<!--<button type="submit" class="btn btn-warning btn-lg">Signup</button>-->
+<!--</form>-->
+
+<!--<hr>-->
+<!--<p>Already have an account? <a href="index.html#/login">Login</a></p>-->
+
+<!--<p>Or go <a href="index.html#/home">home</a>.</p>-->
+<!--</div>-->
+<!--</div>-->
+
+
 <div class="container">
-    <div class="col-sm-6 col-sm-offset-3">
+    <form ng-submit="vmAuth.logIn()">
+        <div class="box">
+            <div ng-show="vmAuth.error" class="alert alert-danger row">
+                <span>{{ vmAuth.error.message }}</span>
+            </div>
+            <h1>Registreer</h1>
+            <input type="text" placeholder="Naam"
+                   ng-model="vmAuth.user.name" required/>
 
-        <div ng-show="vmAuth.error" class="alert alert-danger row">
-            <span>{{ vmAuth.error.message }}</span>
+            <input type="text" placeholder="E-mail"
+                   ng-model="vmAuth.user.email" required/>
+            <input type="password" placeholder="Password"
+                   ng-model="vmAuth.user.password" required/>
+
+            <button>Registreer</button>
+            <p>Hebt u al een account? <a href="index.html#/login">Login</a></p>
+
         </div>
-
-        <h1><span class="fa fa-sign-in"></span> Register</h1>
-
-        <!-- REGISTER FORM -->
-        <form ng-submit="vmAuth.register()">
-            <div class="form-group">
-                <label>Naam</label>
-                <input type="text" class="form-control" placeholder="Naam"
-                       ng-model="vmAuth.user.name" required/>
-            </div>
-            <div class="form-group">
-                <label>E-mail</label>
-                <input type="text" class="form-control" placeholder="E-mail"
-                       ng-model="vmAuth.user.email" required/>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password"
-                       ng-model="vmAuth.user.password" required/>
-            </div>
-
-            <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-        </form>
-
-        <hr>
-        <p>Already have an account? <a href="index.html#/login">Login</a></p>
-        <p>Or go <a href="index.html#/home">home</a>.</p>
-    </div>
+    </form>
 </div>
-

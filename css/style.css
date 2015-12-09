@@ -177,9 +177,9 @@ video {
 /*}*/
 
 /*.buttonLogin {*/
-    /*background-image: url("../img/buttonLogin.png");*/
-    /*width: 200px;*/
-    /*height: 100px;*/
+/*background-image: url("../img/buttonLogin.png");*/
+/*width: 200px;*/
+/*height: 100px;*/
 /*}*/
 input[type="submit"] {
     background: url('../img/rsz_buttonlogin.png') no-repeat center;
@@ -187,4 +187,71 @@ input[type="submit"] {
     height: 100px; /* height of image */
     border: 0;
     outline: 0;
+}
+
+.box {
+    /*position:absolute;*/
+    height: 80%;
+    width: 40%;
+    font-family: Helvetica;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.13);
+    padding: 30px 0px;
+    margin: 0 auto;
+}
+
+.box h1 {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 40px;
+}
+
+.box input {
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 2px solid white;
+}
+
+.box input:focus, .box input:active, .box button:focus, .box button:active {
+    outline: none;
+}
+
+.box button {
+    background: #2ecc71;
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    width: 330px;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
+}
+
+.box button:active {
+    background: #27ae60;
+}
+
+.box p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.box p a {
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+.disable-selection {
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+    cursor: default;
 }

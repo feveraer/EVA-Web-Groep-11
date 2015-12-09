@@ -1,35 +1,54 @@
+<!--<div class="container">-->
+
+    <!--<div id="loginScreen">-->
+        <!--<div class="col-sm-6 col-sm-offset-3">-->
+
+            <!--<div ng-show="vmAuth.error" class="alert alert-danger row">-->
+                <!--<span>{{ vmAuth.error.message }}</span>-->
+            <!--</div>-->
+
+            <!--<h1><span class="fa fa-sign-in"></span> Login</h1>-->
+
+            <!--&lt;!&ndash; LOGIN FORM &ndash;&gt;-->
+            <!--<form ng-submit="vmAuth.logIn()">-->
+                <!--<div class="form-group">-->
+                    <!--<label>E-mail</label>-->
+                    <!--<input type="text" class="form-control" placeholder="E-mail"-->
+                           <!--ng-model="vmAuth.user.email" required/>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>Password</label>-->
+                    <!--<input type="password" class="form-control" placeholder="Password"-->
+                           <!--ng-model="vmAuth.user.password" required/>-->
+                <!--</div>-->
+
+                <!--<input type="submit" value=""/>-->
+
+            <!--</form>-->
+
+            <!--<hr>-->
+
+            <!--<p>Not having an account yet? <a href="index.html#/register">Register</a></p>-->
+
+            <!--<p>Or go <a href="index.html#/home">home</a>.</p>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
 <div class="container">
+    <form ng-submit="vmAuth.logIn()">
+        <div class="box">
+            <div ng-show="vmAuth.error" class="alert alert-danger row">
+                <span>{{ vmAuth.error.message }}</span>
+            </div>
+            <h1>Login</h1>
+            <input type="text" placeholder="E-mail" ng-model="vmAuth.user.email" required/>
+            <p ng-show="vmAuth.user.email.$invalid && !vmAuth.user.email.$pristine" class="help-block">Enter a valid email.</p>
+            <input type="text" placeholder="Paswoord" ng-model="vmAuth.user.password " required/>
 
-    <div class="col-sm-6 col-sm-offset-3">
-
-        <div ng-show="vmAuth.error" class="alert alert-danger row">
-            <span>{{ vmAuth.error.message }}</span>
+            <button>Login</button>
+            <p>Hebt u nog geen account?<a href="index.html#/register">Registeer</a></p>
         </div>
-
-        <h1><span class="fa fa-sign-in"></span> Login</h1>
-
-        <!-- LOGIN FORM -->
-        <form ng-submit="vmAuth.logIn()">
-            <div class="form-group">
-                <label>E-mail</label>
-                <input type="text" class="form-control" placeholder="E-mail"
-                       ng-model="vmAuth.user.email" required/>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password"
-                       ng-model="vmAuth.user.password" required/>
-            </div>
-
-            <input type ="submit" value=""/>
-
-        </form>
-
-        <hr>
-
-        <p>Not having an account yet? <a href="index.html#/register">Register</a></p>
-
-        <p>Or go <a href="index.html#/home">home</a>.</p>
-
-    </div>
+    </form>
 </div>
