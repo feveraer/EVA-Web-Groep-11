@@ -2,7 +2,7 @@ angular
     .module('app.timeline')
     .controller('TimelineController', TimelineController)
 
-TimelineController.$inject = ['ApiCallService']
+TimelineController.$inject = ['ApiCallService', 'auth'];
 
 /**
  *@name Controller: ChallengeController
@@ -12,12 +12,13 @@ TimelineController.$inject = ['ApiCallService']
  * @constructor
  * @memberOf eva_web.js
  */
-function TimelineController(ApiCallService) {
+function TimelineController(ApiCallService, auth) {
     var vmChallenge = this;
     vmChallenge.animateIcon = animateIcon;
     vmChallenge.animatePanelLeft = animatePanelLeft;
     vmChallenge.animatePanelRight = animatePanelRight;
     vmChallenge.loadGlyphicon = loadGlyphicon;
+    vmChallenge.isLoggedIn = auth.isLoggedIn;
 
     activate();
 
@@ -27,13 +28,15 @@ function TimelineController(ApiCallService) {
      * @memberOf eva_web.js
      */
     function activate() {
-        ApiCallService.getCompletedTasksForUser().then(function (response) {
-            var tasks = response.data;
-            tasks.forEach(function(task){
-                task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+        if (vmChallenge.isLoggedIn()) {
+            ApiCallService.getCompletedTasksForUser().then(function (response) {
+                var tasks = response.data;
+                tasks.forEach(function (task) {
+                    task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+                });
+                tasks.sort(sortTasksByDateDesc);
+                vmChallenge.tasks = tasks;
             });
-            tasks.sort(sortTasksByDateDesc);
-            vmChallenge.tasks = tasks;
-        });
+        }
     }
 }

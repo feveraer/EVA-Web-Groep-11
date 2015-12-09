@@ -25,8 +25,10 @@
     <link rel="stylesheet" href="css/styleVideo.css"/>
     <!--=======Video=======-->
 </head>
-<body ng-app="EvaWeb" ng-controller="authController">
+
+<body ng-app="EvaWeb" >
 <div id="fullpage" class="fullpage-wrapper">
+
     <div class="section fp-section fp-table active">
         <video autoplay loop id="bgvid">
             <source src="video/vegiMovieNoSound.mp4" type="video/mp4">
@@ -34,14 +36,14 @@
         </video>
         <div ui-view="landing" class="layer"></div>
     </div>
-    <div class="section backgroundTimeLine fp-section" ng-show="isLoggedIn">
+
+    <div class="section backgroundTimeLine fp-section" >
         <div ui-view="currentChallenge"></div>
     </div>
 
-    <div class="section backgroundTimeLine fp-section" ng-show="isLoggedIn">
+    <div class="section backgroundTimeLine fp-section" >
         <div ui-view="timeline"></div>
     </div>
-
 
 </div>
 

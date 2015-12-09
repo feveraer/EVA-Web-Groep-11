@@ -18,12 +18,13 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/landingPage.html',
-                    controller: 'authController'
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
                 },
                 'currentChallenge': {
                     templateUrl: './views/home.html',
                     controller: 'ChallengeController',
-                    controllerAs: 'vmChallenge'//,
+                    controllerAs: 'vmChallenge'
                 },
                 'timeline': {
                     templateUrl: './views/timeline.html',
@@ -37,7 +38,8 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/landingPage.html',
-                    controller: 'authController'
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
                 },
                 'currentChallenge': {
                     templateUrl: './views/chooseChallenge.html',
@@ -56,7 +58,8 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/landingPage.html',
-                    controller: 'authController'
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
                 },
                 'currentChallenge': {
                     templateUrl: './views/challengeCompleted.html'
@@ -73,6 +76,8 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/register.html',
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
                 },
             }
         })
@@ -81,6 +86,8 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'landing':{
                     templateUrl: './views/login.html',
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
                 }
             }
         })
