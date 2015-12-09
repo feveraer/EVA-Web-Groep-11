@@ -8,7 +8,6 @@ function authController($location, auth) {
     vmAuth.user = {};
     vmAuth.isLoggedIn = auth.isLoggedIn;
     vmAuth.logOut = auth.logOut;
-    console.log('logged in: ' + vmAuth.isLoggedIn());
 
     vmAuth.register = function () {
         auth.register(vmAuth.user).error(function (error) {

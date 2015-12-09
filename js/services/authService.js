@@ -22,10 +22,9 @@ function auth($http, $window) {
         var token = auth.getToken();
 
         if (token) {
-            var payload = JSON.parse($window.atob(token.split('.')[1]));
-            console.log(payload.exp > Date.now() / 1000);
+            //var payload = JSON.parse($window.atob(token.split('.')[1]));
+            //console.log(payload.exp > Date.now() / 1000);
 
-            console.log('response:' +  token !== undefined);
             return token !== undefined;
         } else {
             return false;
@@ -42,25 +41,19 @@ function auth($http, $window) {
     };
 
     auth.register = function (user) {
-        console.log('register');
         return $http.post(apiUrl + 'register', user).success(function (data) {
-            console.log('register succes');
             auth.saveToken(data.token);
         });
     };
 
     auth.logIn = function (user) {
-        console.log('login');
         return $http.post(apiUrl + 'authenticate', user).success(function (data) {
-            console.log('login succes');
             auth.saveToken(data.token);
         });
     };
 
     auth.logOut = function () {
-        console.log('logout');
         $window.localStorage.removeItem('eva-web-app-web-token');
-        console.log($window.localStorage['eva-web-app-web-token']);
     };
 
     return auth;

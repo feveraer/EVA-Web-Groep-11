@@ -26,7 +26,7 @@
     <!--=======Video=======-->
 </head>
 
-<body ng-app="EvaWeb" >
+<body ng-app="EvaWeb" ng-controller="authController as vmAuth" >
 <div id="fullpage" class="fullpage-wrapper">
 
     <div class="section fp-section fp-table active">
@@ -37,11 +37,11 @@
         <div ui-view="landing" class="layer"></div>
     </div>
 
-    <div class="section backgroundTimeLine fp-section" >
+    <div class="section backgroundTimeLine fp-section" ng-show="vmAuth.isLoggedIn()">
         <div ui-view="currentChallenge"></div>
     </div>
 
-    <div class="section backgroundTimeLine fp-section" >
+    <div class="section backgroundTimeLine fp-section" ng-show="vmAuth.isLoggedIn()">
         <div ui-view="timeline"></div>
     </div>
 
