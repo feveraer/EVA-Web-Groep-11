@@ -1,0 +1,34 @@
+<div class="container">
+
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <div ng-show="vmAuth.error" class="alert alert-danger row">
+            <span>{{ vmAuth.error.message }}</span>
+        </div>
+
+        <h1><span class="fa fa-sign-in"></span> Login</h1>
+
+        <!-- LOGIN FORM -->
+        <form ng-submit="vmAuth.logIn()">
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" class="form-control" placeholder="E-mail"
+                       ng-model="vmAuth.user.email" required/>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password"
+                       ng-model="vmAuth.user.password" required/>
+            </div>
+
+            <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        </form>
+
+        <hr>
+
+        <p>Not having an account yet? <a href="index.html#/register">Register</a></p>
+
+        <p>Or go <a href="index.html#/home">home</a>.</p>
+
+    </div>
+</div>

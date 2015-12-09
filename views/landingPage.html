@@ -1,0 +1,12 @@
+<div class="divTextCenter">
+    <h1 class="fade-in one header-landing" translate="WELCOME"></h1>
+</div>
+
+<div class="divTextCenter" ng-hide="vmAuth.isLoggedIn()">
+    <a href="index.html#/login"><img src="img/buttonFacebook.png" class="buttonSocial fade-in one"></a>
+    <a href="index.html#/register"><img src="img/buttonInstagram.png" class="buttonSocial fade-in one"></a>
+</div>
+
+<div class="divTextCenter" ng-show="vmAuth.isLoggedIn()" >
+    <button ng-click="vmAuth.logOut()">SignOut</button>
+</div>

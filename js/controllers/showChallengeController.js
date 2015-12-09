@@ -14,8 +14,9 @@ angular
  * @constructor
  * @memberOf eva_web.js
  */
-function challengeController($mdDialog, $location, DialogService, ApiCallService) {
+function challengeController($mdDialog, $location, DialogService, ApiCallService, auth) {
     var vmChallenge = this;
+    vmChallenge.isLoggedIn = auth.isLoggedIn;
 
     activate();
 
@@ -25,31 +26,33 @@ function challengeController($mdDialog, $location, DialogService, ApiCallService
      * @memberOf eva_web.js
      */
     function activate() {
-        ApiCallService.getCurrentTaskUser().then(function (response) {
-            if (response.data === "") {
-                $location.url('/ChooseChallenge')
-            } else {
+        if (vmChallenge.isLoggedIn()) {
+            ApiCallService.getCurrentTaskUser().then(function (response) {
+                if (response.data === "") {
+                    $location.url('/ChooseChallenge')
+                } else {
 
-                var currentTask = response.data;
-                //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
-                vmChallenge.difficulties = [{
-                    current: currentTask.challenge.difficulty,
-                    max: 3
-                }];
+                    var currentTask = response.data;
+                    //TODO zorg ervoor dat er in de databank telkens 1 challenge is met status 1, anders switchen naar andere view: challenge kiezen
+                    vmChallenge.difficulties = [{
+                        current: currentTask.challenge.difficulty,
+                        max: 3
+                    }];
 
-                vmChallenge.taskId = currentTask._id;
-                vmChallenge.status = currentTask.status;
-                vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
-                vmChallenge.dueDate = currentTask.dueDate;
-                vmChallenge.completed = currentTask.completed;
-                vmChallenge.challenge = currentTask.challenge;
-                DialogService.setChallenge(currentTask.challenge);
-            }
-        });
+                    vmChallenge.taskId = currentTask._id;
+                    vmChallenge.status = currentTask.status;
+                    vmChallenge.shortDescription = giveTextBeforeDoubleWhitespace(currentTask.challenge.description)
+                    vmChallenge.dueDate = currentTask.dueDate;
+                    vmChallenge.completed = currentTask.completed;
+                    vmChallenge.challenge = currentTask.challenge;
+                    DialogService.setChallenge(currentTask.challenge);
+                }
+            });
 
-        ApiCallService.getRegisterDateUser().then(function (response) {
-            vmChallenge.daysBusy = calculateDaysBusy(response.data);
-        });
+            ApiCallService.getRegisterDateUser().then(function (response) {
+                vmChallenge.daysBusy = calculateDaysBusy(response.data);
+            });
+        }
     }
 
     //TODO duplicate

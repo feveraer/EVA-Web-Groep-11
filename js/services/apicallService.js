@@ -5,9 +5,9 @@
  * @memberOf evaweb.js.app
  */
 
-function apiCallService($http) {
-    var apiUrl = "http://95.85.59.29:1337/api/";
-    //var apiUrl = "http://127.0.0.1:1337/api/";
+function apiCallService($http, auth) {
+    //var apiUrl = "http://95.85.59.29:1337/api/";
+    var apiUrl = "http://127.0.0.1:1337/api/";
     var user = "5643262312e2b6b0278ce4a9";
 
     this.getCompletedTasksForUser = function () {
@@ -28,8 +28,9 @@ function apiCallService($http) {
 
     this.updateChoosenChallenge = function(taskId, statusData){
         var config = {headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         }};
+        statusData.token = auth.getToken();
         return $http.put(apiUrl + "users/" + user + "/tasks/" + taskId, statusData, config);
     }
 }
