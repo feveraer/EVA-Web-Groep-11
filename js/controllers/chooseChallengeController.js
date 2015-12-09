@@ -13,8 +13,9 @@ angular
  * @constructor
  * @memberOf eva_web.js
  */
-function chooseChallengeController($mdDialog, $location, DialogService, ApiCallService) {
+function chooseChallengeController($mdDialog, $location, DialogService, ApiCallService, auth) {
     var vmChallenge = this;
+    vmChallenge.isLoggedIn = auth.isLoggedIn;
 
     activate();
 
@@ -24,23 +25,25 @@ function chooseChallengeController($mdDialog, $location, DialogService, ApiCallS
      * @memberOf eva_web.js
      */
     function activate() {
-        ApiCallService.getTodaysTasks().then(function (response) {
-            var todaysTasks = response.data;
-            todaysTasks.forEach(function (task) {
-                task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
-                if (task.status === 2) {
-                    $location.url('/challengeCompleted')
-                }
-                if (task.status === 1) {
-                    $location.url('/home')
-                }
+        if (vmChallenge.isLoggedIn()) {
+            ApiCallService.getTodaysTasks().then(function (response) {
+                var todaysTasks = response.data;
+                todaysTasks.forEach(function (task) {
+                    task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+                    if (task.status === 2) {
+                        $location.url('/challengeCompleted')
+                    }
+                    if (task.status === 1) {
+                        $location.url('/home')
+                    }
+                });
+                vmChallenge.todaysTasks = todaysTasks;
             });
-            vmChallenge.todaysTasks = todaysTasks;
-        });
 
-        ApiCallService.getRegisterDateUser().then(function (response) {
-            vmChallenge.daysBusy = calculateDaysBusy(response.data);
-        });
+            ApiCallService.getRegisterDateUser().then(function (response) {
+                vmChallenge.daysBusy = calculateDaysBusy(response.data);
+            });
+        }
     }
 
     // TODO duplicate
