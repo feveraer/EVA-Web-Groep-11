@@ -1,8 +1,12 @@
 @font-face {
     font-family: 'ArtistampMedium';
-    src: url('../fonts/ArtistampMedium.ttf')
+    src: url('../fonts/ArtistampMedium.ttf');
 }
 
+@font-face {
+    font-family: 'Mathlete-Skinny';
+    src: url('../fonts/Mathlete-Skinny.otf')
+}
 
 /*header Challenge*/
 .headerChallenge {
@@ -102,7 +106,7 @@ video {
     min-width: 100%;
     min-height: 100%;
     width: 100%;
-    height: 100%x;
+    height: 100%;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
     /*background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;*/
@@ -119,6 +123,68 @@ video {
     top: 10%;
 }
 
-.quickfixColors{
+.quickfixColors {
     color: white;
+}
+
+/*Form*/
+
+/*input[type=submit] {*/
+/*/!*background: transparent;*!/*/
+/*/!*text-align:center;*!/*/
+/*/!*padding: 5px;*!/*/
+/*/!*border:2px solid white;*!/*/
+/*width: 200px;*/
+/*height: 100px;*/
+/*background: url("../img/buttonLogin.png") no-repeat center;*/
+/*outline: 0;*/
+
+/*color: white;*/
+/*font-family: 'Mathlete-Skinny';*/
+/*font-size: 500%;*/
+/*display:block*/
+
+/*/!*margin: 0 auto;*!/*/
+/*/!*text-align: center;*!/*/
+/*/!*line-height: -100px;*!/*/
+/*/!*border: 2px solid white;*!/*/
+
+/*}*/
+
+/*input[type=submit]:focus {*/
+/*outline: 0;*/
+/*}*/
+/*.buttonLogin{*/
+/*background: transparent;*/
+/*/!*background-image: -webkit-linear-gradient(top, #3498db, #2980b9);*!/*/
+/*/!*background-image: -moz-linear-gradient(top, #3498db, #2980b9);*!/*/
+/*/!*background-image: -ms-linear-gradient(top, #3498db, #2980b9);*!/*/
+/*/!*background-image: -o-linear-gradient(top, #3498db, #2980b9);*!/*/
+/*/!*background-image: linear-gradient(to bottom, #3498db, #2980b9);*!/*/
+/*font-family: Mathlete-Skinny;*/
+/*color: #ffffff;*/
+/*font-size: 100px;*/
+/*/!*background: #0099ff;*!/*/
+/*padding:0px ;*/
+/*border: solid #ffffff 2px;*/
+/*height: 150px;*/
+/*width: 300px;*/
+/*font-weight: bold;*/
+/*line-height: 20x;*/
+
+/*text-decoration: none;*/
+/*letter-spacing: 10px;*/
+/*}*/
+
+/*.buttonLogin {*/
+    /*background-image: url("../img/buttonLogin.png");*/
+    /*width: 200px;*/
+    /*height: 100px;*/
+/*}*/
+input[type="submit"] {
+    background: url('../img/rsz_buttonlogin.png') no-repeat center;
+    width: 200px; /* width of image */
+    height: 100px; /* height of image */
+    border: 0;
+    outline: 0;
 }

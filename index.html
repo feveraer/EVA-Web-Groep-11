@@ -28,7 +28,6 @@
 
 <body ng-app="EvaWeb" ng-controller="authController as vmAuth" >
 <div id="fullpage" class="fullpage-wrapper">
-
     <div class="section fp-section fp-table active">
         <video autoplay loop id="bgvid">
             <source src="video/vegiMovieNoSound.mp4" type="video/mp4">
@@ -44,7 +43,6 @@
     <div class="section backgroundTimeLine fp-section" ng-show="vmAuth.isLoggedIn()">
         <div ui-view="timeline"></div>
     </div>
-
 </div>
 
 <!--=======Node Modules=======-->
