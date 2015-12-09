@@ -27,12 +27,10 @@ function apiCallService($http, auth) {
     }
 
     this.updateChoosenChallenge = function(taskId, statusData){
-        console.log(auth.getToken());
         var config = {headers: {
             'Content-Type': 'application/json',
         }};
         statusData.token = auth.getToken();
-        console.log(statusData);
         return $http.put(apiUrl + "users/" + user + "/tasks/" + taskId, statusData, config);
     }
 }
