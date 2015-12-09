@@ -14,8 +14,12 @@
 .buttonSocial {
     height: 100px;
     width: 200px;
-}
+    cursor: pointer;
 
+}
+/*.buttonSocial:hover{*/
+    /**/
+/*}*/
 .backgroundTimeLine {
     background: url(../img/chalkboard.png);
 }
