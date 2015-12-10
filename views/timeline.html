@@ -9,12 +9,14 @@
             <!--even panel-->
             <timeline-panel ng-if="$index % 2 === 0" class="warning hidden2"
                             when-visible="vmChallenge.animatePanelLeft">
-                <timeline-heading style="width: 100%">
-                    <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
-                    <h4>{{task.challenge.title}}</h4>
-                </timeline-heading>
-                <p>{{task.challenge.shortDescription}}</p>
-                <md-button ng-click="vmChallenge.showChallenge(task.challenge)">meer</md-button>
+                <div class="fullwidth">
+                    <timeline-heading style="width: 100%">
+                        <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
+                        <h4>{{task.challenge.title}}</h4>
+                    </timeline-heading>
+                    <p>{{task.challenge.shortDescription}}</p>
+                    <md-button ng-click="vmChallenge.showChallenge(task.challenge)">meer</md-button>
+                </div>
             </timeline-panel>
             <!--even panel-->
 
@@ -26,8 +28,8 @@
                         <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="timeLineImage">
                         <h4>{{task.challenge.title}}</h4>
                     </timeline-heading>
-                        <p>{{task.challenge.shortDescription}}</p>
-                        <md-button class="knopke" ng-click="vmChallenge.showChallenge(task.challenge)">meer</md-button>
+                    <p>{{task.challenge.shortDescription}}</p>
+                    <md-button class="knopke" ng-click="vmChallenge.showChallenge(task.challenge)">meer</md-button>
                 </div>
             </timeline-panel>
             <!--odd panel-->
