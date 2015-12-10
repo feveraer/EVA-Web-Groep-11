@@ -255,3 +255,11 @@ input[type="submit"] {
     -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
     cursor: default;
 }
+
+md-dialog {
+    position: fixed;
+    margin: 5% auto;
+    left: 0;
+    right: 0;
+    width: 40%
+}
