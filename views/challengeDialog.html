@@ -13,8 +13,8 @@
                 <p>Niveau: {{vmDialog.mdDialogData.difficulty}}</p>
                 <img id="inDialogImage" alt="Lush mango tree" src="img/vegiPic.jpg">
 
-                <p>
-                    {{vmDialog.mdDialogData.description}}
+                <p ng-bind-html=vmDialog.mdDialogData.description>
+
                 </p>
             </div>
         </md-dialog-content>
