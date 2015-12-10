@@ -256,10 +256,30 @@ input[type="submit"] {
     cursor: default;
 }
 
-md-dialog {
-    position: fixed;
-    margin: 5% auto;
-    left: 0;
-    right: 0;
-    width: 40%
+@media only screen and (max-width: 767px) {
+    md-dialog {
+        position: fixed;
+        margin: 5% auto;
+        left: 0;
+        right: 0;
+        width: 80%
+    }
+
+    timeline-panel .fullwidth {
+        width:117.5%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    md-dialog {
+        position: fixed;
+        margin: 5% auto;
+        left: 0;
+        right: 0;
+        width: 40%
+    }
+
+    timeline-panel .fullwidth {
+        width: 245%;
+    }
 }
