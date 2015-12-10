@@ -2,7 +2,7 @@ angular
     .module('app.timeline')
     .controller('TimelineController', TimelineController)
 
-TimelineController.$inject = ['ApiCallService', 'auth'];
+TimelineController.$inject = ['ApiCallService', 'auth', 'DialogService', '$mdDialog'];
 
 /**
  *@name Controller: ChallengeController
@@ -12,13 +12,24 @@ TimelineController.$inject = ['ApiCallService', 'auth'];
  * @constructor
  * @memberOf eva_web.js
  */
-function TimelineController(ApiCallService, auth) {
+function TimelineController(ApiCallService, auth, DialogService, $mdDialog) {
     var vmChallenge = this;
     vmChallenge.animateIcon = animateIcon;
     vmChallenge.animatePanelLeft = animatePanelLeft;
     vmChallenge.animatePanelRight = animatePanelRight;
     vmChallenge.loadGlyphicon = loadGlyphicon;
     vmChallenge.isLoggedIn = auth.isLoggedIn;
+    vmChallenge.showChallenge = function (challenge, ev) {
+        DialogService.setChallenge(challenge);
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: './views/challengeDialog.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            controllerAs: 'vmDialog'
+        });
+    };
 
     activate();
 

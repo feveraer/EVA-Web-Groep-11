@@ -14,7 +14,7 @@
                     <h4>{{task.challenge.title}}</h4>
                 </timeline-heading>
                 <p>{{task.challenge.shortDescription}}</p>
-                <md-button>meer</md-button>
+                <md-button ng-click="vmChallenge.showChallenge(task.challenge)">meer</md-button>
             </timeline-panel>
             <!--even panel-->
 
@@ -26,7 +26,7 @@
                     <h4>{{task.challenge.title}}</h4>
                 </timeline-heading>
                 <p>{{task.challenge.shortDescription}}</p>
-                <md-button class="knopke">meer</md-button>
+                <md-button class="knopke" ng-click="vmChallenge.showChallenge(task.challenge)">meer</md-button>
             </timeline-panel>
             <!--odd panel-->
         </timeline-event>
