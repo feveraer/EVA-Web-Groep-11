@@ -40,9 +40,9 @@ function chooseChallengeController($mdDialog, $location, DialogService, ApiCallS
                 vmChallenge.todaysTasks = todaysTasks;
             });
 
-            ApiCallService.getRegisterDateUser().then(function (response) {
-                vmChallenge.daysBusy = calculateDaysBusy(response.data);
-            });
+
+                vmChallenge.daysBusy = calculateDaysBusy(auth.currentUser().registeredOn);
+
         }
     }
 
