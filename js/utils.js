@@ -24,8 +24,6 @@ function giveTextBeforeDoubleWhitespace(s) {
 function calculateDaysBusy(date) {
     var milisecondsInADay = (1000 * 60 * 60 * 24);
     var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
-    console.log(new Date(date));
-    console.log(new Date(Date.now()));
     if (angular.isNumber(dayDiff)) {
         return dayDiff + 1;
     }
