@@ -41,7 +41,6 @@ function auth($http, $window, $state) {
 
     auth.getCurrentUserID = function (){
         if (auth.isLoggedIn()) {
-            console.log('logged in for uid');
             var token = auth.getToken();
             var payload = JSON.parse($window.atob(token.split('.')[1]));
             return payload._id;
@@ -58,6 +57,7 @@ function auth($http, $window, $state) {
     auth.logIn = function (user) {
         return $http.post(apiUrl + 'authenticate', user).success(function (data) {
             auth.saveToken(data.token);
+            $state.go('/ChooseChallenge');
         });
     };
 
