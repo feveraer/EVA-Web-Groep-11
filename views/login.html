@@ -45,10 +45,10 @@
             <h1>Login</h1>
             <input type="text" placeholder="E-mail" ng-model="vmAuth.user.email" required/>
             <p ng-show="vmAuth.user.email.$invalid && !vmAuth.user.email.$pristine" class="help-block">Enter a valid email.</p>
-            <input type="text" placeholder="Paswoord" ng-model="vmAuth.user.password " required/>
+            <input type="password" placeholder="Paswoord" ng-model="vmAuth.user.password " required/>
 
             <button>Login</button>
-            <p>Hebt u nog geen account?<a href="index.html#/register">Registeer</a></p>
+            <p>Hebt u nog geen account? <a href="index.html#/register">Registeer</a></p>
         </div>
     </form>
 </div>

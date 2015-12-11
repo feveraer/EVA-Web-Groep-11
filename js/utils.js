@@ -25,7 +25,7 @@ function calculateDaysBusy(date) {
     var milisecondsInADay = (1000 * 60 * 60 * 24);
     var dayDiff = Math.floor((Date.now() - new Date(date)) / milisecondsInADay);
     if (angular.isNumber(dayDiff)) {
-        return dayDiff + 2;
+        return dayDiff + 1;
     }
 }
 
