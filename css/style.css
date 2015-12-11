@@ -221,7 +221,7 @@ input[type="submit"] {
 }
 
 .box button {
-    background: #2ecc71;
+    background: #4c8c2b;
     border: 0;
     color: #fff;
     padding: 10px;
@@ -233,7 +233,7 @@ input[type="submit"] {
 }
 
 .box button:active {
-    background: #27ae60;
+    background: #4c8c2b;
 }
 
 .box p {
