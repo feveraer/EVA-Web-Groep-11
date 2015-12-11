@@ -23,8 +23,6 @@ function auth($http, $window, $state) {
 
         if (token) {
             //var payload = JSON.parse($window.atob(token.split('.')[1]));
-            //console.log(payload);
-            //console.log(payload.exp > Date.now() / 1000);
             //return payload.expiresIn > Date.now() / 1000;
             return token !== undefined;
         } else {
@@ -42,19 +40,10 @@ function auth($http, $window, $state) {
     };
 
     auth.getCurrentUserID = function (){
-        console.log('getUID');
         if (auth.isLoggedIn()) {
             console.log('logged in for uid');
             var token = auth.getToken();
-
-            console.log(token);
-
             var payload = JSON.parse($window.atob(token.split('.')[1]));
-
-            console.log(payload);
-
-            console.log(payload._id);
-
             return payload._id;
         }
     };
