@@ -10,18 +10,20 @@ function authController($location, auth) {
     vmAuth.logOut = auth.logOut;
 
     vmAuth.register = function () {
-        auth.register(vmAuth.user).error(function (error) {
-            vmAuth.error = error;
-        }).then(function () {
-            $location.url('/ChooseChallenge');
-        });
+        auth.register(vmAuth.user)
+            .error(function (error) {
+                vmAuth.error = error;
+            }).success(function () {
+                $location.url('/ChooseChallenge');
+            });
     };
 
     vmAuth.logIn = function () {
-        auth.logIn(vmAuth.user).error(function (error) {
-            vmAuth.error = error;
-        }).then(function () {
-            $location.url('/ChooseChallenge');
-        });
+        auth.logIn(vmAuth.user)
+            .error(function (error) {
+                vmAuth.error = error;
+            }).success(function () {
+                $location.url('/ChooseChallenge');
+            });
     };
 }

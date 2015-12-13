@@ -50,14 +50,12 @@ function auth($http, $window, $state) {
     auth.register = function (user) {
         return $http.post(apiUrl + 'register', user).success(function (data) {
             auth.saveToken(data.token);
-            $state.go('/ChooseChallenge');
         });
     };
 
     auth.logIn = function (user) {
         return $http.post(apiUrl + 'authenticate', user).success(function (data) {
             auth.saveToken(data.token);
-            $state.go('/ChooseChallenge');
         });
     };
 

@@ -12,22 +12,27 @@ function apiCallService($http, auth) {
     //var user = "5643262312e2b6b0278ce4a9";
 
     this.getCompletedTasksForUser = function () {
+        var user = auth.getCurrentUserID();
         return $http.get(apiUrl + "users/" + user + "/completedTasks");
     }
 
     this.getCurrentTaskUser = function () {
+        var user = auth.getCurrentUserID();
         return $http.get(apiUrl + "users/" + user + "/currentTask");
     }
 
     this.getRegisterDateUser = function () {
+        var user = auth.getCurrentUserID();
         return $http.get(apiUrl + "users/" + user + "/registeredOn");
     }
 
     this.getTodaysTasks = function () {
+        var user = auth.getCurrentUserID();
         return $http.get(apiUrl + "users/" + user + "/todaysTasks");
     }
 
     this.updateChoosenChallenge = function(taskId, statusData){
+        var user = auth.getCurrentUserID();
         var config = {headers: {
             'Content-Type': 'application/json',
         }};
