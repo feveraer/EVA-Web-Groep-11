@@ -1,12 +1,39 @@
-<div class="container quickfixColors">
+<div class=" quickfixColors">
+
     <h1 class="headerChallenge" translate="DAY" translate-values="{day: vmChallenge.daysBusy}"></h1>
 
-    <h2>Kies Challenge</h2>
+    <h2 class="chooseChallengeTitle">Kies Challenge</h2>
 
-    <div ng-repeat="task in vmChallenge.todaysTasks track by $index">
-        <h3>{{task.challenge.title}}</h3>
+    <md-content class="md-padding contentBackground" layout="column" layout-wrap="" layout-align="center start">
+        <div flex="50" layout="row">
+            <md-content class="md-padding contentBackground" layout="column" layout-wrap="" layout-align="center start">
+                <div flex="50" layout="row">
 
-        <p>{{task.challenge.shortDescription}}</p>
-        <md-button choose-task task-Id="{{task._id}}" task-Status={{task.status}}>Kies deze</md-button>
-    </div>
-</div>
+                    <div ng-repeat="task in vmChallenge.todaysTasks track by $index">
+
+
+                        <md-card class="chooseChallengeCard">
+                            <img ng-src="img/veggi{{task.challenge.category.name}}.jpg" class="md-card-image"
+                                 alt="{{task.challenge.category.name}}">
+                            <md-card-title class="titleCard">
+                                <md-card-title-text>
+                                    <span class="md-headline">{{task.challenge.category.name}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content>
+                                <p>{{task.challenge.shortDescription}}</p>
+                            </md-card-content>
+                            <md-card-actions layout="row" layout-align="end center">
+                                <md-button choose-task task-Id="{{task._id}}" task-Status={{task.status}}>Kies deze
+                                </md-button>
+                            </md-card-actions>
+                        </md-card>
+                    </div>
+                </div>
+            </md-content>
+        </div>
+
+        <!--<h3>{{task.challenge.title}}</h3>-->
+
+        <!--<p>{{task.challenge.shortDescription}}</p>-->
+        <!--<md-button choose-task task-Id="{{task._id}}" task-Status={{task.status}}>Kies deze</md-button>-->

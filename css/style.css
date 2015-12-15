@@ -193,6 +193,7 @@ input[type="submit"] {
     /*position:absolute;*/
     height: 80%;
     width: 40%;
+    min-width: 350px;
     font-family: Helvetica;
     color: #fff;
     background: rgba(0, 0, 0, 0.13);
@@ -282,4 +283,25 @@ input[type="submit"] {
     timeline-panel .fullwidth {
         width: 245%;
     }
+}
+
+
+
+.contentBackground{
+    background-color: transparent;
+}
+.chooseChallengeCard{
+    /*margin: 20px;*/
+    width: 80%;
+    height: 80%;
+}
+
+.chooseChallengeTitle{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Mathlete-Skinny';
+}
+.titleCard{
+    text-align: center;
 }
