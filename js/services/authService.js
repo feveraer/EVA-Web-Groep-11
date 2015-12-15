@@ -7,8 +7,8 @@ auth.$inject = ['$http', '$window', '$state'];
 
 function auth($http, $window, $state) {
     var auth = {};
-    //var apiUrl = "http://95.85.59.29:1337/api/";
-    var apiUrl = "http://127.0.0.1:1337/api/";
+    var apiUrl = "http://95.85.59.29:1337/api/";
+    //var apiUrl = "http://127.0.0.1:1337/api/";
 
     auth.saveToken = function (token) {
         $window.localStorage['eva-web-app-web-token'] = token;
