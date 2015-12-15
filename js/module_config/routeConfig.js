@@ -16,10 +16,15 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('/home', {
             url: '/home',
             views: {
+                'landing':{
+                    templateUrl: './views/landingPage.html',
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
+                },
                 'currentChallenge': {
                     templateUrl: './views/home.html',
                     controller: 'ChallengeController',
-                    controllerAs: 'vmChallenge'//,
+                    controllerAs: 'vmChallenge'
                 },
                 'timeline': {
                     templateUrl: './views/timeline.html',
@@ -31,6 +36,11 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('/ChooseChallenge', {
             url: '/ChooseChallenge',
             views: {
+                'landing':{
+                    templateUrl: './views/landingPage.html',
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
+                },
                 'currentChallenge': {
                     templateUrl: './views/chooseChallenge.html',
                     controller: 'ChooseChallengeController',
@@ -46,6 +56,11 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('/challengeCompleted', {
             url: '/challengeCompleted',
             views: {
+                'landing':{
+                    templateUrl: './views/landingPage.html',
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
+                },
                 'currentChallenge': {
                     templateUrl: './views/challengeCompleted.html'
                 },
@@ -53,6 +68,26 @@ function routeConfig($stateProvider, $urlRouterProvider) {
                     templateUrl: './views/timeline.html',
                     controller: 'TimelineController',
                     controllerAs: 'vmChallenge'
+                }
+            }
+        })
+        .state('/register', {
+            url: '/register',
+            views: {
+                'landing':{
+                    templateUrl: './views/register.html',
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
+                },
+            }
+        })
+        .state('/login', {
+            url: '/login',
+            views: {
+                'landing':{
+                    templateUrl: './views/login.html',
+                    controller: 'authController',
+                    controllerAs: 'vmAuth'
                 }
             }
         })

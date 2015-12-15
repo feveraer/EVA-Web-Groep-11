@@ -14,8 +14,9 @@
 .buttonSocial {
     height: 100px;
     width: 200px;
+    cursor: pointer;
+    outline: none;
 }
-
 .backgroundTimeLine {
     background: url(../img/chalkboard.png);
 }

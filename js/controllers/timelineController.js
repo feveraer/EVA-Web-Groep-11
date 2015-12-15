@@ -2,7 +2,7 @@ angular
     .module('app.timeline')
     .controller('TimelineController', TimelineController)
 
-TimelineController.$inject = ['ApiCallService']
+TimelineController.$inject = ['ApiCallService', 'auth', 'DialogService', '$mdDialog'];
 
 /**
  *@name Controller: ChallengeController
@@ -12,12 +12,24 @@ TimelineController.$inject = ['ApiCallService']
  * @constructor
  * @memberOf eva_web.js
  */
-function TimelineController(ApiCallService) {
+function TimelineController(ApiCallService, auth, DialogService, $mdDialog) {
     var vmChallenge = this;
     vmChallenge.animateIcon = animateIcon;
     vmChallenge.animatePanelLeft = animatePanelLeft;
     vmChallenge.animatePanelRight = animatePanelRight;
     vmChallenge.loadGlyphicon = loadGlyphicon;
+    vmChallenge.isLoggedIn = auth.isLoggedIn;
+    vmChallenge.showChallenge = function (challenge, ev) {
+        DialogService.setChallenge(challenge);
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: './views/challengeDialog.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            controllerAs: 'vmDialog'
+        });
+    };
 
     activate();
 
@@ -27,13 +39,15 @@ function TimelineController(ApiCallService) {
      * @memberOf eva_web.js
      */
     function activate() {
-        ApiCallService.getCompletedTasksForUser().then(function (response) {
-            var tasks = response.data;
-            tasks.forEach(function(task){
-                task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+        if (vmChallenge.isLoggedIn()) {
+            ApiCallService.getCompletedTasksForUser().then(function (response) {
+                var tasks = response.data;
+                tasks.forEach(function (task) {
+                    task.challenge.shortDescription = giveTextBeforeDoubleWhitespace(task.challenge.description)
+                });
+                tasks.sort(sortTasksByDateDesc);
+                vmChallenge.tasks = tasks;
             });
-            tasks.sort(sortTasksByDateDesc);
-            vmChallenge.tasks = tasks;
-        });
+        }
     }
 }

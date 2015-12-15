@@ -1,5 +1,4 @@
 <md-dialog aria-label="ChallengeDetail" ng-cloak>
-    <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>{{vmDialog.mdDialogData.title}}</h2>
@@ -14,10 +13,9 @@
                 <p>Niveau: {{vmDialog.mdDialogData.difficulty}}</p>
                 <img id="inDialogImage" alt="Lush mango tree" src="img/vegiPic.jpg">
 
-                <p>
-                    {{vmDialog.mdDialogData.description}}
+                <p ng-bind-html=vmDialog.mdDialogData.description>
+
                 </p>
             </div>
         </md-dialog-content>
-    </form>
 </md-dialog>
