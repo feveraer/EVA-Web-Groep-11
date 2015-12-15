@@ -193,6 +193,7 @@ input[type="submit"] {
     /*position:absolute;*/
     height: 80%;
     width: 40%;
+    min-width: 350px;
     font-family: Helvetica;
     color: #fff;
     background: rgba(0, 0, 0, 0.13);
