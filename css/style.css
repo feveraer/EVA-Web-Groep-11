@@ -283,3 +283,24 @@ input[type="submit"] {
         width: 245%;
     }
 }
+
+
+
+.contentBackground{
+    background-color: transparent;
+}
+.chooseChallengeCard{
+    /*margin: 20px;*/
+    width: 80%;
+    height: 80%;
+}
+
+.chooseChallengeTitle{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Mathlete-Skinny';
+}
+.titleCard{
+    text-align: center;
+}
